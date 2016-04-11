@@ -36,7 +36,6 @@ The following parameters are supported:
 
 ## Alternative
 
-The container parameter Alternative is used to render an alternative text, if the container would not render anything otherwise. 
 ```atml3
     [Text:;Alt:Nix gerendert]
      - renders "Nix gerendert"
@@ -44,10 +43,11 @@ The container parameter Alternative is used to render an alternative text, if th
    [no_vocabulary_property;Alt,text=Nix gerendert]
      - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
  ```
+The container parameter Alternative is used to render an alternative text, if the container would not render anything otherwise. 
+
 
 ## Capitalize
 
-Captalize is a container parameter that forces the first letter of the rendered string to be upper case. 
 ```atml3
    [Text:ich bin kleingeschrieben;Capitalize]
      - renders "Ich bin kleingeschrieben"
@@ -55,15 +55,18 @@ Captalize is a container parameter that forces the first letter of the rendered 
    [hund_wort,prep=mit,case=Dat;Capitalize]
      - renders "Mit dem Hund", if the property hund_wort renders the vocabulary "Hund"
  ```
+Captalize is a container parameter that forces the first letter of the rendered string to be upper case. 
+
 
 ## Kill
-
-Kill is a parameter that prevents a sentence from being rendered if the container does not render to a text. 
 
 ```atml3
    [Text:hallo] [Text:;Kill] [Text:welt]
      - prevents rendering, because the second container does not render anything and carries the Kill parameter
 ``` 
+
+Kill is a parameter that prevents a sentence from being rendered if the container does not render to a text. 
+
 
 ## Lower
 
