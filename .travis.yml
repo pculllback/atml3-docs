@@ -1,10 +1,15 @@
 sudo: false
-
 language: ruby
-
 rvm:
-  - 2.0.0
-  - 2.1.0
-
+- 2.1.0
+branches:
+  only:
+  - master
+env:
+  global:
+  - GH_PAGES_REPO=axsemantics/atml3-docs
+  - GH_PAGES_DOMAIN=docs.atml3.rocks
+  - GH_PAGES_BASEDIR=build
+  - secure: LKW23fNBH0jkBeIk22oeW/8rb62lO1PwjvxatkY15GoXl3L8ULP7lQd8Orle73B/gd5BSzy++PbLNkyxcDXoH2QwXEA7WQv65O/cdpwtnfbyhZtvyH9PcYo/ZvB1tdbPhGenYCijL+WGZNfk7Lo3CZmRmXCdju1pwzgaGtA7bcfU0zISdWLWqp8BNANRbJCsh0R/qjSWJxWGdgGoLsKsvDCegDQs/vG9GNegh8r+eYoEMEWj9pFOfqzxjE9P9q5R8mqnPtQ8giajNpnT7jWoD/BXLI+12TGTnT/eo0gJWvAJffPATY7x/Z5H22YiEGPI16xgRbx7ZpdV3+K3rSz4O+P6CaoTZzO4A2q4KPxFDGYabPB4WCPrAvWuALFn+F2eeQ0NT+zPIwgW8YQOEsaTAPE8lpDTtBQJ3WerJclkS6h5M5R5YIlakHNdjYXYKs3yfXlQjWmbwatKiJLVuT3QIPwm9OF+J0F44fUjhNovpecS+A4Yd34Ite4BJXFX8yENVZ909i0zgrxKvKQAypwylP7WDJDFTsyQJEOK5lwxGd60jdztjztbO5ob5z9touFF0wZwwQ6f1gTsWD2ZILrx0sH9dHp85LbmB8iKchjcMGH6XWMSrnXt8e0wm/Bc029OZEIWLfId1ke8HntKNqV7/DUYzoD6jwK9hQ3XQbeg0II=
 cache: bundler
-script: bundle exec middleman build
+script: ". ./travis-deploy.sh"
