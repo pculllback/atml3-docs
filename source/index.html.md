@@ -14,11 +14,8 @@ includes:
 search: true
 ---
 
-# Introduction
+# ATML3 Syntax Documentation
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-# ATML3 Documentation
 ### Welcome to the realms of ATML3
 This site describes the basic functions and commands of the ATML3 programming language. With this handy expression language, you can train an artificial intelligence to write your stuff. All of it.
 Just feed it structured data and the ATML engine will promptly churn it into a meaningful text in almost no time.
@@ -138,11 +135,13 @@ Trailing is a container parameter that is used to insert text behind a rendered 
 
 Void is a container parameter that prevents a container from rendering an actual string but preserves its grammatical properties. It is mostly used as a reference for grammar containers. 
 
-Examples:
+```
    [dog_phrase,id=test123;Void]
      - renders nothin but can be referenced by grammar-from=test123 and will deliver it's grammatical properties
+```
  
-Alias: NoOut
+Alias: `NoOut`
+
 
 ## Source
 
