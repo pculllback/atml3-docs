@@ -334,20 +334,20 @@ Examples for rendering (assume there is a property named "Hund" with an adjectiv
     
 Permitted values for the parameters:
 
-* adj - yes/no
-* adjconj - und_sowie_KOMMA_oder
-* case - language dependent; in german: Nom/Gen/Dat/Akk
-* prep - free text
-* pronoun - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)
-* det -
- * none - no determiner, default
- * def - definite article, "der Hund"
- * indef - indefinite article, "ein Hund"
- * demonstrative - demonstrative article, "dieser Hund"
- * your - possessive determiner, "Ihr Hund"
- * sein - possessive determiner, "sein Hund"
- * ihrsein - possesive determiner able to print "sein" and "ihr", chosen by reference=containerID
- * num-to - sg (force singular), pl (force plural)
+* `adj` - yes/no
+* `adjconj` - und_sowie_KOMMA_oder
+* `case` - language dependent; in german: Nom/Gen/Dat/Akk
+* `prep` - free text
+* `pronoun` - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)
+* `det` -
+ * `none` - no determiner, default
+ * `def` - definite article, "der Hund"
+ * `indef` - indefinite article, "ein Hund"
+ * `demonstrative` - demonstrative article, "dieser Hund"
+ * `your` - possessive determiner, "Ihr Hund"
+ * `sein` - possessive determiner, "sein Hund"
+ * `ihrsein` - possesive determiner able to print "sein" and "ihr", chosen by reference=containerID
+ * `num-to` - sg (force singular), pl (force plural)
 
 
 ## Text Container
