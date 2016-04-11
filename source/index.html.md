@@ -83,19 +83,20 @@ Lower is a parameter that forces the rendered string of a container to be all lo
 
 On is a container parameter that activates or deactivates according to a condition. 
 
-```
+```atml3
    [Text:test;On,true=bool_property]
      - only renders "test", if the property bool_property is true.
     
    [Text:test;On,false=bool_property]
      - only renders "test", if the property bool_property is false.
+```
  
 
-Off
+## Off
 
 Off is a container parameter that activates or deactivates according to a condition. 
 
-Examples:
+```atml3
    [Text:test;Off,true=bool_property]
      - only renders "test", if the property bool_property is false.
     
@@ -107,7 +108,7 @@ Examples:
 
 Preceeding is a container parameter that is used to insert text in front of a rendered string in a container. 
 
-```
+```atml3
    [Text:welt;Preceeding:hallo ]
      - renders "hallo welt"
      
@@ -115,11 +116,11 @@ Preceeding is a container parameter that is used to insert text in front of a re
      - renders "Stückzahl: 3", if the property drei renders to 3.
 ``` 
 
-Trailing
+## Trailing
 
 Trailing is a container parameter that is used to insert text behind a rendered string in a container. 
 
-```
+```atml3
    [Text:hallo;Trailing: welt]
      - renders "hallo welt"
      
@@ -366,7 +367,6 @@ Rendering of simple text by a container is useful if container parameters need t
     - renders nothing otherwise
 ```    
     
-More information about container parameters in their section.
 
 
 ## Value Container
