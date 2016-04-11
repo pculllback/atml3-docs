@@ -165,7 +165,7 @@ The product_types enable creating one training for different kinds of things. Th
 
 <aside class="notice">
 In the GUI, these are called "Story Types".
-<aside>
+</aside>
 
 
 1. Choose a product type2
