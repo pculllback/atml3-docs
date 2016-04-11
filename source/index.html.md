@@ -2,13 +2,11 @@
 title: API Reference
 
 language_tabs:
-  - shell
-  - ruby
-  - python
+  - atml3
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='https://www.axsemantics.com'>Powered by AX</a>
 
 includes:
   - errors
@@ -20,149 +18,147 @@ search: true
 
 Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# ATML3 Documentation
+### Welcome to the realms of ATML3
+This site describes the basic functions and commands of the ATML3 programming language. With this handy expression language, you can train an artificial intelligence to write your stuff. All of it.
+Just feed it structured data and the ATML engine will promptly churn it into a meaningful text in almost no time.
+But first off, you will need to tell the ATML Engine how to text for you. And that is what you do in an ATML3 training.
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+### Sounds cool, but what can I actually do with it?
+Your training contains reasoning: It will tell the ATML Engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text. (Vertigo Expression Language)
+You can also tell the ATML engine in what way to mention the information it has concluded from your data. (Sentences) (Containers)
+Don't forget microplanning and textplanning. That is also an aspect of ATML3. (Product Types)
+Once you have your information planned and pinned down, you can do the fine-tuning and have grammar and apply to it. (Containers)
 
-# Authentication
+### What else do I need to work with ATML3?
+First, you need an account at ax-semantics.com to work with ATML3. Don't worry, it comes for free. Once you have an account, log into my.ax-semantics.com, go to your profile page and retrieve your API token there.
+You will also need your account unlocked for editing ATML3 and using our wizards. At the moment, you will have to contact us via slack. Just click the speech bubble icon on my.ax-semantics.com and leave us a message.
+Second, you will need one of our editors for ATML3. Choose one among the options at atml3.rocks. 
+Further, you will need structured data about your topic. If you want to know how to integrate your data into AX, use the API documentation at apidocs.ax-semantics.com.
 
-> To authorize, use this code:
+# Container parameters
+Container parameters can be attached to a container to add instructions or information to the container.
 
-```ruby
-require 'kittn'
+The following parameters are supported:
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+## Alternative
+
+The container parameter Alternative is used to render an alternative text, if the container would not render anything otherwise. 
+
+```
+    [Text:;Alt:Nix gerendert]
+     - renders "Nix gerendert"
+     
+   [no_vocabulary_property;Alt,text=Nix gerendert]
+     - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
+ ```
+
+## Capitalize
+
+Captalize is a container parameter that forces the first letter of the rendered string to be upper case. 
+
+```
+   [Text:ich bin kleingeschrieben;Capitalize]
+     - renders "Ich bin kleingeschrieben"
+     
+   [hund_wort,prep=mit,case=Dat;Capitalize]
+     - renders "Mit dem Hund", if the property hund_wort renders the vocabulary "Hund"
+ ```
+
+## Kill
+
+Kill is a parameter that prevents a sentence from being rendered if the container does not render to a text. 
+
+```
+   [Text:hallo] [Text:;Kill] [Text:welt]
+     - prevents rendering, because the second container does not render anything and carries the Kill parameter
+``` 
+
+## Lower
+
+Lower is a parameter that forces the rendered string of a container to be all lower case. 
+
+```
+    [Text:ICH BIN GROSSGESCHRIEBEN;Lower]
+     - renders "ich bin grossgeschrieben"
+     
+   [hund_wort,prep=mit,case=Dat;Lower]
+     - renders "mit dem hund", if the property hund_wort renders "Hund"
 ```
 
-```python
-import kittn
+## On
 
-api = kittn.authorize('meowmeowmeow')
+On is a container parameter that activates or deactivates according to a condition. 
+
+```
+   [Text:test;On,true=bool_property]
+     - only renders "test", if the property bool_property is true.
+    
+   [Text:test;On,false=bool_property]
+     - only renders "test", if the property bool_property is false.
+ 
+
+Off
+
+Off is a container parameter that activates or deactivates according to a condition. 
+
+Examples:
+   [Text:test;Off,true=bool_property]
+     - only renders "test", if the property bool_property is false.
+    
+   [Text:test;Off,false=bool_property]
+     - only renders "test", if the property bool_property is true.
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+## Preceeding
+
+Preceeding is a container parameter that is used to insert text in front of a rendered string in a container. 
+
+```
+   [Text:welt;Preceeding:hallo ]
+     - renders "hallo welt"
+     
+   [drei.value();Preceeding:,text=Stückzahl: ]
+     - renders "Stückzahl: 3", if the property drei renders to 3.
+``` 
+
+Trailing
+
+Trailing is a container parameter that is used to insert text behind a rendered string in a container. 
+
+```
+   [Text:hallo;Trailing: welt]
+     - renders "hallo welt"
+     
+   [drei.value();Trailing,text= Stück]
+     - renders "3 Stück", if the property drei renders to 3
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+## Void
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Void is a container parameter that prevents a container from rendering an actual string but preserves its grammatical properties. It is mostly used as a reference for grammar containers. 
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Examples:
+   [dog_phrase,id=test123;Void]
+     - renders nothin but can be referenced by grammar-from=test123 and will deliver it's grammatical properties
+ 
+Alias: NoOut
 
-`Authorization: meowmeowmeow`
+## Source
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+Source is a container parameter that can be filled with an intended output.
 
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+```
+[hund_wort,prep=mit,case=Dat;Source:mit dem Hund]
 ```
 
-```python
-import kittn
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+Keyword
+
+To create a keyword, you need to set the keyword parameter with an ID and an alternative text within a container. The ID is needed for defining multiple keywords. The engine will choose randomly a selection of defined keywords in consideration of the density and deviation. Both can be adjusted in the advanced content project configuration.
+
 ```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+   [Text:der goodyear 500;Keyword,id=1,alt=der Reifen]
+     - here the engine will either display "der goodyear 500" or the alternative text "der Reifen"
+       depending on the random selection.
 ```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
