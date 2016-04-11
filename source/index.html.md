@@ -57,7 +57,7 @@ The container parameter Alternative is used to render an alternative text, if th
      - renders "Mit dem Hund", if the property hund_wort renders the vocabulary "Hund"
 ```
  
-Captalize is a container parameter that forces the first letter of the rendered string to be upper case. 
+Capitalize is a container parameter that forces the first letter of the rendered string to be upper case. 
 
 
 ## Kill
@@ -72,8 +72,6 @@ Kill is a parameter that prevents a sentence from being rendered if the containe
 
 ## Lower
 
-Lower is a parameter that forces the rendered string of a container to be all lower case. 
-
 ```
     [Text:ICH BIN GROSSGESCHRIEBEN;Lower]
      - renders "ich bin grossgeschrieben"
@@ -81,10 +79,10 @@ Lower is a parameter that forces the rendered string of a container to be all lo
    [hund_wort,prep=mit,case=Dat;Lower]
      - renders "mit dem hund", if the property hund_wort renders "Hund"
 ```
+Lower is a parameter that forces the rendered string of a container to be all lower case. 
+
 
 ## On
-
-On is a container parameter that activates or deactivates according to a condition. 
 
 ```atml3
    [Text:test;On,true=bool_property]
@@ -94,10 +92,11 @@ On is a container parameter that activates or deactivates according to a conditi
      - only renders "test", if the property bool_property is false.
 ```
  
+On is a container parameter that activates or deactivates according to a condition. 
+
+
 
 ## Off
-
-Off is a container parameter that activates or deactivates according to a condition. 
 
 ```atml3
    [Text:test;Off,true=bool_property]
@@ -107,9 +106,11 @@ Off is a container parameter that activates or deactivates according to a condit
      - only renders "test", if the property bool_property is true.
 ```
 
-## Preceeding
+Off is a container parameter that activates or deactivates according to a condition. 
 
-Preceeding is a container parameter that is used to insert text in front of a rendered string in a container. 
+
+
+## Preceeding
 
 ```atml3
    [Text:welt;Preceeding:hallo ]
@@ -119,9 +120,11 @@ Preceeding is a container parameter that is used to insert text in front of a re
      - renders "Stückzahl: 3", if the property drei renders to 3.
 ``` 
 
-## Trailing
+Preceeding is a container parameter that is used to insert text in front of a rendered string in a container. 
 
-Trailing is a container parameter that is used to insert text behind a rendered string in a container. 
+
+
+## Trailing
 
 ```atml3
    [Text:hallo;Trailing: welt]
@@ -131,30 +134,33 @@ Trailing is a container parameter that is used to insert text behind a rendered 
      - renders "3 Stück", if the property drei renders to 3
 ```
 
-## Void
+Trailing is a container parameter that is used to insert text behind a rendered string in a container. 
 
-Void is a container parameter that prevents a container from rendering an actual string but preserves its grammatical properties. It is mostly used as a reference for grammar containers. 
+
+
+## Void
 
 ```
    [dog_phrase,id=test123;Void]
      - renders nothin but can be referenced by grammar-from=test123 and will deliver it's grammatical properties
 ```
+
+Void is a container parameter that prevents a container from rendering an actual string but preserves its grammatical properties. It is mostly used as a reference for grammar containers. 
  
 Alias: `NoOut`
 
 
 ## Source
 
-Source is a container parameter that can be filled with an intended output.
-
 ```
 [hund_wort,prep=mit,case=Dat;Source:mit dem Hund]
 ```
 
+Source is a container parameter that can be filled with an intended output.
+
+
 
 ## Keyword
-
-To create a keyword, you need to set the keyword parameter with an ID and an alternative text within a container. The ID is needed for defining multiple keywords. The engine will choose randomly a selection of defined keywords in consideration of the density and deviation. Both can be adjusted in the advanced content project configuration.
 
 ```
    [Text:der goodyear 500;Keyword,id=1,alt=der Reifen]
@@ -162,19 +168,20 @@ To create a keyword, you need to set the keyword parameter with an ID and an alt
        depending on the random selection.
 ```
 
+To create a keyword, you need to set the keyword parameter with an ID and an alternative text within a container. The ID is needed for defining multiple keywords. The engine will choose randomly a selection of defined keywords in consideration of the density and deviation. Both can be adjusted in the advanced content project configuration.
+
+
 # Containers
 
 In this section the different containers and their parameters are described. Preliminary: A property generally consists of three parts:
 
-* **truth value** - is the property active? Can it be used?
-* **value** - data stored for that property
-* **vocabulary** - stuff to be rendered if the property is called in a container.
+* `truth value` - is the property active? Can it be used?
+* `value` - data stored for that property
+* `vocabulary` - stuff to be rendered if the property is called in a container.
 
 Some of the containers, for example PhraseContainer and ValueContainer are supposed to render vocabulary (or value, respectively). Containers can react to the truth value of properties.
 
 ## Appeal container
-
-The appeal container can be used to adress the reader.
 
 ```atml3
         [Appeal:reader,id=reader]
@@ -183,6 +190,8 @@ The appeal container can be used to adress the reader.
         [Appeal:reader,pronoun=reflexive,case=dat]
             renders to "dir", "ihnen" or "euch", depending what formality is set.
 ```
+
+The appeal container can be used to adress the reader.
 
 Parameter:
 
@@ -199,7 +208,7 @@ If this container is rendered in a sentence, the rendering of the text itself is
     
 The container does not lead to output in the text itself.
 
-Grammar Container
+## Grammar Container
 This container can be used to render words with their grammatical function and preset grammatical information.
 
  ```atml3
@@ -589,10 +598,10 @@ a meta sentence that is included in your "default" sentence group
 ```
 
 the meta command contains 4 different parameters (see below)
-* execute - used to point to a sentence group
-* items - ATML3 list property which contains the data
-* iterator - object to access the inner data from the itemlist
-* counter - internal counter for the story mode
+* `execute` - used to point to a sentence group
+* `items` - ATML3 list property which contains the data
+* `iterator` - object to access the inner data from the itemlist
+* `counter` - internal counter for the story mode
 * an event Product Type
 
 ```atml3
@@ -603,7 +612,11 @@ the meta command contains 4 different parameters (see below)
  "goal_reg",
  "goal_own" ]
 }
+```
+
 actual sentences that are rendered in this sentence group (goal_reg, goal_own)
+
+```atml3
 {
  "name": "goal_reg",
  "triggers": [ "LOG_Tor_not_1_0" ],
@@ -631,7 +644,12 @@ a list property that contains the list of objects from above
  "mappingExpression" : "{}",
  "truthExpression" : "false"
  }
+
+```
+
 properties that point to the object in order to extract information from it
+
+```atml3
 "TRIGGER_current_event_is_goal" : {
  "mappingExpression" : "",
  "truthExpression" : "$CURRENT_EVENT.event_type == \"goal\""
@@ -657,6 +675,333 @@ properties that point to the object in order to extract information from it
  "voc": { "de-DE" : [ { "noun": "[VOC_ScoreTor.value()]" } ] }
  }
 ```
+
+# Vertigo Expression Language
+The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
+
+Vertigo expressions are used in the mappingExpression and the truthExpression of a property and have values of certain data types.
+
+## contains()
+
+This function can be used to check if an element is inside a list. Examples:
+  contains(2, [1, 2, 3, 4, 5])
+    returns true since 2 is an element of the list containing the numbers from 1 to 5
+    
+  contains("welt", ["hallo", "welt", "!"])
+    would also return true
+    
+  contains("5555", ["hallo", "welt", "!"])
+    returns false
+    
+  contains("hellblau", ["rot", "grün", "Blau"], "substring")
+    returns true since "blau" is contained in the word "hellblau"
+    
+  contains("hellblau", ["rot", "grün", "blau"])
+    returns false because substring search is not active.
+
+
+## convert_comma(input, divisor, lowerUnit, upperUnit)
+
+This function takes a numeric value and converts it to a distance or time value.
+Examples:
+  convert_comma(5300, 1000, "m", "km")
+    renders string "5,3 km"
+    
+  convert_comma(900, 1000, "m", "km")
+    renders string "900 m"
+    
+  convert_comma(120, 60, "Minuten", "Stunden")
+    renders string "2 Minuten"
+
+
+## convert_count(input, divisor, lowerUnit, upperUnit[, conjunction])
+
+This function takes a numeric value and converts it to a currency or date value.
+Optionally, a conjunction can be given. Examples:
+  convert_count(145, 60, "Minuten", "Stunden")
+    returns string "2 Stunden 25 Minuten"
+    
+  convert_count(45, 60, "Minuten", "Stunden")
+    returns string "45 Minuten"
+    
+  convert_count(350, 100, "Cent", "Euro")
+    returns string "3 Euro 50 Cent"
+    
+  convert_count(350, 100, "Cent", "Euro", "und")
+    returns string "3 Euro und 50 Cent"
+
+
+## cur_lang()
+
+This function returns the current language in the current text generation process as an ISO 2-letter code. Beispiele:
+  cur_lang()
+    returns "de", "es" or "en" or whatever language is currently used.
+
+
+date_add(date, number, type)
+
+This function adds a time value to a given date and returns that new date.
+These types of times can be added: years, months, weeks, days, hours, minutes, seconds.
+Example:
+  date_add("16.05.1983", 3, "years")
+    returns string "16.05.1986"
+
+## date_difference(date, date)
+
+This function returns the difference between two dates as an integer number of days.
+Expected time format is dd.MM.yyyy.
+Example:
+  date_difference("16.05.1983", "19.05.1983")
+    returns numeric 3
+
+  date_difference("19.05.1983", "16.05.1983")
+    returns numeric -3
+
+## date_convert(date, format)
+
+This function converts a date value to a specific format
+Example:
+  date_convert("16.05.1983", "yyyy-MM-dd")
+    returns string "1983-05-16"
+
+
+## date_format(date)
+
+Returns a date value's format.
+Example:
+  date_format("16.05.1983")
+    returns string "dd.MM.yyyy"
+
+
+## date_now()
+
+This function returns the date in the following format: dd.MM.yyyy
+    date_now()
+        - returns 13.06.2015
+
+
+## formatNumber()
+
+This function formats a number to enforce a certain number of decimal digits and converts it to the correct locale
+Example:
+  format_number(2, 2)
+    returns 2.00 as string (english) or 2,00 (german)
+
+
+## has_entry(type, entry)
+
+This function checks if an entry contains as lemma in the lexicon. Examples:
+  has_entry("noun", "tire")
+    returns true
+    
+  has_entry("noun", "thisIsNotAWord")
+    returns false
+
+
+## in_range()
+
+Checks if a numeric value lies between two other values. Example:
+  in_range(#value, 5, 10)
+    - returns the truth value "true" if the value lies between 5 and 10.
+      It implements the function 5 ≤ #value ≤ 10
+
+
+## intersection()
+
+Returns elements of two lists that are present in both lists.
+Example:
+  intersection([1, 2, 3], [1, 2, 4])
+    returns list [1, 2]
+
+
+## is_date(string)
+
+This function checks if a string value is in a correct date format.
+Example:
+  is_date("16.05.1983")
+    returns true
+    
+  is_date("value")
+    returns false
+
+
+## list_pos()
+```atml3
+  list_pos([$property1, $property2, $property3], "$property3")
+    if truth($property3) == true:
+      returns 2, because property3 is the third element in the list.
+    if truth($property3) == false:
+      returns -1
+    
+  contains([$property1, $property2, $property3], "$property4")
+    returns -1
+    
+  contains(["hallo", "welt"], "hallo")
+    returns 0, because "hallo" is in the first position of the list
+    
+  contains(["hallo", "welt"], "ciaosen")
+    returns -1, because the searched string "ciaosen" was not found in the list
+```
+
+This function finds the position of a property in a list.
+This one needs context. A list of properties (also called a group) may contain properties that evaluate to false while rendering, thus making the list shorter. To find out, at what position our property of interest is in the list, we can use this function.
+
+
+## month_no()
+```atml3
+  month_no("Januar")
+    returns number 0 because january is the first month in a year
+    
+  month_no("February")
+    returns number 1 because february is the second month of a year. 
+    NB that german and english month names can be used as parameters
+```
+This function can be used to convert a month into a numerical representation 
+
+
+## re_get(list, pattern, direction, position)
+```atml3
+  re_get([1, 2, 3], ".*", "l", 0)
+    - returns the string "1"
+    
+  re_get([1, 2, 3], ".*", "r", 0)
+    - returns the string "3"
+    
+  re_get([1, 2, 3], "4", "l", 0)
+    - returns an empty string
+    
+  re_get([1, 2, 3], ".*", "l", 1)
+    - returns the string "2"
+```
+
+This function searches for a regex pattern in a list of string elements and returns the string if there is a match.
+* `list` - The list to search in``
+* `pattern` - RegEx Pattern
+* `direction` - Direction to search in ("r" or "l")
+* `position` - The position of the list element
+
+## re_keep(list, pattern, direction[, position])
+```atml3
+  re_keep(["xyz1", "abc", "xyz2"], "xyz.")
+    - returns the list ["xyz1", "xyz2"]
+    
+  re_keep(["xyz1", "abc", "xyz2"], "xyz.", "l", 1)
+    - returns the list ["xyz2"]
+    
+  re_keep(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
+    - returns the list ["xyz1"]
+```
+
+This function searches for a regex pattern in a list and returns a list of all matched elements.
+Optionally a starting postition and a search direction can be given
+* `list` - The list to search in
+* `pattern` - regex pattern
+* `direction` - The direction to search in ("r" or "l")
+* `position` - starting position
+
+
+## re_remove(list, pattern, direction[, position])
+```atml3
+  re_remove(["xyz1", "abc", "xyz2"], "abc")
+    - returns the list ["xyz1", "xyz2"]
+    
+  re_remove(["xyz1", "abc", "xyz2"], "abc", "l", 1)
+    - returns the list ["xyz1", "xyz2"]
+    
+  re_remove(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
+    - returns the list ["xyz1", "abc"]
+```
+This function searches for a regex pattern in a list and returns a list of all elements that do not contain matched elements.
+Optionally a starting postition and a search direction can be given
+* `list` - The list to search in
+* `pattern` - regex pattern
+* `direction` - The direction to search in ("r" or "l")
+* `position` - starting position
+
+
+## render($property)
+```atml3
+  render($property)
+    - returns the string "kleine Katze" if property's adjective field contains "klein" and its noun field contains "Katze"
+```
+This function takes a property and returns the content of its vocabulary.
+
+
+## substring()
+```atml3
+  substring("Hello world", 0, 1)
+    extracts the substring "H" from the string "Hello world", which is the substring from index 0 with length 1
+    
+  substring("Hello world", 5, 3)
+    extracts the substring wor from the string "Hello world", which is the substring from index 5 (the w) with a length of 3 chars.
+    
+  substring("Hello world", 5)
+    extracts the substring "world" from the string "Hello world", which is from position 5 to the end (leaving the optional parameter length unset)
+```
+This vertigo function will extract a substring from a string.
+
+
+
+
+## trim()
+```atml3
+    trim("hallo welt")
+        - returns the string "hallo welt" (unchanged)
+        
+    trim("  hallo welt")
+        - returns the string "hallo welt" (stripped whitespace from the beginning)
+        
+    trim("hallo welt   ")
+        - returns the string "hallo welt" (stripped whitespace from the end)
+        
+    trim("  hallo welt   ")
+        - returns the string "hallo welt" (stripped whitespace from the beginning and the end)
+```
+
+this function cuts away trailing and preceeding whitespaces from a string 
+
+
+
+## unique(list)
+```atml3
+  unique([1, 2, 3, 1, 2])
+    returns the [1, 2, 3]
+```
+Returns a list with unique elements. 
+
+
+## weekday_int(days)
+```atml3 
+  weekday_int(1)
+    - returns the integer 2 (Tuesday), if today is a monday.
+    
+  weekday_int(5)
+    - returns the integer 6 (Saturday), if today is a monday.
+```
+
+This function takes an integer n. It returns a numeric representation of the weekday of today+n days.
+The returned integer is to be interpreted as follows:
+Weekday	Integer
+Monday	1
+Tuesday	2
+Wednesday	3
+Thursday	4
+Friday	5
+Saturday	6
+Sunday	7 
+
+
+
+## weekday_no()
+```atml3
+  month_no("Dienstag")
+    returns number 2 because tuesday is the second day in a week (monday = 1)
+    
+  month_no("monday")
+    returns number 1 because monday is the first day of the week (sunday = 7) 
+    NB that german and english weekday names can be used as parameters
+```
+This function can be used to convert a weekday into a numerical representation
 
 
 
