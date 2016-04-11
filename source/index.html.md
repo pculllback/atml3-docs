@@ -42,7 +42,8 @@ The following parameters are supported:
      
    [no_vocabulary_property;Alt,text=Nix gerendert]
      - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
- ```
+```
+
 The container parameter Alternative is used to render an alternative text, if the container would not render anything otherwise. 
 
 
@@ -54,7 +55,8 @@ The container parameter Alternative is used to render an alternative text, if th
      
    [hund_wort,prep=mit,case=Dat;Capitalize]
      - renders "Mit dem Hund", if the property hund_wort renders the vocabulary "Hund"
- ```
+```
+ 
 Captalize is a container parameter that forces the first letter of the rendered string to be upper case. 
 
 
