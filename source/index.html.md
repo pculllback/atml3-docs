@@ -681,9 +681,12 @@ The vertigo expression language is a collection of operations and functions whic
 
 Vertigo expressions are used in the mappingExpression and the truthExpression of a property and have values of certain data types.
 
-## contains()
+## Expression Languages
 
-This function can be used to check if an element is inside a list. Examples:
+### contains()
+
+This function can be used to check if an element is inside a list. 
+```atml3
   contains(2, [1, 2, 3, 4, 5])
     returns true since 2 is an element of the list containing the numbers from 1 to 5
     
@@ -698,12 +701,12 @@ This function can be used to check if an element is inside a list. Examples:
     
   contains("hellblau", ["rot", "grün", "blau"])
     returns false because substring search is not active.
+```
 
-
-## convert_comma(input, divisor, lowerUnit, upperUnit)
+### convert_comma(input, divisor, lowerUnit, upperUnit)
 
 This function takes a numeric value and converts it to a distance or time value.
-Examples:
+```atml3
   convert_comma(5300, 1000, "m", "km")
     renders string "5,3 km"
     
@@ -712,12 +715,13 @@ Examples:
     
   convert_comma(120, 60, "Minuten", "Stunden")
     renders string "2 Minuten"
+```
 
-
-## convert_count(input, divisor, lowerUnit, upperUnit[, conjunction])
+### convert_count(input, divisor, lowerUnit, upperUnit[, conjunction])
 
 This function takes a numeric value and converts it to a currency or date value.
-Optionally, a conjunction can be given. Examples:
+Optionally, a conjunction can be given. 
+```atml3
   convert_count(145, 60, "Minuten", "Stunden")
     returns string "2 Stunden 25 Minuten"
     
@@ -729,103 +733,114 @@ Optionally, a conjunction can be given. Examples:
     
   convert_count(350, 100, "Cent", "Euro", "und")
     returns string "3 Euro und 50 Cent"
+```
 
+### cur_lang()
 
-## cur_lang()
-
-This function returns the current language in the current text generation process as an ISO 2-letter code. Beispiele:
+This function returns the current language in the current text generation process as an ISO 2-letter code. 
+```atml3
   cur_lang()
     returns "de", "es" or "en" or whatever language is currently used.
+```
 
-
-date_add(date, number, type)
+### date_add(date, number, type)
 
 This function adds a time value to a given date and returns that new date.
 These types of times can be added: years, months, weeks, days, hours, minutes, seconds.
-Example:
+```atml3
   date_add("16.05.1983", 3, "years")
     returns string "16.05.1986"
+```
 
-## date_difference(date, date)
-
-This function returns the difference between two dates as an integer number of days.
-Expected time format is dd.MM.yyyy.
-Example:
+### date_difference(date, date)
+```atml3
   date_difference("16.05.1983", "19.05.1983")
     returns numeric 3
 
   date_difference("19.05.1983", "16.05.1983")
     returns numeric -3
+```
+This function returns the difference between two dates as an integer number of days.
+Expected time format is dd.MM.yyyy.
 
-## date_convert(date, format)
 
-This function converts a date value to a specific format
-Example:
+
+### date_convert(date, format)
+```atml3
   date_convert("16.05.1983", "yyyy-MM-dd")
     returns string "1983-05-16"
+```
+This function converts a date value to a specific format
 
 
-## date_format(date)
-
-Returns a date value's format.
-Example:
+### date_format(date)
+```atml3
   date_format("16.05.1983")
     returns string "dd.MM.yyyy"
+```
+Returns a date value's format.
 
 
-## date_now()
-
-This function returns the date in the following format: dd.MM.yyyy
+### date_now()
+```atml3
     date_now()
         - returns 13.06.2015
+```
+This function returns the date in the following format: dd.MM.yyyy
 
 
-## formatNumber()
 
-This function formats a number to enforce a certain number of decimal digits and converts it to the correct locale
-Example:
+### formatNumber()
+```atml3
   format_number(2, 2)
     returns 2.00 as string (english) or 2,00 (german)
+```
+This function formats a number to enforce a certain number of decimal digits and converts it to the correct locale
 
 
-## has_entry(type, entry)
 
-This function checks if an entry contains as lemma in the lexicon. Examples:
+### has_entry(type, entry)
+```atml3
   has_entry("noun", "tire")
     returns true
     
   has_entry("noun", "thisIsNotAWord")
     returns false
+```
+This function checks if an entry contains as lemma in the lexicon. 
 
 
-## in_range()
-
-Checks if a numeric value lies between two other values. Example:
+### in_range()
+```atml3
   in_range(#value, 5, 10)
     - returns the truth value "true" if the value lies between 5 and 10.
       It implements the function 5 ≤ #value ≤ 10
+```
+Checks if a numeric value lies between two other values. 
 
 
-## intersection()
 
-Returns elements of two lists that are present in both lists.
-Example:
+### intersection()
+```atml3
   intersection([1, 2, 3], [1, 2, 4])
     returns list [1, 2]
+```
+Returns elements of two lists that are present in both lists.
 
 
-## is_date(string)
-
-This function checks if a string value is in a correct date format.
-Example:
+### is_date(string)
+```atml3
   is_date("16.05.1983")
     returns true
     
   is_date("value")
     returns false
+```
+This function checks if a string value is in a correct date format.
 
 
-## list_pos()
+### list_pos()
+
 ```atml3
   list_pos([$property1, $property2, $property3], "$property3")
     if truth($property3) == true:
@@ -847,7 +862,7 @@ This function finds the position of a property in a list.
 This one needs context. A list of properties (also called a group) may contain properties that evaluate to false while rendering, thus making the list shorter. To find out, at what position our property of interest is in the list, we can use this function.
 
 
-## month_no()
+### month_no()
 ```atml3
   month_no("Januar")
     returns number 0 because january is the first month in a year
@@ -859,7 +874,7 @@ This one needs context. A list of properties (also called a group) may contain p
 This function can be used to convert a month into a numerical representation 
 
 
-## re_get(list, pattern, direction, position)
+### re_get(list, pattern, direction, position)
 ```atml3
   re_get([1, 2, 3], ".*", "l", 0)
     - returns the string "1"
@@ -875,12 +890,13 @@ This function can be used to convert a month into a numerical representation
 ```
 
 This function searches for a regex pattern in a list of string elements and returns the string if there is a match.
+
 * `list` - The list to search in``
 * `pattern` - RegEx Pattern
 * `direction` - Direction to search in ("r" or "l")
 * `position` - The position of the list element
 
-## re_keep(list, pattern, direction[, position])
+### re_keep(list, pattern, direction[, position])
 ```atml3
   re_keep(["xyz1", "abc", "xyz2"], "xyz.")
     - returns the list ["xyz1", "xyz2"]
@@ -894,13 +910,14 @@ This function searches for a regex pattern in a list of string elements and retu
 
 This function searches for a regex pattern in a list and returns a list of all matched elements.
 Optionally a starting postition and a search direction can be given
+
 * `list` - The list to search in
 * `pattern` - regex pattern
 * `direction` - The direction to search in ("r" or "l")
 * `position` - starting position
 
 
-## re_remove(list, pattern, direction[, position])
+### re_remove(list, pattern, direction[, position])
 ```atml3
   re_remove(["xyz1", "abc", "xyz2"], "abc")
     - returns the list ["xyz1", "xyz2"]
@@ -919,7 +936,7 @@ Optionally a starting postition and a search direction can be given
 * `position` - starting position
 
 
-## render($property)
+### render($property)
 ```atml3
   render($property)
     - returns the string "kleine Katze" if property's adjective field contains "klein" and its noun field contains "Katze"
@@ -927,7 +944,7 @@ Optionally a starting postition and a search direction can be given
 This function takes a property and returns the content of its vocabulary.
 
 
-## substring()
+### substring()
 ```atml3
   substring("Hello world", 0, 1)
     extracts the substring "H" from the string "Hello world", which is the substring from index 0 with length 1
@@ -943,7 +960,7 @@ This vertigo function will extract a substring from a string.
 
 
 
-## trim()
+### trim()
 ```atml3
     trim("hallo welt")
         - returns the string "hallo welt" (unchanged)
@@ -962,7 +979,7 @@ this function cuts away trailing and preceeding whitespaces from a string
 
 
 
-## unique(list)
+### unique(list)
 ```atml3
   unique([1, 2, 3, 1, 2])
     returns the [1, 2, 3]
@@ -970,7 +987,7 @@ this function cuts away trailing and preceeding whitespaces from a string
 Returns a list with unique elements. 
 
 
-## weekday_int(days)
+### weekday_int(days)
 ```atml3 
   weekday_int(1)
     - returns the integer 2 (Tuesday), if today is a monday.
@@ -981,18 +998,19 @@ Returns a list with unique elements.
 
 This function takes an integer n. It returns a numeric representation of the weekday of today+n days.
 The returned integer is to be interpreted as follows:
-Weekday	Integer
-Monday	1
-Tuesday	2
-Wednesday	3
-Thursday	4
-Friday	5
-Saturday	6
-Sunday	7 
+
+|Weekday|	Integer|
+|Monday|	1|
+|Tuesday|	2|
+|Wednesday|	3|
+|Thursday|	4|
+|Friday|	5|
+|Saturday|	6|
+|Sunday|	7| 
 
 
 
-## weekday_no()
+### weekday_no()
 ```atml3
   month_no("Dienstag")
     returns number 2 because tuesday is the second day in a week (monday = 1)
