@@ -1021,7 +1021,191 @@ The returned integer is to be interpreted as follows:
 ```
 This function can be used to convert a weekday into a numerical representation
 
+## List Functions
 
+### filter()
+
+Filters a list of objects for the elements that match a given filter or λ-function. Given an example list:
+```json
+    [
+        { "type": "goal", "team": "host", "score": "1-0" },
+        { "type": "yellowcard", "team": "guest" },
+        { "type": "goal", "team": "guest", "score": "1-1" },
+        { "type": "redcard", "team": "host" },
+        { "type": "goal", "team": "host", "score": "2-1" }
+    ]
+```
+    
+If one wants a list with all goals by the host team, they could use this function call:
+
+```atml3
+    filter( list($list), { "type": "goal", "team": "host" })
+      - returns a list that includes the objects from the given input list that contain entries having type=goal and team=host, in our case 
+        entries with number one and five of the original list.
+                 
+    filter( list($list), { "type": "yellowcard" })
+      - returns a list with entries that have type=yellowcard, in our example entry 2 of the original list.
+                 
+    filter( list($list), [entry -> #entry.type == "yellowcard" ])
+      - does the same thing as the last example but uses a λ-function to match the object. in this example the entry variable of the λ-
+        function contains the complete object to be matched.
+                   
+    filter( list($list), [entry, index, context -> #entry.type == "yellowcard" ], object($context_object))
+      - this is the maximum λ-function, which contains the current 
+```
+                 
+Parameters:
+
+* `list` - a list that should be filtered
+* `filter` - a filter definition, either as a Key / Value object (equal filter only) or a λ-function (complex filters possible)
+* `context` - something given to each call of the λ as a context object
+
+
+
+### random_el()
+
+
+Gets random elements from a list. $list = [ 1, 2, 3, 4, 5 ] 
+
+```atml3
+               random_el(list($list), 3)
+                 - returns for example the elements 4 and 2 as a list, thus [4, 2]
+                 
+               random_el(list($list), 5)
+                 - would return all elements from the given list but in a random order, for example [5, 3, 1, 2, 4]
+```    
+
+Parameter: 
+
+* list - a list of things
+* count - the number of items in the list to be returned
+
+
+### first(n)
+
+
+
+Gets n elements from a list, starting left.
+
+```atml3
+    $list = [ 1, 2, 3, 4, 5 ]
+
+   first(list($list), 3)
+     - returns for example the elements 1, 2 and 3 as a list, thus [1, 2, 3]
+     
+   first(list($list), 5)
+     - would return all elements from the given list in order, for example [1, 2, 3, 4, 5]
+   first(list($list), 6)
+     - would return all elements from the given list. Index overruns are caught, for example [1, 2, 3, 4, 5]
+```
+  
+Parameter:
+* list      ... a list of things
+* count     ... the number of items in the list to be returned
+
+
+### map()
+```atml3
+   map([1, 2, 3], [x -> numeric(#x) ** 2])
+     - returns a list with the squares of the values of the input list
+            
+   map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [x -> #x.player])
+     - returns a list with the names of the people who scored goals (in this case ["Dennis", "Baris", "Niki"])
+            
+   map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [x, y, z -> #x.player + " (" + y + ") [" + z + "]"], "context" )
+     - uses all possible vars in the mapping: current_object, index and context object. supplies a context in form of a string
+     - returns a list [ "Dennis (0) [context]", "Baris (1) [context]", "Niki (2) [context]" ]
+   map([\"Niki\",\"Sandro\"], [entry,index,context -> #entry + \" (\" + #context[#index] + \".)\"], [5,90])
+     - takes two lists and an lambda expression and combines them, resulting in a output list of: Niki (5.), Sandro (90.)
+```
+
+Applies a function to all elements of a list and returns a list of 
+objects with the result of applying the lambda: map(list, expression) - list ... 
+list of things that should be applied - expression ... the expression to be 
+applied to the elements 
+
+
+
+### next_event()
+
+Searches in a list the next element from an index. Assume the following list:
+```json
+    [
+        { "id":"1", "type": "goal", "team": "host", "score": "1-0" },
+        { "id":"2", "type": "yellowcard", "team": "guest" },
+        { "id":"3", "type": "goal", "team": "guest", "score": "1-1" },
+        { "id":"4", "type": "redcard", "team": "host" },
+        { "id":"5", "type": "goal", "team": "host", "score": "2-1" }
+    ]
+
+   next_event( list($list), 2, { "type": "goal" } )
+     - searches from index 2 (id = 3) the next event with type = "goal", which in this case is the element with id = 5 (index 4).
+```
+  
+Parameters:
+
+* list - List to be filtered
+* startindex - index to start the search from
+* filter - Definition of the filter as key/value pair. Applicable for equal filters only!
+
+
+The function prev_event searches in the other direction. Is no event found, an empty object is returned.
+
+
+### prev_event()
+
+
+
+Searches for the last occurrence of an element in a list before a given index. Assume the list:
+
+```json
+    [
+        { "id":"1", "type": "goal", "team": "host", "score": "1-0" },
+        { "id":"2", "type": "yellowcard", "team": "guest" },
+        { "id":"3", "type": "goal", "team": "guest", "score": "1-1" },
+        { "id":"4", "type": "redcard", "team": "host" },
+        { "id":"5", "type": "goal", "team": "host", "score": "2-1" }
+    ]
+```
+
+```atml3
+   prev_event( list($list), 2, { "type": "goal" } )
+     - Searches the next element with type = "goal" starting at index 2. Result would be the element with id = 1 (index 0).
+```
+  
+Parameters:
+* list - List to be filtered
+* startindex - index to start the search from
+* filter - Definition of the filter as key/value pair. Applicable for equal filters only!
+
+The function prev_event searches in the other direction. Is no event found, an empty object is returned.
+
+
+
+### sort()
+
+storts a list numerically, a list of objects by a given field or by a lambda function that compares the objects contained in the list:
+```atml3
+  sort(list)
+  sort(list, fieldname)
+  sort(list, expression)
+```  
+* list - list to be sorted
+* fieldname - (optional) If the list to be sorted is a list of objects, sorts the objects using the field names.
+* expression - (optional) If the list to be sorted is a list of objects, sorts the objects applying pairs of objects to a lambda expression
+
+
+
+```atml3
+   sort([5, 4, 3, 2, 1])
+     - returns the list sorted by the values of the elements it contains: 1, 2, 3, 4, 5
+     
+   sort([ {"type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], "minute")
+     - returns a sorted list with original elements sorted by the minute key in them, thus being the types: "gelb", "tor1", "tor3"
+     
+   sort([ "type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], [a, b -> int(#a.minute) - int(#b.minute)])
+     - produced the same output as the previous example.
+```
 
 
 
