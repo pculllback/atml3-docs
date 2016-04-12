@@ -36,13 +36,13 @@ The following parameters are supported:
 
 ## Alternative
 
-```python
+<blockquote class="lang-specific ruby shell">
     [Text:;Alt:Nix gerendert]
      - renders "Nix gerendert"
 
    [no_vocabulary_property;Alt,text=Nix gerendert]
      - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
-```
+</blockquote>
 
 The container parameter Alternative is used to render an alternative text, if the container would not render anything otherwise.
 
