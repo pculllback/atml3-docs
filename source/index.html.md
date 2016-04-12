@@ -1304,3 +1304,40 @@ Return: Index in the fractile list the comparisonValue lies in or -1, if compari
        In this case the return value will be 3, because in test_aggregator there is only the value 1 for key2=alice.
 ```
 
+
+## Object Functions
+### collect()
+
+Takes a field from all objects in a list and returns those field values as a list. 
+
+Input:
+```atml3  
+     "devices": [ { name: "gerät 1" }, { name: "gerät 3" }, { name: "gerät 2" } ]
+``` 
+ 
+Operation:
+```atml3
+     collect( list(#devices, "name")
+         - returns list: [ "gerät 1", "gerät 2", "gerät 3" ]
+```
+
+### pick_object()
+
+This function picks an object at the end of a key path out of a data set.
+ 
+```atml3
+pick_object(#object.list, "fieldName", "value 2")
+     In a data structure like this:
+         {
+             "object:" {
+                 "list": [
+                     { "fieldName": "value 1", ... },
+                     { "fieldName": "value 2", ... },
+                     ...
+                 ]
+             }
+         }
+         the object with the fieldName "value 2" will be picked.
+ ```
+ This is useful to pick elements out of deeply nested data structures.
+
