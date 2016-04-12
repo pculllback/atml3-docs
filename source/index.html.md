@@ -233,7 +233,7 @@ Some defaults are set, all other fields must be filled:
  * person = 3rd
  * tense = present (default), past, etc ... depends on the target language
 
-* adjectives 
+* adjectives
  * case = nominative
  * determiner = kein
  * conjunctions: eg. und_sowie_KOMMA_oder for "rotes und blaues sowie grünes Haus":
@@ -1004,14 +1004,15 @@ Returns a list with unique elements.
 This function takes an integer n. It returns a numeric representation of the weekday of today+n days.
 The returned integer is to be interpreted as follows:
 
-|Weekday|	Integer|
-|Monday|	1|
-|Tuesday|	2|
-|Wednesday|	3|
-|Thursday|	4|
-|Friday|	5|
-|Saturday|	6|
-|Sunday|	7|
+Weekday|	Integer
+------ | --------
+Monday|	1
+Tuesday|	2
+Wednesday|	3
+Thursday|	4
+Friday|	5
+Saturday|	6
+Sunday|	7
 
 
 
