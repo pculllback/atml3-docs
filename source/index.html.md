@@ -1207,6 +1207,100 @@ storts a list numerically, a list of objects by a given field or by a lambda fun
      - produced the same output as the previous example.
 ```
 
+## Lookups
+Lookups can look things in predefined lookup tables and return the found vocabularies.
 
+### lookup()
 
+Performs a lookup for fitting properties in a known lookup table. This is defined in the ATML3 training but is planned to come from Nummer5 later. 
+
+```atml3
+   lookup("summer", "reifen_art")
+     - looks up the entry "summer" in the lookup table (of the current language) "reifen_art" and returns its value. 
+       If nothing is found, an empty string is returned.
+ ```
+Beware: This version can not return adjectives. Use a group and split_lookup() for that purpose.
+
+#### split_lookup()
+
+Performs a lookup for fitting properties in a known lookup table. This is defined in the ATML3 training but is planned to come from Nummer5 later. 
+
+```atml3
+   split_lookup(#duftnoten, ", ", "headnotes")
+     - splits the contents of the data set duftnoten at the string ", " and looks up all resulting elements in a lookup table called headnotes.
+     - If duftnoten contains "heiliges holz, fisch, knoblauch" for example and the headnotes lookup table looks like this:
+     
+"heiliges holz" => "Holz, heiliges"
+"fisch" => "Fisch"
+     "knoblauch is missing and the result of the whole lookup will be a list consisting of "Holz, heiliges" and "Fisch".
+     
+   split_lookup( ["heiliges holz", "grün", "fisch"], "headnotes")
+     - does not split a string but looks up each list element, everything else is as in ex. 1. 
+       There are only two argument this time, as no split marker is necessary.
+```
+
+## Nummer5 Functions
+### nr5()
+
+With this instruction a data set of the world knowledge (Project: Nummer5) can be accessed. Definition: nr5(aggregator, search_criteria)
+* aggregator - a string containing the name of the data aggregator in Nummer5
+* search_criteria - an object that contains the search criteria in key/value form
+
+```atml3
+    nr5("test_aggregator", { "key1": "bob", "key2": "alice" })
+      - accesses the object, that is stored in the Nummer5 type "test_aggregator" and carries the value "bob" as key1 and "alice" as key2
+      
+    nr5("test_aggregator", { "key2": "python" })
+      - accesses the object, that is stored in the Nummer5 type "test_aggregator" and carries the value "python" under key2
+ ```
+ 
+ 
+Return value is always a complete object from which properties can be selected by the property notation. 
+
+```atml3 
+ properties: {
+     "nummer5_test_1": {
+		    "mappingExpression": "nr5(\"test_aggregator\", {\"key1\": \"monty\" })",
+		    "truthExpression": "true",
+		    "voc": []
+	    },
+	    "nummer5_test_1_key_2": {
+	        "mappingExpression": "$nummer5_test_1.key2",
+	        "truthExpression" : "true",
+	        "voc": [ {noun: "[nummer5_test_1_key1.value()]" ]
+	    }
+	}
+``´
+	
+In this example the property nummer5_test_1_key_2 would take the value "python" and the property nummer5_test_1 the value { key1: "monty", key2: "python", ... } because that is defined in the test_aggregator.
+
+With the following aggregator notation, the actual data aggregator name will be automatically extracted from the requests:
+nummer5_doc_type
+
+```atml3
+    nr5("nummer5_doc_type", {"id":#uuid})
+```
+
+### nr5_assessValue()
+
+Using this function, a value can be measured against reference values that are stored in Nummer5. By doing this it can be estimated in which fractile said value falls. The n-fractile is the value, at which n% of all values are smaller than that value. (see wikipedia). Definition: nr5_assessValue(filter, fieldName, quantiles, comparisonValue, index)
+
+* aggregator - the Nummer5 aggregator that is queried
+* filter - object containing the search values as key/value
+* fieldName - name of the field on which the fractile operation should be performed
+* quantiles - a list of the desired fractiles
+* comparisonValue - the value to compare
+* index - internally used, optional
+
+Return: Index in the fractile list the comparisonValue lies in or -1, if comparisonValue is not found or the function was called incorrectly.
+
+```atml3
+   nr5_assessValue("test_aggregator", {"key2": "alice"}, "number", [33, 66, 99, 100], 1)
+     - returns a value between -1 and 3:
+        -1... out of bounds (eg if number was 100, while fractiles are 99 at highest)
+         0... "number" is in the low third
+         1... "number" is in the middle third
+         2... "number" is in the high third
+       In this case the return value will be 3, because in test_aggregator there is only the value 1 for key2=alice.
+```
 
