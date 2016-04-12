@@ -690,6 +690,7 @@ Vertigo expressions are used in the mappingExpression and the truthExpression of
 ### contains()
 
 This function can be used to check if an element is inside a list.
+
 ```atml3
   contains(2, [1, 2, 3, 4, 5])
     returns true since 2 is an element of the list containing the numbers from 1 to 5
@@ -710,6 +711,7 @@ This function can be used to check if an element is inside a list.
 ### convert_comma(input, divisor, lowerUnit, upperUnit)
 
 This function takes a numeric value and converts it to a distance or time value.
+
 ```atml3
   convert_comma(5300, 1000, "m", "km")
     renders string "5,3 km"
@@ -725,6 +727,7 @@ This function takes a numeric value and converts it to a distance or time value.
 
 This function takes a numeric value and converts it to a currency or date value.
 Optionally, a conjunction can be given.
+
 ```atml3
   convert_count(145, 60, "Minuten", "Stunden")
     returns string "2 Stunden 25 Minuten"
@@ -742,6 +745,7 @@ Optionally, a conjunction can be given.
 ### cur_lang()
 
 This function returns the current language in the current text generation process as an ISO 2-letter code.
+
 ```atml3
   cur_lang()
     returns "de", "es" or "en" or whatever language is currently used.
