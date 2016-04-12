@@ -9,6 +9,10 @@ set :markdown,
     with_toc_data: true,
     no_intra_emphasis: true
 
+language_tabs:
+      - python: atml3
+
+
 # Assets
 set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'

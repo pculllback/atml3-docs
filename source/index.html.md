@@ -36,7 +36,7 @@ The following parameters are supported:
 
 ## Alternative
 
-```atml3
+```python
     [Text:;Alt:Nix gerendert]
      - renders "Nix gerendert"
 
@@ -755,12 +755,14 @@ This function returns the current language in the current text generation proces
 
 This function adds a time value to a given date and returns that new date.
 These types of times can be added: years, months, weeks, days, hours, minutes, seconds.
+
 ```atml3
   date_add("16.05.1983", 3, "years")
     returns string "16.05.1986"
 ```
 
 ### date_difference(date, date)
+
 ```atml3
   date_difference("16.05.1983", "19.05.1983")
     returns numeric 3
@@ -768,6 +770,7 @@ These types of times can be added: years, months, weeks, days, hours, minutes, s
   date_difference("19.05.1983", "16.05.1983")
     returns numeric -3
 ```
+
 This function returns the difference between two dates as an integer number of days.
 Expected time format is dd.MM.yyyy.
 
