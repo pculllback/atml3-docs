@@ -49,7 +49,7 @@ The container parameter Alternative is used to render an alternative text, if th
 
 ## Capitalize
 
-```atml3
+```json
    [Text:ich bin kleingeschrieben;Capitalize]
      - renders "Ich bin kleingeschrieben"
 
@@ -62,7 +62,7 @@ Capitalize is a container parameter that forces the first letter of the rendered
 
 ## Kill
 
-```atml3
+```python
    [Text:hallo] [Text:;Kill] [Text:welt]
      - prevents rendering, because the second container does not render anything and carries the Kill parameter
 ```
@@ -72,7 +72,7 @@ Kill is a parameter that prevents a sentence from being rendered if the containe
 
 ## Lower
 
-```
+```shell
     [Text:ICH BIN GROSSGESCHRIEBEN;Lower]
      - renders "ich bin grossgeschrieben"
 
