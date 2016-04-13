@@ -52,7 +52,7 @@ The container parameter `Alternative` is used to render an alternative text, if 
 
 ## Capitalize
 
-```json
+```atml3
    [Text:ich bin kleingeschrieben;Capitalize]
      - renders "Ich bin kleingeschrieben"
 
