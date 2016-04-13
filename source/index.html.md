@@ -37,15 +37,11 @@ Container parameters can be attached to a container to add instructions or infor
 
 ```atml3
     [Text:;Alt:Nix gerendert]
- ```
->    renders "Nix gerendert"
+     - renders "Nix gerendert"
 
-```atml3
    [no_vocabulary_property;Alt,text=Nix gerendert]
+     - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
 ```
-
->   renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
-
 
 The container parameter `Alternative` is used to render an alternative text, if the container would not render anything otherwise.
 
@@ -1155,7 +1151,9 @@ Searches in a list the next element from an index. Assume the following list:
         { "id":"4", "type": "redcard", "team": "host" },
         { "id":"5", "type": "goal", "team": "host", "score": "2-1" }
     ]
+```
 
+```atml3
    next_event( list($list), 2, { "type": "goal" } )
      - searches from index 2 (id = 3) the next event with type = "goal", which in this case is the element with id = 5 (index 4).
 ```
