@@ -32,19 +32,22 @@ Further, you will need structured data about your topic. If you want to know how
 # Container parameters
 Container parameters can be attached to a container to add instructions or information to the container.
 
-The following parameters are supported:
 
 ## Alternative
 
-<blockquote class="lang-specific ruby shell">
+```atml3
     [Text:;Alt:Nix gerendert]
-     - renders "Nix gerendert"
+ ```
+>    renders "Nix gerendert"
 
+```atml3
    [no_vocabulary_property;Alt,text=Nix gerendert]
-     - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
-</blockquote>
+```
 
-The container parameter Alternative is used to render an alternative text, if the container would not render anything otherwise.
+>   renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
+
+
+The container parameter `Alternative` is used to render an alternative text, if the container would not render anything otherwise.
 
 
 ## Capitalize
@@ -57,7 +60,7 @@ The container parameter Alternative is used to render an alternative text, if th
      - renders "Mit dem Hund", if the property hund_wort renders the vocabulary "Hund"
 ```
 
-Capitalize is a container parameter that forces the first letter of the rendered string to be upper case.
+`Capitalize` is a container parameter that forces the first letter of the rendered string to be upper case.
 
 
 ## Kill
@@ -67,7 +70,7 @@ Capitalize is a container parameter that forces the first letter of the rendered
      - prevents rendering, because the second container does not render anything and carries the Kill parameter
 ```
 
-Kill is a parameter that prevents a sentence from being rendered if the container does not render to a text.
+`Kill` is a parameter that prevents a sentence from being rendered if the container does not render to a text.
 
 
 ## Lower
