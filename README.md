@@ -1,12 +1,15 @@
 ![AX Semantics](https://github.com/axsemantics/atml3-docs/blob/master/source/images/logo.png) Semantics ATML3 Docs
 ========
 
+# How to Contribute to this documentation
+
 * edit documentation in source/index.html.md
 * public docs will be build automatically: [![Build Status](https://travis-ci.org/axsemantics/atml3-docs.svg?branch=master)](https://travis-ci.org/axsemantics/atml3-docs)
 
 
 
-Local Development
+
+Local Development for large scale changes
 -----------
 
 ### Voraussetzungen
