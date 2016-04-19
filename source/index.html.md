@@ -21,7 +21,7 @@ But first off, you will need to tell the ATML Engine how to text for you. And th
 ### Sounds cool, but what can I actually do with it?
 Your training contains reasoning: It will tell the ATML Engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text. (Vertigo Expression Language)
 You can also tell the ATML engine in what way to mention the information it has concluded from your data. (Sentences) (Containers)
-Don't forget microplanning and textplanning. That is also an aspect of ATML3. (Product Types)
+Don't forget microplanning and textplanning. That is also an aspect of ATML3. (Story Types)
 Once you have your information planned and pinned down, you can do the fine-tuning and have grammar and apply to it. (Containers)
 
 ### What else do I need to work with ATML3?
@@ -419,19 +419,14 @@ If a numeric property is rendered, use_numerals=true can be used to render numbe
 
 
 
-# Product Types
+# Story Types
 The product_types enable creating one training for different kinds of things. The sentence selector is the component chosing the sentences that are to be rendered. It works as follows:
 
-<aside class="notice">
-In the GUI, these are called "Story Types".
-</aside>
-
-
-1. Choose a product type
-2. Choose all sentences that are listed in that product type
+1. Choose a story type
+2. Choose all sentences that are listed in that story type
 3. Filter those sentences, whose sentence triggers are not true
 
-Deciding on a product type, ATML3 first tries to select an element of product_types that is not named "default" and whose triggers are true. (BEWARE: sentences need only one true trigger, for product types all triggers must be true) If none fits, the product type named "default" will be chosen.
+Deciding on a story type, ATML3 first tries to select an element of product_types that is not named "default" and whose triggers are true. (BEWARE: sentences need only one true trigger, for story types all triggers must be true) If none fits, the story type named "default" will be chosen.
 
 It looks like this in the training:
 
@@ -449,7 +444,7 @@ It looks like this in the training:
     ],
 ```
 
-In this example, product type "produkt_1" would be chosen if and only if the truthExpression of the property "my_property" evalues to true. Otherwise, the "default" product type would be chosen.
+In this example, story type "produkt_1" would be chosen if and only if the truthExpression of the property "my_property" evalues to true. Otherwise, the "default" story type would be chosen.
 
 # Sentences
 
@@ -606,7 +601,7 @@ the meta command contains 4 different parameters (see below)
 * `items` - ATML3 list property which contains the data
 * `iterator` - object to access the inner data from the itemlist
 * `counter` - internal counter for the story mode
-* an event Product Type
+* an event story type
 
 ```atml3
 {
