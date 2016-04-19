@@ -110,17 +110,17 @@ Off is a container parameter that activates or deactivates according to a condit
 
 
 
-## Preceeding
+## Preceding
 
 ```atml3
-   [Text:welt;Preceeding:hallo ]
+   [Text:welt;Preceding:hallo ]
      - renders "hallo welt"
 
-   [drei.value();Preceeding:,text=Stückzahl: ]
+   [drei.value();Preceding:,text=Stückzahl: ]
      - renders "Stückzahl: 3", if the property drei renders to 3.
 ```
 
-Preceeding is a container parameter that is used to insert text in front of a rendered string in a container.
+Preceding is a container parameter that is used to insert text in front of a rendered string in a container.
 
 
 
@@ -212,7 +212,7 @@ The container does not lead to output in the text itself.
 This container can be used to render words with their grammatical function and preset grammatical information.
 
  ```atml3
-    [G:verb=gehen,num=s,person=1st;preceeding:ich ]
+    [G:verb=gehen,num=s,person=1st;preceding:ich ]
         - renders "ich gehe"
 
     [G:noun=Charakter,num=p]
@@ -987,7 +987,7 @@ This vertigo function will extract a substring from a string.
         - returns the string "hallo welt" (stripped whitespace from the beginning and the end)
 ```
 
-this function cuts away trailing and preceeding whitespaces from a string
+this function cuts away trailing and preceding whitespaces from a string
 
 
 
