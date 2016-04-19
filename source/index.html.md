@@ -85,7 +85,6 @@ Die Container die derzeit in der ATML3.0 Sprache existieren sind (anlehnung bei 
 * `PhraseContainer` - render the value given by a property's vocabulary
 * `GroupContainer` - renders multiple properties
 * `Failure` - raises an expected engine error including an error message
-*  TODO `BulletGroupContainer` - renders multiple properties to a bulletpoint list in markdown syntax
 
 The containers are described in ther respective chapters. The general format is as follows:
 
@@ -261,6 +260,33 @@ properties that point to the object in order to extract information from it
 
 # Properties
 In Progress.
+
+# Story Types
+The product_types enable creating one training for different kinds of things. The sentence selector is the component chosing the sentences that are to be rendered. It works as follows:
+
+1. Choose a story type
+2. Choose all sentences that are listed in that story type
+3. Filter those sentences, whose sentence triggers are not true
+
+Deciding on a story type, ATML3 first tries to select an element of product_types that is not named "default" and whose triggers are true. (BEWARE: sentences need only one true trigger, for story types all triggers must be true) If none fits, the story type named "default" will be chosen.
+
+It looks like this in the training:
+
+```atml3
+	product_types: [
+        {
+            "name": "produkt_1",
+            "triggers": ["my_property"],
+            "sentenceOrder": [ "Satz_02" ]
+        },
+        {
+            "name": "default",
+            "sentenceOrder":  [ "satz_01" ]
+        }
+    ],
+```
+
+In this example, story type "produkt_1" would be chosen if and only if the truthExpression of the property "my_property" evalues to true. Otherwise, the "default" story type would be chosen.
 
 # Containers
 
@@ -524,6 +550,44 @@ Container parameters can be attached to a container to add instructions or infor
 
 The container parameter `Alternative` is used to render an alternative text, if the container would not render anything otherwise.
 
+## Bullet
+
+```atml3
+    [Gruppe.All();Bullet]
+         - Generates a markdown bullet list like this:
+             * Element_1
+             * Element_2
+             * Element_3
+             
+       [Gruppe.All();Bullet,format=HTML]
+         - Generates a HTML Bullet list like this:
+             <ul> 
+                 <li>Element_1</li> 
+                 <li>Element_2</li>
+                 <li>Element_3</li>
+             </ul>
+             
+       [Gruppe.All();Bullet,format=HTML,id=Test]
+         - Generates a HTML Bullet list with an id:
+             <ul id="Test"> 
+                 <li>Element_1</li> 
+                 <li>Element_2</li>
+                 <li>Element_3</li>
+             </ul>
+             
+       [Gruppe.All();Bullet,format=BB]
+         - Generates an BBCode Bullet list.
+             [list] 
+                 [*]Element_1
+                 [*]Element_2
+                 [*]Element_3
+             [/list]  
+```
+
+The `Bullet` parameter makes a group into a list of elements. By default, a markdown list will be generated, with the optional style-parameter the format can be switched to HTML or BBCode. This is however discouraged because we try to render everything through markdown and process it into other output types later.
+
+Additionally an ID can be set to the element.
+
 
 ## Capitalize
 
@@ -647,33 +711,6 @@ Source is a container parameter that can be filled with an intended output.
 ```
 
 To create a keyword, you need to set the keyword parameter with an ID and an alternative text within a container. The ID is needed for defining multiple keywords. The engine will choose randomly a selection of defined keywords in consideration of the density and deviation. Both can be adjusted in the advanced content project configuration.
-
-# Story Types
-The product_types enable creating one training for different kinds of things. The sentence selector is the component chosing the sentences that are to be rendered. It works as follows:
-
-1. Choose a story type
-2. Choose all sentences that are listed in that story type
-3. Filter those sentences, whose sentence triggers are not true
-
-Deciding on a story type, ATML3 first tries to select an element of product_types that is not named "default" and whose triggers are true. (BEWARE: sentences need only one true trigger, for story types all triggers must be true) If none fits, the story type named "default" will be chosen.
-
-It looks like this in the training:
-
-```atml3
-	product_types: [
-        {
-            "name": "produkt_1",
-            "triggers": ["my_property"],
-            "sentenceOrder": [ "Satz_02" ]
-        },
-        {
-            "name": "default",
-            "sentenceOrder":  [ "satz_01" ]
-        }
-    ],
-```
-
-In this example, story type "produkt_1" would be chosen if and only if the truthExpression of the property "my_property" evalues to true. Otherwise, the "default" story type would be chosen.
 
 # Vertigo Expression Language
 The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
