@@ -15,12 +15,12 @@ search: true
 
 ### Welcome to the realms of ATML3
 This site describes the basic functions and commands of the ATML3 programming language. With this handy expression language, you can train an artificial intelligence to write your stuff. All of it.
-Just feed it structured data and the ATML engine will promptly churn it into a meaningful text in almost no time.
-But first off, you will need to tell the ATML Engine how to text for you. And that is what you do in an ATML3 training.
+Just feed it structured data and the ATML3 engine will promptly churn it into a meaningful text in almost no time.
+But first off, you will need to tell the ATM3 engine how to text for you. And that is what you do in an ATML3 training.
 
 ### Sounds cool, but what can I actually do with it?
-Your training contains reasoning: It will tell the ATML Engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text. (Vertigo Expression Language)
-You can also tell the ATML engine in what way to mention the information it has concluded from your data. (Sentences) (Containers)
+Your training contains reasoning: It will tell the ATM3 engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text (Vertigo Expression Language).
+You can also tell the ATML3 engine in what way to mention the information it has concluded from your data (Sentences).
 Don't forget microplanning and textplanning. That is also an aspect of ATML3. (Story Types)
 Once you have your information planned and pinned down, you can do the fine-tuning and have grammar and apply to it. (Containers)
 
@@ -30,146 +30,237 @@ You will also need your account unlocked for editing ATML3 and using our wizards
 Second, you will need one of our editors for ATML3. Choose one among the options at atml3.rocks.
 Further, you will need structured data about your topic. If you want to know how to integrate your data into AX, use the API documentation at apidocs.ax-semantics.com.
 
-# Container parameters
-Container parameters can be attached to a container to add instructions or information to the container.
+# Sentences
 
-
-## Alternative
+In the ATML3.0 training, sentences are defined. In the JSON tree, the structure is inside the sentences aray.
 
 ```atml3
-    [Text:;Alt:Nix gerendert]
-     - renders "Nix gerendert"
+ sentences: [
+	{
+		name: "satz_001",
+		trigger: [ "Auto" ],
+		obligatory: true,
+		variants: [ "Property is true and shows value|[true_property.value()]|2NEWLINE", ]
+	},
+	...]
+ ```
 
-   [no_vocabulary_property;Alt,text=Nix gerendert]
-     - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
+The sentence has the following fields:
+
+* `name` - used to reference the sentence in the sentence order list inside the product_types and sentence groups.
+* `trigger` - List of property names. One of the properties must be true for the sentence to be available. If the sentence is to be always
+* `available`, the trigger "Auto" has to be added.
+* `obligatory` - true/false; If true, the sentence may not be discarded on text shortening.
+* `command` - Used to activate the story mode.
+* `variants` - Variants of the sentences as string.
+* `role` - Role of the sentences like heading1 or heading2.
+* `style` - The way the sentence is to be displayed.
+ * `heading` - heading h1
+ * `subheading` - heading h2
+ * `subsubheading` - heading h3
+
+For every chosen sentence a variant should be chosen and made to a RenderedSentence in the engine. The ATML3 containers in the variant are parsed. A sentence mostly consists of ATML3 containers and free text. The free text implicitly is converted to Text containers. Assume a training that is rendered with the following data set
+
+```json
+ { "tiername": "hund", "tierfarbe": "braun", "anzahl_beine": "4" }
 ```
 
-The container parameter `Alternative` is used to render an alternative text, if the container would not render anything otherwise.
-
-
-## Capitalize
+and fills propertys with the same names as the dataset keys. The following sentences result:
 
 ```atml3
-   [Text:ich bin kleingeschrieben;Capitalize]
-     - renders "Ich bin kleingeschrieben"
+   Der [tiername] hat [anzahl_beine.value()] Beine.
+   - Der Hund hat 4 Beine.
 
-   [hund_wort,prep=mit,case=Dat;Capitalize]
-     - renders "Mit dem Hund", if the property hund_wort renders the vocabulary "Hund"
+   [Text:Der ][tiername][Text: hat ][anzahl_beine.value()][Text: Beine.]
+   - Der Hund hat 4 Beine.
+
+   [tiername,det=definite] hat [anzahl_beine.value()] Beine.
+   - Der Hund hat 4 Beine.
 ```
 
-`Capitalize` is a container parameter that forces the first letter of the rendered string to be upper case.
+Die Container die derzeit in der ATML3.0 Sprache existieren sind (anlehnung bei Namen an ATML2.5)
 
+* `Textcontainer` - render static text
+* `ValueContainer` - render the raw value of aproperty
+* `PhraseContainer` - render the value given by a property's vocabulary
+* `GroupContainer` - renders multiple properties
+* `Failure` - raises an expected engine error including an error message
+*  TODO `BulletGroupContainer` - renders multiple properties to a bulletpoint list in markdown syntax
 
-## Kill
+The containers are described in ther respective chapters. The general format is as follows:
 
-```python
-   [Text:hallo] [Text:;Kill] [Text:welt]
-     - prevents rendering, because the second container does not render anything and carries the Kill parameter
-```
+### Kinds of tags
 
-`Kill` is a parameter that prevents a sentence from being rendered if the container does not render to a text.
+ATML3 tags can be classified into the following:
 
-
-## Lower
-
-```shell
-    [Text:ICH BIN GROSSGESCHRIEBEN;Lower]
-     - renders "ich bin grossgeschrieben"
-
-   [hund_wort,prep=mit,case=Dat;Lower]
-     - renders "mit dem hund", if the property hund_wort renders "Hund"
-```
-Lower is a parameter that forces the rendered string of a container to be all lower case.
-
-
-## On
+#### Named Tags
 
 ```atml3
-   [Text:test;On,true=bool_property]
-     - only renders "test", if the property bool_property is true.
-
-   [Text:test;On,false=bool_property]
-     - only renders "test", if the property bool_property is false.
+   [Text:The text that is to be rendered]
+   [Fail:The error message that is to be displayed]
 ```
 
-On is a container parameter that activates or deactivates according to a condition.
-
-
-
-## Off
+#### Normal Tags
 
 ```atml3
-   [Text:test;Off,true=bool_property]
-     - only renders "test", if the property bool_property is false.
-
-   [Text:test;Off,false=bool_property]
-     - only renders "test", if the property bool_property is true.
+   [propertyName]
+   [propertyName.value()]
+   [propertyName,case=Dat,adj=yes,det=definite]
 ```
 
-Off is a container parameter that activates or deactivates according to a condition.
+All ATML-Tags can have parameters. To learn more about those options, go to the section containers.
 
+### Sentence Groups
+Sentence groups can be used to apply selective operations on defined groups of sentences. A sentence group contains up to five different entries:
 
-
-## Preceding
+* `name` (string) - Each sentence group needs a unique identifier. This is also used for identification in "same"-mode.
+* `mode` (string) - The following modes are available:
+ * `best` - The first n active sentences are rendered.
+ * `last` - The last n active sentences are rendered.
+ * `random` - n random sentences are rendered
+ * `same` - Same selects the exact same sentences as are selected in another sentence group. That requires the "reference"-entry, see below.
+* `number` (int) - Determines the number of senteces to be rendered (-> n). It is not needed with the "same"-mode, as it will be inherited from the referenced group.
+* `reference` (string) - Only needed in "same"-mode. Needs the name of another group as argument.
+* `sentenceNames` (list of strings) - List of sentence names that belong to this sentence group.
 
 ```atml3
-   [Text:welt;Preceding:hallo ]
-     - renders "hallo welt"
-
-   [drei.value();Preceding:,text=Stückzahl: ]
-     - renders "Stückzahl: 3", if the property drei renders to 3.
+"sentenceGroups": [
+  {
+    "name": "sg1",
+    "mode": "random",
+    "number": 2,
+    "sentenceNames": [
+      "H1",
+      "H1_2",
+      "H1_3"
+    ]
+  },
+  {
+    "name": "sg2",
+    "mode": "same",
+    "reference": sg1",
+    "sentenceNames": [
+      "passende_Produkte",
+      "passende_Produkte_2"
+      "passende_Produkte_3"
+    ]
+  }
+]
 ```
 
-Preceding is a container parameter that is used to insert text in front of a rendered string in a container.
+### Story Mode
+ATML3 is capable of rendering a sequence of events in a so called "story mode". This mode behaves somewhat like a for loop does in programming. You will need this if you are looking to render a stream of events (goals in a soccer match or any other sorted event list).
 
+##### prerequisites
 
+a list of objects in your data
+```json
+goal: [
+{
+"player": "Harnik",
+"minute": 5,
+"type": "own_goal"
+}, {
+"player": "Werner",
+"minute": 66,
+"type": "goal"
+}
+]
+```
 
-## Trailing
+a meta sentence that is included in your "default" sentence group
 
 ```atml3
-   [Text:hallo;Trailing: welt]
-     - renders "hallo welt"
-
-   [drei.value();Trailing,text= Stück]
-     - renders "3 Stück", if the property drei renders to 3
-```
-
-Trailing is a container parameter that is used to insert text behind a rendered string in a container.
-
-
-
-## Void
+{
+ "name": "goals",
+ "triggers": [ "Auto" ],
+ "obligatory": true,
+ "command": "[Meta:execute=Tor,items=event_list,iterator=CURRENT_EVENT,counter=CURRENT_INDEX]"
+}
 
 ```
-   [dog_phrase,id=test123;Void]
-     - renders nothin but can be referenced by grammar-from=test123 and will deliver it's grammatical properties
+
+the meta command contains 4 different parameters (see below)
+* `execute` - used to point to a sentence group
+* `items` - ATML3 list property which contains the data
+* `iterator` - object to access the inner data from the itemlist
+* `counter` - internal counter for the story mode
+* an event story type
+
+```atml3
+{
+ "name": "Tor",
+ "truggers": ["CURRENT_INDEX"],
+ "sentenceOrder": [
+ "goal_reg",
+ "goal_own" ]
+}
 ```
 
-Void is a container parameter that prevents a container from rendering an actual string but preserves its grammatical properties. It is mostly used as a reference for grammar containers.
+actual sentences that are rendered in this sentence group (goal_reg, goal_own)
 
-Alias: `NoOut`
+```atml3
+{
+ "name": "goal_reg",
+ "triggers": [ "LOG_Tor_not_1_0" ],
+ "obligatory": true,
+ "variants": { "de-DE" : [
+ { "text": "NEWLINE★ [VOC_MinuteTor;trailing:.] Minute: [VOC_Score_Tor] durch [VOC_SpielerTor]!" } ]
+}
+```
+ATML3 properties (these are a bit different since we are iterating over objects)
 
+a list property that contains the list of objects from above
 
-## Source
+```atml3
+"goal": {
+ "mappingExpression": "list($spieldaten.goal)",
+ "truthExpression": "int(count(list($spieldaten.goal))) >= 0",
+ "voc": { "*" : [ { "noun": "[goal.value()]" } ] }
+ }
+2 meta properties for the story loop
+"CURRENT_INDEX": {
+ "mappingExpression" : "-1",
+ "truthExpression" : "false"
+ },
+"CURRENT_EVENT" : {
+ "mappingExpression" : "{}",
+ "truthExpression" : "false"
+ }
 
 ```
-[hund_wort,prep=mit,case=Dat;Source:mit dem Hund]
+
+properties that point to the object in order to extract information from it
+
+```atml3
+"TRIGGER_current_event_is_goal" : {
+ "mappingExpression" : "",
+ "truthExpression" : "$CURRENT_EVENT.event_type == \"goal\""
+ },
+"VOC_SpielerTor": {
+ "mappingExpression": "$CURRENT_EVENT.player",
+ "truthExpression": "true",
+ "voc": { "de-DE" : [ { "noun": "[VOC_SpielerTor.value()]" } ] }
+ },
+"VOC_MinuteTor": {
+ "mappingExpression": "$CURRENT_EVENT.minute",
+ "truthExpression": "true",
+ "voc": { "de-DE" : [ { "noun": "[VOC_MinuteTor.value()]" } ] }
+ },
+"VOC_TeamTor": {
+ "mappingExpression": "$CURRENT_EVENT.team",
+ "truthExpression": "true",
+ "voc": { "de-DE" : [ { "noun": "[VOC_TeamTor.value()]" } ] }
+ },
+"VOC_ScoreTor": {
+ "mappingExpression": "$CURRENT_EVENT.score",
+ "truthExpression": "true",
+ "voc": { "de-DE" : [ { "noun": "[VOC_ScoreTor.value()]" } ] }
+ }
 ```
 
-Source is a container parameter that can be filled with an intended output.
-
-
-
-## Keyword
-
-```
-   [Text:der goodyear 500;Keyword,id=1,alt=der Reifen]
-     - here the engine will either display "der goodyear 500" or the alternative text "der Reifen"
-       depending on the random selection.
-```
-
-To create a keyword, you need to set the keyword parameter with an ID and an alternative text within a container. The ID is needed for defining multiple keywords. The engine will choose randomly a selection of defined keywords in consideration of the density and deviation. Both can be adjusted in the advanced content project configuration.
-
+# Properties
+In Progress.
 
 # Containers
 
@@ -417,7 +508,145 @@ The cases that exist are language dependent, eg Nom, Gen, Dat, Akk in German. De
 
 If a numeric property is rendered, use_numerals=true can be used to render number words in the current language. This is not implemented for all supported languages. If a numeric property is rendered, singular and plural can be inherited from the container using grammar-from or grammar-from-num .
 
+# Container parameters
+Container parameters can be attached to a container to add instructions or information to the container.
 
+
+## Alternative
+
+```atml3
+    [Text:;Alt:Nix gerendert]
+     - renders "Nix gerendert"
+
+   [no_vocabulary_property;Alt,text=Nix gerendert]
+     - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
+```
+
+The container parameter `Alternative` is used to render an alternative text, if the container would not render anything otherwise.
+
+
+## Capitalize
+
+```atml3
+   [Text:ich bin kleingeschrieben;Capitalize]
+     - renders "Ich bin kleingeschrieben"
+
+   [hund_wort,prep=mit,case=Dat;Capitalize]
+     - renders "Mit dem Hund", if the property hund_wort renders the vocabulary "Hund"
+```
+
+`Capitalize` is a container parameter that forces the first letter of the rendered string to be upper case.
+
+
+## Kill
+
+```python
+   [Text:hallo] [Text:;Kill] [Text:welt]
+     - prevents rendering, because the second container does not render anything and carries the Kill parameter
+```
+
+`Kill` is a parameter that prevents a sentence from being rendered if the container does not render to a text.
+
+
+## Lower
+
+```shell
+    [Text:ICH BIN GROSSGESCHRIEBEN;Lower]
+     - renders "ich bin grossgeschrieben"
+
+   [hund_wort,prep=mit,case=Dat;Lower]
+     - renders "mit dem hund", if the property hund_wort renders "Hund"
+```
+Lower is a parameter that forces the rendered string of a container to be all lower case.
+
+
+## On
+
+```atml3
+   [Text:test;On,true=bool_property]
+     - only renders "test", if the property bool_property is true.
+
+   [Text:test;On,false=bool_property]
+     - only renders "test", if the property bool_property is false.
+```
+
+On is a container parameter that activates or deactivates according to a condition.
+
+
+
+## Off
+
+```atml3
+   [Text:test;Off,true=bool_property]
+     - only renders "test", if the property bool_property is false.
+
+   [Text:test;Off,false=bool_property]
+     - only renders "test", if the property bool_property is true.
+```
+
+Off is a container parameter that activates or deactivates according to a condition.
+
+
+
+## Preceding
+
+```atml3
+   [Text:welt;Preceding:hallo ]
+     - renders "hallo welt"
+
+   [drei.value();Preceding:,text=Stückzahl: ]
+     - renders "Stückzahl: 3", if the property drei renders to 3.
+```
+
+Preceding is a container parameter that is used to insert text in front of a rendered string in a container.
+
+
+
+## Trailing
+
+```atml3
+   [Text:hallo;Trailing: welt]
+     - renders "hallo welt"
+
+   [drei.value();Trailing,text= Stück]
+     - renders "3 Stück", if the property drei renders to 3
+```
+
+Trailing is a container parameter that is used to insert text behind a rendered string in a container.
+
+
+
+## Void
+
+```
+   [dog_phrase,id=test123;Void]
+     - renders nothin but can be referenced by grammar-from=test123 and will deliver it's grammatical properties
+```
+
+Void is a container parameter that prevents a container from rendering an actual string but preserves its grammatical properties. It is mostly used as a reference for grammar containers.
+
+Alias: `NoOut`
+
+
+## Source
+
+```
+[hund_wort,prep=mit,case=Dat;Source:mit dem Hund]
+```
+
+Source is a container parameter that can be filled with an intended output.
+
+
+
+## Keyword
+
+```
+   [Text:der goodyear 500;Keyword,id=1,alt=der Reifen]
+     - here the engine will either display "der goodyear 500" or the alternative text "der Reifen"
+       depending on the random selection.
+```
+
+To create a keyword, you need to set the keyword parameter with an ID and an alternative text within a container. The ID is needed for defining multiple keywords. The engine will choose randomly a selection of defined keywords in consideration of the density and deviation. Both can be adjusted in the advanced content project configuration.
 
 # Story Types
 The product_types enable creating one training for different kinds of things. The sentence selector is the component chosing the sentences that are to be rendered. It works as follows:
@@ -445,235 +674,6 @@ It looks like this in the training:
 ```
 
 In this example, story type "produkt_1" would be chosen if and only if the truthExpression of the property "my_property" evalues to true. Otherwise, the "default" story type would be chosen.
-
-# Sentences
-
-In the ATML3.0 training, sentences are defined. In the JSON tree, the structure is inside the sentences aray.
-
-```atml3
- sentences: [
-	{
-		name: "satz_001",
-		trigger: [ "Auto" ],
-		obligatory: true,
-		variants: [ "Property is true and shows value|[true_property.value()]|2NEWLINE", ]
-	},
-	...]
- ```
-
-The sentence has the following fields:
-
-* `name` - used to reference the sentence in the sentence order list inside the product_types and sentence groups.
-* `trigger` - List of property names. One of the properties must be true for the sentence to be available. If the sentence is to be always
-* `available`, the trigger "Auto" has to be added.
-* `obligatory` - true/false; If true, the sentence may not be discarded on text shortening.
-* `command` - Used to activate the story mode.
-* `variants` - Variants of the sentences as string.
-* `role` - Role of the sentences like heading1 or heading2.
-* `style` - The way the sentence is to be displayed.
- * `heading` - heading h1
- * `subheading` - heading h2
- * `subsubheading` - heading h3
-
-For every chosen sentence a variant should be chosen and made to a RenderedSentence in the engine. The ATML3 containers in the variant are parsed. A sentence mostly consists of ATML3 containers and free text. The free text implicitly is converted to Text containers. Assume a training that is rendered with the following data set
-
-```json
- { "tiername": "hund", "tierfarbe": "braun", "anzahl_beine": "4" }
-```
-
-and fills propertys with the same names as the dataset keys. The following sentences result:
-
-```atml3
-   Der [tiername] hat [anzahl_beine.value()] Beine.
-   - Der Hund hat 4 Beine.
-
-   [Text:Der ][tiername][Text: hat ][anzahl_beine.value()][Text: Beine.]
-   - Der Hund hat 4 Beine.
-
-   [tiername,det=definite] hat [anzahl_beine.value()] Beine.
-   - Der Hund hat 4 Beine.
-```
-
-Die Container die derzeit in der ATML3.0 Sprache existieren sind (anlehnung bei Namen an ATML2.5)
-
-* `Textcontainer` - render static text
-* `ValueContainer` - render the raw value of aproperty
-* `PhraseContainer` - render the value given by a property's vocabulary
-* `GroupContainer` - renders multiple properties
-* `Failure` - raises an expected engine error including an error message
-*  TODO `BulletGroupContainer` - renders multiple properties to a bulletpoint list in markdown syntax
-
-The containers are described in ther respective chapters. The general format is as follows:
-
-### Kinds of tags
-
-ATML3 tags can be classified into the following:
-
-#### Named Tags
-
-```atml3
-   [Text:The text that is to be rendered]
-   [Fail:The error message that is to be displayed]
-```
-
-#### Normal Tags
-
-```atml3
-   [propertyName]
-   [propertyName.value()]
-   [propertyName,case=Dat,adj=yes,det=definite]
-```
-
-All ATML-Tags can have parameters. To learn more about those options, go to the section containers.
-
-### Sentence Groups
-Sentence groups can be used to apply selective operations on defined groups of sentences. A sentence group contains up to five different entries:
-
-* `name` (string) - Each sentence group needs a unique identifier. This is also used for identification in "same"-mode.
-* `mode` (string) - The following modes are available:
- * `best` - The first n active sentences are rendered.
- * `last` - The last n active sentences are rendered.
- * `random` - n random sentences are rendered
- * `same` - Same selects the exact same sentences as are selected in another sentence group. That requires the "reference"-entry, see below.
-* `number` (int) - Determines the number of senteces to be rendered (-> n). It is not needed with the "same"-mode, as it will be inherited from the referenced group.
-* `reference` (string) - Only needed in "same"-mode. Needs the name of another group as argument.
-* `sentenceNames` (list of strings) - List of sentence names that belong to this sentence group.
-
-```atml3
-"sentenceGroups": [
-  {
-    "name": "sg1",
-    "mode": "random",
-    "number": 2,
-    "sentenceNames": [
-      "H1",
-      "H1_2",
-      "H1_3"
-    ]
-  },
-  {
-    "name": "sg2",
-    "mode": "same",
-    "reference": sg1",
-    "sentenceNames": [
-      "passende_Produkte",
-      "passende_Produkte_2"
-      "passende_Produkte_3"
-    ]
-  }
-]
-```
-
-### Story Mode
-ATML3 is capable of rendering a sequence of events in a so called "story mode". This mode behaves somewhat like a for loop does in programming. You will need this if you are looking to render a stream of events (goals in a soccer match or any other sorted event list).
-
-##### prerequisites
-
-a list of objects in your data
-```json
-goal: [
-{
-"player": "Harnik",
-"minute": 5,
-"type": "own_goal"
-}, {
-"player": "Werner",
-"minute": 66,
-"type": "goal"
-}
-]
-```
-
-a meta sentence that is included in your "default" sentence group
-
-```atml3
-{
- "name": "goals",
- "triggers": [ "Auto" ],
- "obligatory": true,
- "command": "[Meta:execute=Tor,items=event_list,iterator=CURRENT_EVENT,counter=CURRENT_INDEX]"
-}
-
-```
-
-the meta command contains 4 different parameters (see below)
-* `execute` - used to point to a sentence group
-* `items` - ATML3 list property which contains the data
-* `iterator` - object to access the inner data from the itemlist
-* `counter` - internal counter for the story mode
-* an event story type
-
-```atml3
-{
- "name": "Tor",
- "truggers": ["CURRENT_INDEX"],
- "sentenceOrder": [
- "goal_reg",
- "goal_own" ]
-}
-```
-
-actual sentences that are rendered in this sentence group (goal_reg, goal_own)
-
-```atml3
-{
- "name": "goal_reg",
- "triggers": [ "LOG_Tor_not_1_0" ],
- "obligatory": true,
- "variants": { "de-DE" : [
- { "text": "NEWLINE★ [VOC_MinuteTor;trailing:.] Minute: [VOC_Score_Tor] durch [VOC_SpielerTor]!" } ]
-}
-```
-ATML3 properties (these are a bit different since we are iterating over objects)
-
-a list property that contains the list of objects from above
-
-```atml3
-"goal": {
- "mappingExpression": "list($spieldaten.goal)",
- "truthExpression": "int(count(list($spieldaten.goal))) >= 0",
- "voc": { "*" : [ { "noun": "[goal.value()]" } ] }
- }
-2 meta properties for the story loop
-"CURRENT_INDEX": {
- "mappingExpression" : "-1",
- "truthExpression" : "false"
- },
-"CURRENT_EVENT" : {
- "mappingExpression" : "{}",
- "truthExpression" : "false"
- }
-
-```
-
-properties that point to the object in order to extract information from it
-
-```atml3
-"TRIGGER_current_event_is_goal" : {
- "mappingExpression" : "",
- "truthExpression" : "$CURRENT_EVENT.event_type == \"goal\""
- },
-"VOC_SpielerTor": {
- "mappingExpression": "$CURRENT_EVENT.player",
- "truthExpression": "true",
- "voc": { "de-DE" : [ { "noun": "[VOC_SpielerTor.value()]" } ] }
- },
-"VOC_MinuteTor": {
- "mappingExpression": "$CURRENT_EVENT.minute",
- "truthExpression": "true",
- "voc": { "de-DE" : [ { "noun": "[VOC_MinuteTor.value()]" } ] }
- },
-"VOC_TeamTor": {
- "mappingExpression": "$CURRENT_EVENT.team",
- "truthExpression": "true",
- "voc": { "de-DE" : [ { "noun": "[VOC_TeamTor.value()]" } ] }
- },
-"VOC_ScoreTor": {
- "mappingExpression": "$CURRENT_EVENT.score",
- "truthExpression": "true",
- "voc": { "de-DE" : [ { "noun": "[VOC_ScoreTor.value()]" } ] }
- }
-```
 
 # Vertigo Expression Language
 The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
