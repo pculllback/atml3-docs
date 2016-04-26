@@ -16,10 +16,10 @@ search: true
 ### Welcome to the realms of ATML3
 This site describes the basic functions and commands of the ATML3 programming language. With this handy expression language, you can train an artificial intelligence to write your stuff. All of it.
 Just feed it structured data and the ATML3 engine will promptly churn it into a meaningful text in almost no time.
-But first off, you will need to tell the ATM3 engine how to text for you. And that is what you do in an ATML3 training.
+But first off, you will need to tell the text-engine how to text for you. And that is what you do in an ATML3 training.
 
 ### Sounds cool, but what can I actually do with it?
-Your training contains reasoning: It will tell the ATM3 engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text (Vertigo Expression Language).
+Your training contains reasoning: It will tell the text-engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text (Vertigo Expression Language).
 You can also tell the ATML3 engine in what way to mention the information it has concluded from your data (Sentences).
 Don't forget microplanning and textplanning. That is also an aspect of ATML3. (Story Types)
 Once you have your information planned and pinned down, you can do the fine-tuning and have grammar and apply to it. (Containers)
