@@ -36,6 +36,17 @@ bundle exec middleman server
 
 Danach liegt die Dokumentation unter <http://localhost:4567>.
 
+### Setup mit Docker
+
+Alternativ kann Docker mit docker-compose verwendet werden.
+
+```shell
+git clone https://github.com/axsemantics/api-docs.git
+cd api-docs
+docker-compose up
+```
+Danach liegt die Dokumentation unter <http://localhost:4567>.
+
 #### Setup mit Vagrant
 ```
 vagrant up
