@@ -1294,6 +1294,19 @@ nummer5_doc_type
     nr5("nummer5_doc_type", {"id":#uuid})
 ```
 
+### Navigating in nr5 objects
+You can look up any path inside nr5 objects if you use the proper tricks. Look at the mapping expression in the example below. Here, we try to navigate into our number5 object, go into  a child named "branch" and there go into a child named "subbranch", which holds our key.
+
+Note that ATML assumes that children of nr5 objects come as lists. You will have to add a dummy iterator "[0]" to every tier you want to walk through.
+
+```atml3
+    "nummer5_test_2_key_2": {
+	        "mappingExpression": "$nummer5_test_2.branch[0].subbranch[0].key2",
+	        "truthExpression" : "true",
+	        "voc": [ {noun: "[nummer5_test_2_key2.value()]" ]
+	    }
+```
+
 ### nr5_assessValue()
 
 Using this function, a value can be measured against reference values that are stored in Nummer5. By doing this it can be estimated in which fractile said value falls. The n-fractile is the value, at which n% of all values are smaller than that value. (see wikipedia). Definition: nr5_assessValue(filter, fieldName, quantiles, comparisonValue, index)
