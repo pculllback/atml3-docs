@@ -1290,7 +1290,7 @@ storts a list numerically, a list of objects by a given field or by a lambda fun
      - produced the same output as the previous example.
 ```
 
-## Lookups
+## Lookup functions
 Lookups can look things in predefined lookup tables and return the found vocabularies.
 
 ### lookup()
@@ -1304,7 +1304,7 @@ Performs a lookup for fitting properties in a known lookup table. This is define
  ```
 Beware: This version can not return adjectives. Use a group and split_lookup() for that purpose.
 
-#### split_lookup()
+### split_lookup()
 
 Performs a lookup for fitting properties in a known lookup table. This is defined in the ATML3 training but is planned to come from Nummer5 later.
 
