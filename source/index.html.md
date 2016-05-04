@@ -16,10 +16,10 @@ search: true
 ### Welcome to the realms of ATML3
 This site describes the basic functions and commands of the ATML3 programming language. With this handy expression language, you can train an artificial intelligence to write your stuff. All of it.
 Just feed it structured data and the ATML3 engine will promptly churn it into a meaningful text in almost no time.
-But first off, you will need to tell the ATM3 engine how to text for you. And that is what you do in an ATML3 training.
+But first off, you will need to tell the text-engine how to text for you. And that is what you do in an ATML3 training.
 
 ### Sounds cool, but what can I actually do with it?
-Your training contains reasoning: It will tell the ATM3 engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text (Vertigo Expression Language).
+Your training contains reasoning: It will tell the text-engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text (Vertigo Expression Language).
 You can also tell the ATML3 engine in what way to mention the information it has concluded from your data (Sentences).
 Don't forget microplanning and textplanning. That is also an aspect of ATML3. (Story Types)
 Once you have your information planned and pinned down, you can do the fine-tuning and have grammar and apply to it. (Containers)
@@ -1353,6 +1353,19 @@ nummer5_doc_type
 
 ```atml3
     nr5("nummer5_doc_type", {"id":#uuid})
+```
+
+### Navigating in nr5 objects
+You can look up any path inside nr5 objects if you use the proper tricks. Look at the mapping expression in the example below. Here, we try to navigate into our number5 object, go into  a child named "branch" and there go into a child named "subbranch", which holds our key.
+
+Note that ATML assumes that children of nr5 objects come as lists. You will have to add a dummy iterator "[0]" to every tier you want to walk through.
+
+```atml3
+    "nummer5_test_2_key_2": {
+	        "mappingExpression": "$nummer5_test_2.branch[0].subbranch[0].key2",
+	        "truthExpression" : "true",
+	        "voc": [ {noun: "[nummer5_test_2_key2.value()]" ]
+	    }
 ```
 
 ### nr5_assessValue()
