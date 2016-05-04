@@ -741,7 +741,16 @@ The vertigo expression language is a collection of operations and functions whic
 
 Vertigo expressions are used in the mappingExpression and the truthExpression of a property and have values of certain data types.
 
-## Expression Languages
+## Basic Functions
+
+### count(list)
+
+This function can be used to count the elements in a list. Example:
+
+```
+               count([1, 2, 10, 12, 14])
+                 - returns the number 5
+```
 
 ### contains()
 
