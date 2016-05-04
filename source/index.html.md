@@ -601,6 +601,16 @@ Additionally an ID can be set to the element.
 
 `Capitalize` is a container parameter that forces the first letter of the rendered string to be upper case.
 
+## Keyword
+
+```atml3
+   [Text:der goodyear 500;Keyword,id=1,alt=der Reifen]
+         - renders [Key,1,der goodyear 500,der Reifen]
+         Depending on the defined keyword density the string `der goodyear 500` will be replaced with `der Reifen`.
+```
+
+With the `Keyword` parameter you can define multiple keywords within your generated texts. Every defined id is depending on the given keyword density.
+
 
 ## Kill
 
@@ -649,6 +659,20 @@ On is a container parameter that activates or deactivates according to a conditi
 ```
 
 Off is a container parameter that activates or deactivates according to a condition.
+
+
+
+## OnRandom
+
+```atml3
+   [Text:i'm here;OnRandom,percentage=25]
+         - will output "i'm here" with a probability of 25 percent
+         
+       [Text:i'm here;OnRandom,percentage=LOGIC_percentage]
+         - will output "i'm here" with a probability of $LOGIC_percentage percent and interpretes LOGIC_percentage as a numeric
+```
+
+OnRandom is a container param that will throw away a container param randomly.
 
 
 
