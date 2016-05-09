@@ -721,9 +721,9 @@ Possible sub-parameters:
 * text - clickable text in a link
 * title - title of the link
 * format - format of the link
-   * markdown (default)
-   * html
-   * bb
+ * markdown (default)
+ * html
+ * bb
 
 ```
   [Text:https://www.google.de;url]
@@ -740,7 +740,7 @@ Possible sub-parameters:
         
   [Text:https://www.google.de;url,text=click here,title=This is a link to google]
     - Generates a markdown link like this:
-        [hclick here](https://www.google.de "This is a link to google")
+        [click here](https://www.google.de "This is a link to google")
 ```
 
 ## Void
