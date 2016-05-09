@@ -558,26 +558,26 @@ The container parameter `Alternative` is used to render an alternative text, if 
              * Element_1
              * Element_2
              * Element_3
-             
+
        [Gruppe.All();Bullet,format=HTML]
          - Generates a HTML Bullet list like this:
-             <ul> 
-                 <li>Element_1</li> 
+             <ul>
+                 <li>Element_1</li>
                  <li>Element_2</li>
                  <li>Element_3</li>
              </ul>
-             
+
        [Gruppe.All();Bullet,format=HTML,id=Test]
          - Generates a HTML Bullet list with an id:
-             <ul id="Test"> 
-                 <li>Element_1</li> 
+             <ul id="Test">
+                 <li>Element_1</li>
                  <li>Element_2</li>
                  <li>Element_3</li>
              </ul>
-             
+
        [Gruppe.All();Bullet,format=BB]
          - Generates an BBCode Bullet list.
-             [list] 
+             [list]
                  [*]Element_1
                  [*]Element_2
                  [*]Element_3
@@ -667,7 +667,7 @@ Off is a container parameter that activates or deactivates according to a condit
 ```atml3
    [Text:i'm here;OnRandom,percentage=25]
          - will output "i'm here" with a probability of 25 percent
-         
+
        [Text:i'm here;OnRandom,percentage=LOGIC_percentage]
          - will output "i'm here" with a probability of $LOGIC_percentage percent and interpretes LOGIC_percentage as a numeric
 ```
@@ -688,6 +688,16 @@ OnRandom is a container param that will throw away a container param randomly.
 
 Preceding is a container parameter that is used to insert text in front of a rendered string in a container.
 
+## RAW
+
+Raw is a container parameter that forces ignoring the text modulation part.
+
+```
+  [Text:https://www.google.de;Raw]
+    - renders "https://www.google.de" instead of "https://www.Google.De"
+
+```
+
 
 
 ## Trailing
@@ -702,7 +712,36 @@ Preceding is a container parameter that is used to insert text in front of a ren
 
 Trailing is a container parameter that is used to insert text behind a rendered string in a container.
 
+## URL
 
+The URL parameter generates an hyperlink.
+
+Possible sub-parameters:
+
+* text - clickable text in a link
+* title - title of the link
+* format - format of the link
+   * markdown (default)
+   * html
+   * bb
+
+```
+  [Text:https://www.google.de;url]
+    - Generates a markdown link like this:
+        [https://www.google.de](https://www.google.de)
+        
+  [Text:https://www.google.de;url,text=click here]
+    - Generates a markdown link like this:
+        [click here](https://www.google.de)
+        
+  [Text:https://www.google.de;url,title=This is a link to google]
+    - Generates a markdown link like this:
+        [https://www.google.de](https://www.google.de "This is a link to google")
+        
+  [Text:https://www.google.de;url,text=click here,title=This is a link to google]
+    - Generates a markdown link like this:
+        [hclick here](https://www.google.de "This is a link to google")
+```
 
 ## Void
 
@@ -750,6 +789,251 @@ This function can be used to count the elements in a list. Example:
 ```
                count([1, 2, 10, 12, 14])
                  - returns the number 5
+```
+
+### join(list[, delimiter])
+
+This function joins all elements of a list into a string.
+
+Optionally, it is possible to set a delimiter.
+
+```
+             Input:
+             join([1, 2, 3, 4, 5])
+
+             Output:
+             "12345"
+
+             Input:
+             join([1, 2, 3, 4, 5], ", ")
+
+             Output:
+             "1, 2, 3, 4, 5"
+```
+
+### len(type)
+
+Calculates the length of a string / the length of the string representation of a value.
+
+```
+                len("string")
+                   - returns the numeric value 6
+
+                len(1234567890)
+                   - returns the value 10
+
+```
+
+### lower(string)
+
+This function converts a string to it's lowercase form.
+
+```
+                lower("STRING")
+                   - returns the string "string"
+```
+
+### max(list)
+
+Extracts the maximum number from a list of numerics.
+
+```
+                max([1,2,3,6,4,5])
+                   - returns 6
+```
+
+### min(list)
+
+This function returns the lowest number of a list.
+
+```
+              min([1,2,3,4,5,6])
+               - returns 1
+```
+
+### rnd_int([bndLeft, bndRight])
+
+This function returns a random integer number.
+
+It requires a left bound as well as a right bound statement.
+
+```
+            Input:
+            rnd_int(0, 10)
+
+            Output:
+            4
+```
+
+### re_group(pattern, string[, i])
+
+This function returns an existing group match within a string.
+
+Optionally, it is also possible to set an ignoreCase flag ("i").
+
+```
+             Input:
+             re_group("String1(.*)String3", "String1String2String3")
+
+             Output:
+             "String2"
+
+             Input:
+             re_group("^.*(String2).*$", "STRING1STRING2STRING3", "i")
+
+             Output:
+             "STRING2"
+
+```
+
+### re_match(pattern, string[, i])
+
+This function returns true, if a string starts with a defined pattern.
+
+Optionally, it is also possible to set an ignoreCase flag ("i").
+
+```
+             Input:
+             re_match("String\d", "String1String2")
+
+             Output:
+             true
+
+             Input:
+             re_match("String\d", "STRING1STRING2", "i")
+
+             Output:
+             true
+
+             Input:
+             re_match("String2", "String1String2")
+
+             Output:
+             false
+
+```
+
+### re_replace(string, old, new[, max])
+
+This function replaces a substring with a regex pattern.
+
+```
+            Input:
+            re_replace("old Old old Old", "(o|O)ld", "new")
+
+            Output:
+            "new new new new"
+
+```
+
+### re_search(pattern, string[, i])
+
+This function returns true, if a string contains a defined pattern.
+
+Optionally, it is also possible to set an ignoreCase flag ("i").
+
+```
+             Input:
+             re_search("String\d", "String1String2")
+
+             Output:
+             true
+
+             Input:
+             re_search("String\d", "STRING1STRING2", "i")
+
+             Output:
+             true
+
+             Input:
+             re_search("String2", "String1String2")
+
+             Output:
+             true
+
+```
+
+### round(double[, decimals])
+
+This function rounds a numeric value.
+There's an optional parameter to set the decimals to round to.
+
+
+Note: The behavior of round() for doubles can be surprising:
+For example, round(2.675, 2) gives 2.67 instead of the expected 2.68.
+This is not a bug: it’s a result of the fact that most decimal fractions can’t be represented exactly as a doubles.
+
+```
+                    round(0.6)
+                       - 1
+
+                    round(0.144743575, 2)
+                       - 0.14
+
+
+```
+
+### split(string[, delimiter])
+
+This function returns a splitted string as a list.
+
+Optionally, it is possible to set a delimiter.
+The default delimiter is " ".
+
+```
+             Input:
+             split("string1 string2 string3")
+
+             Output:
+             ["string1", "string2", "string3"]
+
+             Input:
+             split("string1, string2, string3", ", ")
+
+             Output:
+             ["string1", "string2", "string3"]
+
+```
+
+### replace(string, old, new[, max])
+
+This function replaces all occurrences of a substring with a new stated substring.
+
+Optionally, it is possible to set the number of times of replacements.
+
+```
+             Input:
+             replace("old old old old", "old", "new")
+
+             Output:
+             "new new new new"
+
+             Input:
+             replace("old old old old", "old", "new", 2)
+
+             Output:
+             "new new old old"
+```
+
+### replace_last(string, old, new)
+
+This function replaces the last occurrence of a substring with a new stated substring.
+
+```
+             Input:
+             replace("1, 2, 3, 4", ",", "and")
+
+             Output:
+             "1, 2, 3 and 4"
+```
+
+### upper(string)
+
+Converts a string to uppercase.
+
+```
+                 upper("string")
+                    - returns the string value "STRING"
 ```
 
 ### contains()
