@@ -189,7 +189,7 @@ the meta command contains 4 different parameters (see below)
 ```atml3
 {
  "name": "Tor",
- "truggers": ["CURRENT_INDEX"],
+ "triggers": ["CURRENT_INDEX"],
  "sentenceOrder": [
  "goal_reg",
  "goal_own" ]
