@@ -688,12 +688,12 @@ OnRandom is a container param that will throw away a container param randomly.
 
 Preceding is a container parameter that is used to insert text in front of a rendered string in a container.
 
-## RAW
+## Raw
 
 Raw is a container parameter that forces ignoring the text modulation part.
 
 ```
-  [Text:https://www.google.de;Raw]
+  [Text:https://www.google.de;raw]
     - renders "https://www.google.de" instead of "https://www.Google.De"
 
 ```
@@ -782,35 +782,6 @@ Vertigo expressions are used in the mappingExpression and the truthExpression of
 
 ## Basic Functions
 
-### count(list)
-
-This function can be used to count the elements in a list. Example:
-
-```
-               count([1, 2, 10, 12, 14])
-                 - returns the number 5
-```
-
-### join(list[, delimiter])
-
-This function joins all elements of a list into a string.
-
-Optionally, it is possible to set a delimiter.
-
-```
-             Input:
-             join([1, 2, 3, 4, 5])
-
-             Output:
-             "12345"
-
-             Input:
-             join([1, 2, 3, 4, 5], ", ")
-
-             Output:
-             "1, 2, 3, 4, 5"
-```
-
 ### len(type)
 
 Calculates the length of a string / the length of the string representation of a value.
@@ -831,24 +802,6 @@ This function converts a string to it's lowercase form.
 ```
                 lower("STRING")
                    - returns the string "string"
-```
-
-### max(list)
-
-Extracts the maximum number from a list of numerics.
-
-```
-                max([1,2,3,6,4,5])
-                   - returns 6
-```
-
-### min(list)
-
-This function returns the lowest number of a list.
-
-```
-              min([1,2,3,4,5,6])
-               - returns 1
 ```
 
 ### rnd_int([bndLeft, bndRight])
@@ -1198,30 +1151,6 @@ Returns elements of two lists that are present in both lists.
 ```
 This function checks if a string value is in a correct date format.
 
-
-### list_pos()
-
-```atml3
-  list_pos([$property1, $property2, $property3], "$property3")
-    if truth($property3) == true:
-      returns 2, because property3 is the third element in the list.
-    if truth($property3) == false:
-      returns -1
-
-  contains([$property1, $property2, $property3], "$property4")
-    returns -1
-
-  contains(["hallo", "welt"], "hallo")
-    returns 0, because "hallo" is in the first position of the list
-
-  contains(["hallo", "welt"], "ciaosen")
-    returns -1, because the searched string "ciaosen" was not found in the list
-```
-
-This function finds the position of a property in a list.
-This one needs context. A list of properties (also called a group) may contain properties that evaluate to false while rendering, thus making the list shorter. To find out, at what position our property of interest is in the list, we can use this function.
-
-
 ### month_no()
 ```atml3
   month_no("Januar")
@@ -1232,70 +1161,6 @@ This one needs context. A list of properties (also called a group) may contain p
     NB that german and english month names can be used as parameters
 ```
 This function can be used to convert a month into a numerical representation
-
-
-### re_get(list, pattern, direction, position)
-```atml3
-  re_get([1, 2, 3], ".*", "l", 0)
-    - returns the string "1"
-
-  re_get([1, 2, 3], ".*", "r", 0)
-    - returns the string "3"
-
-  re_get([1, 2, 3], "4", "l", 0)
-    - returns an empty string
-
-  re_get([1, 2, 3], ".*", "l", 1)
-    - returns the string "2"
-```
-
-This function searches for a regex pattern in a list of string elements and returns the string if there is a match.
-
-* `list` - The list to search in``
-* `pattern` - RegEx Pattern
-* `direction` - Direction to search in ("r" or "l")
-* `position` - The position of the list element
-
-### re_keep(list, pattern, direction[, position])
-```atml3
-  re_keep(["xyz1", "abc", "xyz2"], "xyz.")
-    - returns the list ["xyz1", "xyz2"]
-
-  re_keep(["xyz1", "abc", "xyz2"], "xyz.", "l", 1)
-    - returns the list ["xyz2"]
-
-  re_keep(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
-    - returns the list ["xyz1"]
-```
-
-This function searches for a regex pattern in a list and returns a list of all matched elements.
-Optionally a starting postition and a search direction can be given
-
-* `list` - The list to search in
-* `pattern` - regex pattern
-* `direction` - The direction to search in ("r" or "l")
-* `position` - starting position
-
-
-### re_remove(list, pattern, direction[, position])
-```atml3
-  re_remove(["xyz1", "abc", "xyz2"], "abc")
-    - returns the list ["xyz1", "xyz2"]
-
-  re_remove(["xyz1", "abc", "xyz2"], "abc", "l", 1)
-    - returns the list ["xyz1", "xyz2"]
-
-  re_remove(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
-    - returns the list ["xyz1", "abc"]
-```
-This function searches for a regex pattern in a list and returns a list of all elements that do not contain matched elements.
-Optionally a starting postition and a search direction can be given
-
-* `list` - The list to search in
-* `pattern` - regex pattern
-* `direction` - The direction to search in ("r" or "l")
-* `position` - starting position
-
 
 ### render($property)
 ```atml3
@@ -1338,16 +1203,6 @@ This vertigo function will extract a substring from a string.
 
 this function cuts away trailing and preceding whitespaces from a string
 
-
-
-### unique(list)
-```atml3
-  unique([1, 2, 3, 1, 2])
-    returns the [1, 2, 3]
-```
-Returns a list with unique elements.
-
-
 ### weekday_int(days)
 ```atml3
   weekday_int(1)
@@ -1384,6 +1239,15 @@ Sunday|	7
 This function can be used to convert a weekday into a numerical representation
 
 ## List Functions
+
+### count(list)
+
+This function can be used to count the elements in a list. Example:
+
+```
+               count([1, 2, 10, 12, 14])
+                 - returns the number 5
+```
 
 ### filter()
 
@@ -1423,7 +1287,45 @@ Parameters:
 * `filter` - a filter definition, either as a Key / Value object (equal filter only) or a λ-function (complex filters possible)
 * `context` - something given to each call of the λ as a context object
 
+### list_pos()
 
+```atml3
+  list_pos([$property1, $property2, $property3], "$property3")
+    if truth($property3) == true:
+      returns 2, because property3 is the third element in the list.
+    if truth($property3) == false:
+      returns -1
+
+  contains([$property1, $property2, $property3], "$property4")
+    returns -1
+
+  contains(["hallo", "welt"], "hallo")
+    returns 0, because "hallo" is in the first position of the list
+
+  contains(["hallo", "welt"], "ciaosen")
+    returns -1, because the searched string "ciaosen" was not found in the list
+```
+
+This function finds the position of a property in a list.
+This one needs context. A list of properties (also called a group) may contain properties that evaluate to false while rendering, thus making the list shorter. To find out, at what position our property of interest is in the list, we can use this function.
+
+### max(list)
+
+Extracts the maximum number from a list of numerics.
+
+```
+                max([1,2,3,6,4,5])
+                   - returns 6
+```
+
+### min(list)
+
+This function returns the lowest number of a list.
+
+```
+              min([1,2,3,4,5,6])
+               - returns 1
+```
 
 ### random_el()
 
@@ -1443,6 +1345,67 @@ Parameter:
 * list - a list of things
 * count - the number of items in the list to be returned
 
+### re_keep(list, pattern, direction[, position])
+```atml3
+  re_keep(["xyz1", "abc", "xyz2"], "xyz.")
+    - returns the list ["xyz1", "xyz2"]
+
+  re_keep(["xyz1", "abc", "xyz2"], "xyz.", "l", 1)
+    - returns the list ["xyz2"]
+
+  re_keep(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
+    - returns the list ["xyz1"]
+```
+
+This function searches for a regex pattern in a list and returns a list of all matched elements.
+Optionally a starting postition and a search direction can be given
+
+* `list` - The list to search in
+* `pattern` - regex pattern
+* `direction` - The direction to search in ("r" or "l")
+* `position` - starting position
+
+
+### re_remove(list, pattern, direction[, position])
+```atml3
+  re_remove(["xyz1", "abc", "xyz2"], "abc")
+    - returns the list ["xyz1", "xyz2"]
+
+  re_remove(["xyz1", "abc", "xyz2"], "abc", "l", 1)
+    - returns the list ["xyz1", "xyz2"]
+
+  re_remove(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
+    - returns the list ["xyz1", "abc"]
+```
+This function searches for a regex pattern in a list and returns a list of all elements that do not contain matched elements.
+Optionally a starting postition and a search direction can be given
+
+* `list` - The list to search in
+* `pattern` - regex pattern
+* `direction` - The direction to search in ("r" or "l")
+* `position` - starting position
+
+### re_get(list, pattern, direction, position)
+```atml3
+  re_get([1, 2, 3], ".*", "l", 0)
+    - returns the string "1"
+
+  re_get([1, 2, 3], ".*", "r", 0)
+    - returns the string "3"
+
+  re_get([1, 2, 3], "4", "l", 0)
+    - returns an empty string
+
+  re_get([1, 2, 3], ".*", "l", 1)
+    - returns the string "2"
+```
+
+This function searches for a regex pattern in a list of string elements and returns the string if there is a match.
+
+* `list` - The list to search in``
+* `pattern` - RegEx Pattern
+* `direction` - Direction to search in ("r" or "l")
+* `position` - The position of the list element
 
 ### first(n)
 
@@ -1466,6 +1429,25 @@ Parameter:
 * list      ... a list of things
 * count     ... the number of items in the list to be returned
 
+### join(list[, delimiter])
+
+This function joins all elements of a list into a string.
+
+Optionally, it is possible to set a delimiter.
+
+```
+             Input:
+             join([1, 2, 3, 4, 5])
+
+             Output:
+             "12345"
+
+             Input:
+             join([1, 2, 3, 4, 5], ", ")
+
+             Output:
+             "1, 2, 3, 4, 5"
+```
 
 ### map()
 ```atml3
@@ -1573,6 +1555,13 @@ storts a list numerically, a list of objects by a given field or by a lambda fun
    sort([ "type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], [a, b -> int(#a.minute) - int(#b.minute)])
      - produced the same output as the previous example.
 ```
+
+### unique(list)
+```atml3
+  unique([1, 2, 3, 1, 2])
+    returns the [1, 2, 3]
+```
+Returns a list with unique elements.
 
 ## Lookup functions
 Lookups can look things in predefined lookup tables and return the found vocabularies.
