@@ -1650,30 +1650,6 @@ Note that ATML assumes that children of nr5 objects come as lists. You will have
 	    }
 ```
 
-### nr5_assessValue()
-
-Using this function, a value can be measured against reference values that are stored in Nummer5. By doing this it can be estimated in which fractile said value falls. The n-fractile is the value, at which n% of all values are smaller than that value. (see wikipedia). Definition: nr5_assessValue(filter, fieldName, quantiles, comparisonValue, index)
-
-* aggregator - the Nummer5 aggregator that is queried
-* filter - object containing the search values as key/value
-* fieldName - name of the field on which the fractile operation should be performed
-* quantiles - a list of the desired fractiles
-* comparisonValue - the value to compare
-* index - internally used, optional
-
-Return: Index in the fractile list the comparisonValue lies in or -1, if comparisonValue is not found or the function was called incorrectly.
-
-```atml3
-   nr5_assessValue("test_aggregator", {"key2": "alice"}, "number", [33, 66, 99, 100], 1)
-     - returns a value between -1 and 3:
-        -1... out of bounds (eg if number was 100, while fractiles are 99 at highest)
-         0... "number" is in the low third
-         1... "number" is in the middle third
-         2... "number" is in the high third
-       In this case the return value will be 3, because in test_aggregator there is only the value 1 for key2=alice.
-```
-
-
 ## Object Functions
 ### collect()
 
