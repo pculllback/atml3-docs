@@ -42,37 +42,33 @@ Thus a single property consists of three parts:
 
 Let's take an example, assume the following data set is given:
 
-```
-{
-	"animal": "DOG",
-	"color": "brown",
-	"legs": 4,
-	"breed": ""
-}
-```
+>{
+>	"animal": "DOG",
+>	"color": "brown",
+>	"legs": 4,
+>	"breed": ""
+>}
 
 Now we create four properties which firstly check if the given fields are actually filled and secondly contain its values:
 
-```
-{
-	"DATA_animal": {
-		"mappingExpression": "str(#animal)",
-		"truthExpression": "str(#animal) != \"\""
-	},
-	"DATA_color": {
-		"mappingExpression": "str(#color)",
-		"truthExpression": "str(#color) != \"\""
-	},
-	"DATA_legs": {
-		"mappingExpression": "numeric(#legs)",
-		"truthExpression": "numeric(#legs) != 0"
-	},
-	"DATA_breed": {
-		"mappingExpression": "str(#breed)",
-		"truthExpression": "str(#breed) != \"\""
-	}
-}
-```
+>{
+>	"DATA_animal": {
+>		"mappingExpression": "str(#animal)",
+>		"truthExpression": "str(#animal) != \"\""
+>	},
+>	"DATA_color": {
+>		"mappingExpression": "str(#color)",
+>		"truthExpression": "str(#color) != \"\""
+>	},
+>	"DATA_legs": {
+>		"mappingExpression": "numeric(#legs)",
+>		"truthExpression": "numeric(#legs) != 0"
+>	},
+>	"DATA_breed": {
+>		"mappingExpression": "str(#breed)",
+>		"truthExpression": "str(#breed) != \"\""
+>	}
+>}
 
 # Methods<a name="methods"></a> 
 The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
