@@ -21,21 +21,25 @@ But first off, you will need to tell the text-engine how to text for you. And th
 ### Sounds cool, but what can I actually do with it?
 Your training contains reasoning: It will tell the text engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text ([Properties](#properties) & [Methods](#methods)).
 You can also tell the ATML3 engine in what way to mention the information it has concluded from your data ([Sentences](#sentences)).
+Once you have your information planned and pinned down, you can do the fine-tuning and have grammar and apply to it ([Containers](#containers) & [Container Parameters](#container_parameters)).
 Don't forget microplanning and textplanning. That is also an aspect of ATML3 ([Story Types](#story_types)).
-Once you have your information planned and pinned down, you can do the fine-tuning and have grammar and apply to it ([Containers](#containers)).
 
 ### What else do I need to work with ATML3?
-First, you need an account at [https://my.ax-semantics.com/](https://my.ax-semantics.com/) to work with ATML3. Don't worry, it comes for free. Once you have an account, log into my.ax-semantics.com, go to your profile page and retrieve your API token there.
+First, you need an account at [https://my.ax-semantics.com/](https://my.ax-semantics.com/) to work with ATML3. Don't worry, it comes for free. Once you have an account, log in, go to your profile page and retrieve your API token there.
 You will also need your account unlocked for editing ATML3 and using our wizards. At the moment, you will have to contact us via slack. Just click the speech bubble icon on my.ax-semantics.com and leave us a message.
-Second, you will need one of our editors for ATML3. Choose one among the options at atml3.rocks.
-Further, you will need structured data about your topic. If you want to know how to integrate your data into AX, use the API documentation at apidocs.ax-semantics.com.
+Second, you will need one of our editors for ATML3. Choose one among the options at [http://atml3.rocks/](http://atml3.rocks/).
+Further, you will need structured data about your topic. If you want to know how to integrate your data into AX, use the API documentation at [apidocs.ax-semantics.com](apidocs.ax-semantics.com).
 
 # Properties<a name="properties"></a>
-Preliminary: A property generally consists of three parts:
 
-* `truth value` - is the property active? Can it be used?
-* `value` - data stored for that property
-* `vocabulary` - stuff to be rendered if the property is called in a container.
+With properties, you can define truth and mapping conditions and vocabularies which refer to your data.
+
+Thus a single property consists of three elements:
+* Truth Expression - is the property active? Can it be used?
+* Mapping Expression - data field storage and its modification
+* Vocabulary - content to be rendered if the property is called in a container
+
+Let's take an example:
 
 # Methods<a name="methods"></a> 
 The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
@@ -1418,7 +1422,7 @@ The cases that exist are language dependent, eg Nom, Gen, Dat, Akk in German. De
 
 If a numeric property is rendered, use_numerals=true can be used to render number words in the current language. This is not implemented for all supported languages. If a numeric property is rendered, singular and plural can be inherited from the container using grammar-from or grammar-from-num .
 
-# Container parameters
+# Container parameters<a name="container_parameters"></a>
 Container parameters can be attached to a container to add instructions or information to the container.
 
 
