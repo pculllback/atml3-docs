@@ -60,6 +60,74 @@ Further, you will need structured data about your topic. If you want to know how
 		"mappingExpression": "str(#breed)"
 	}
 }
+
+2.
+{
+	"DATA_animal": {
+		"truthExpression": "str(#animal) != \"\"",
+		"mappingExpression": "str(#animal)"
+	},
+	"DATA_color": {
+		"truthExpression": "str(#color) != \"\"",
+		"mappingExpression": "str(#color)"
+	},
+	"DATA_legs": {
+		"truthExpression": "numeric(#legs) != 0",
+		"mappingExpression": "numeric(#legs)"
+	},
+	"DATA_breed": {
+		"truthExpression": "str(#breed) != \"\"",
+		"mappingExpression": "str(#breed)"
+	}
+}
+
+3.
+{
+	"DATA_animal": {
+		"truthExpression": "str(#animal) != \"\"",
+		"mappingExpression": "str(#animal)",
+		"voc": {
+			"en-US": [{
+				"noun": "[DATA_animal.value()]",
+				"adjective": "",
+				"headnoun": ""
+			}]
+		}
+	},
+	"DATA_color": {
+		"truthExpression": "str(#color) != \"\"",
+		"mappingExpression": "str(#color)",
+		"voc": {
+			"en-US": [{
+				"noun": "[DATA_color.value()]",
+				"adjective": "",
+				"headnoun": ""
+			}]
+		}
+	},
+	"DATA_legs": {
+		"truthExpression": "numeric(#legs) != 0",
+		"mappingExpression": "numeric(#legs)",
+		"voc": {
+			"en-US": [{
+				"noun": "[DATA_legs.value()]",
+				"adjective": "",
+				"headnoun": ""
+			}]
+		}
+	},
+	"DATA_breed": {
+		"truthExpression": "str(#breed) != \"\"",
+		"mappingExpression": "str(#breed)",
+		"voc": {
+			"en-US": [{
+				"noun": "[DATA_breed.value()]",
+				"adjective": "",
+				"headnoun": ""
+			}]
+		}
+	}
+}
 ```
 
 With properties, you can define truth and mapping conditions and vocabularies which refer to your data.
@@ -76,6 +144,8 @@ Now we create four properties which..
 
 * check if the given fields are actually filled (truthExpression in item 2) and
 * contain its values (mappingExpression in item 2).
+
+After that, we add a vocabulary to each property to display the content if a container is called. If you want to use the content of the property itself, just paste [property_name.value()] in the noun field of the vocabulary (see item 3). 
 
 # Methods<a name="methods"></a> 
 The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
