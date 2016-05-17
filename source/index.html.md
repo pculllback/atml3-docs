@@ -11,7 +11,7 @@ toc_footers:
 search: true
 ---
 
-# ATML3 Syntax Documentation
+# Introduction
 
 ### Welcome to the realms of ATML3
 This site describes the basic functions and commands of the ATML3 programming language. With this handy expression language, you can train an artificial intelligence to write your stuff. All of it.
