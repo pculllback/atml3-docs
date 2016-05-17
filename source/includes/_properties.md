@@ -97,7 +97,7 @@ Thus a single property consists of three parts:
 }
 ```
 
-> Maybe you have noticed it already, the data set contains a field which can be used as an adjective (color)! So now, we can just paste it as adjective of the DATA_animal property.
+> Maybe you have noticed it already, the data set contains a field which can be used as an adjective (color)! So now, we can just paste the DATA_color property as an adjective of the DATA_animal property.
 
 ```
 {
