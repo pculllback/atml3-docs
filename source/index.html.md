@@ -44,20 +44,20 @@ Further, you will need structured data about your topic. If you want to know how
 2.
 {
 	"DATA_animal": {
-		"mappingExpression": "str(#animal)",
-		"truthExpression": "str(#animal) != \"\""
+		"truthExpression": "str(#animal) != \"\"",
+		"mappingExpression": "str(#animal)"
 	},
 	"DATA_color": {
-		"mappingExpression": "str(#color)",
-		"truthExpression": "str(#color) != \"\""
+		"truthExpression": "str(#color) != \"\"",
+		"mappingExpression": "str(#color)"
 	},
 	"DATA_legs": {
-		"mappingExpression": "numeric(#legs)",
-		"truthExpression": "numeric(#legs) != 0"
+		"truthExpression": "numeric(#legs) != 0",
+		"mappingExpression": "numeric(#legs)"
 	},
 	"DATA_breed": {
-		"mappingExpression": "str(#breed)",
-		"truthExpression": "str(#breed) != \"\""
+		"truthExpression": "str(#breed) != \"\"",
+		"mappingExpression": "str(#breed)"
 	}
 }
 ```
@@ -72,7 +72,10 @@ Thus a single property consists of three parts:
 
 Let's take an example, assume a JSON data set is given (see item 1).
 
-Now we create four properties which firstly check if the given fields are actually filled and secondly contain its values (see item 2).
+Now we create four properties which..
+
+1. check if the given fields are actually filled ("truthExpression": "str(#data_field) != \"\"" in item 2)
+2. contain its values ("mappingExpression": "str(#data_field)" in item 2).
 
 # Methods<a name="methods"></a> 
 The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
