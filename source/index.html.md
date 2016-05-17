@@ -39,6 +39,16 @@ Thus a single property consists of three parts:
 * `Mapping Expression` - data field storage and its modification
 * `Vocabulary` - content to be rendered if the property is called in a container
 
+Let's take an example, assume the following data set is given:
+
+```
+{
+	"animal": "dog",
+	"color": "brown",
+	"legs": 4
+}
+```
+
 # Methods<a name="methods"></a> 
 The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
 
