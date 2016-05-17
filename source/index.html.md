@@ -137,10 +137,9 @@ Thus a single property consists of three parts:
 * `Truth Expression` - is the property active? Can it be used?
 * `Mapping Expression` - data field storage and its modification
 * `Vocabulary` - consists of three parts and contains the content to be rendered if the property is called in a container
-
-** bli
-** bla
-** blub
+ * bli
+ * bla
+ * blub
 
 Let's take an example, assume a JSON data set is given (see item 1).
 
