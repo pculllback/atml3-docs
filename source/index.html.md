@@ -25,10 +25,10 @@ Once you have your information planned and pinned down, you can do the fine-tuni
 Don't forget microplanning and textplanning. That is also an aspect of ATML3 ([Story Types](#story_types)).
 
 ### What else do I need to work with ATML3?
-First, you need an account at [https://my.ax-semantics.com/](https://my.ax-semantics.com/) to work with ATML3. Don't worry, it comes for free. Once you have an account, log in, go to your profile page and retrieve your API token there.
+First, you need an account at [my.ax-semantics.com](https://my.ax-semantics.com/) to work with ATML3. Don't worry, it comes for free. Once you have an account, log in, go to your profile page and retrieve your API token there.
 You will also need your account unlocked for editing ATML3 and using our wizards. At the moment, you will have to contact us via slack. Just click the speech bubble icon on my.ax-semantics.com and leave us a message.
-Second, you will need one of our editors for ATML3. Choose one among the options at [http://atml3.rocks/](http://atml3.rocks/).
-Further, you will need structured data about your topic. If you want to know how to integrate your data into AX, use the API documentation at [apidocs.ax-semantics.com](apidocs.ax-semantics.com).
+Second, you will need one of our editors for ATML3. Choose one among the options at [atml3.rocks](http://atml3.rocks/).
+Further, you will need structured data about your topic. If you want to know how to integrate your data into AX, use the API documentation at [apidocs.ax-semantics.com](https://apidocs.ax-semantics.com/).
 
 # Properties<a name="properties"></a>
 
