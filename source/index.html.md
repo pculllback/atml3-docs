@@ -40,9 +40,11 @@ Thus a single property consists of three parts:
 * `Mapping Expression` - data field storage and its modification
 * `Vocabulary` - content to be rendered if the property is called in a container
 
-## Let's take an example, assume the following data set is given:
+Let's take an example, assume a JSON data set is given (see item 1).
 
 ```
+1.
+
 {
 	"animal": "DOG",
 	"color": "brown",
@@ -51,9 +53,10 @@ Thus a single property consists of three parts:
 }
 ```
 
-## Now we create four properties which firstly check if the given fields are actually filled and secondly contain its values:
+Now we create four properties which firstly check if the given fields are actually filled and secondly contain its values (see item 2).
 
 ```
+2.
 {
 	"DATA_animal": {
 		"mappingExpression": "str(#animal)",
