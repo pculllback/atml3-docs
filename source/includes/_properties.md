@@ -7,9 +7,9 @@ Thus a single property consists of three parts:
 * `Truth Expression` - is the property active? Can it be used?
 * `Mapping Expression` - data field storage and its modification
 * `Vocabulary` - consists of three parts and contains the content to be rendered if the property is called in a container
- * noun - enter here the noun of the property
- * adjective - enter here the adjective of the property
- * headnoun - enter here a word that should be used as representation for inflections instead of the original noun
+ * `noun` - enter here the noun of the property
+ * `adjective` - enter here the adjective of the property
+ * `headnoun` - enter here a word that should be used as representation for inflections instead of the original noun
  
 > Let's take an example, assume following JSON data set is given:
 
