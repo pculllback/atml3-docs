@@ -1,7 +1,8 @@
 # Properties<a name="properties"></a>
 
 ```
-1.
+> Let's take an example, assume a JSON data set is given:
+
 {
 	"animal": "DOG",
 	"color": "brown",
@@ -9,7 +10,8 @@
 	"breed": ""
 }
 
-2.
+> Now we create four properties which check if the given fields are actually filled (truthExpression) and contain its values (mappingExpression):
+
 {
 	"DATA_animal": {
 		"truthExpression": "str(#animal) != \"\"",
@@ -29,27 +31,8 @@
 	}
 }
 
-2.
-{
-	"DATA_animal": {
-		"truthExpression": "str(#animal) != \"\"",
-		"mappingExpression": "str(#animal)"
-	},
-	"DATA_color": {
-		"truthExpression": "str(#color) != \"\"",
-		"mappingExpression": "str(#color)"
-	},
-	"DATA_legs": {
-		"truthExpression": "numeric(#legs) != 0",
-		"mappingExpression": "numeric(#legs)"
-	},
-	"DATA_breed": {
-		"truthExpression": "str(#breed) != \"\"",
-		"mappingExpression": "str(#breed)"
-	}
-}
-
-3.
+> After that, we add a vocabulary to each property to display the content if a container is called.
+> If you want to use the content of the property itself, just paste [property_name.value()] in the noun field of the vocabulary: 
 {
 	"DATA_animal": {
 		"truthExpression": "str(#animal) != \"\"",
@@ -108,12 +91,3 @@ Thus a single property consists of three parts:
  * bli
  * bla
  * blub
-
-Let's take an example, assume a JSON data set is given (see item 1).
-
-Now we create four properties which..
-
-* check if the given fields are actually filled (truthExpression in item 2) and
-* contain its values (mappingExpression in item 2).
-
-After that, we add a vocabulary to each property to display the content if a container is called. If you want to use the content of the property itself, just paste [property_name.value()] in the noun field of the vocabulary (see item 3). 
