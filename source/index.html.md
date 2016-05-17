@@ -74,8 +74,8 @@ Let's take an example, assume a JSON data set is given (see item 1).
 
 Now we create four properties which..
 
-1. check if the given fields are actually filled ("truthExpression": "str(#data_field) != \"\"" in item 2)
-2. contain its values ("mappingExpression": "str(#data_field)" in item 2).
+* check if the given fields are actually filled (truthExpression in item 2) and
+* contain its values (mappingExpression in item 2).
 
 # Methods<a name="methods"></a> 
 The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
