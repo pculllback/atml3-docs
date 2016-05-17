@@ -44,9 +44,33 @@ Let's take an example, assume the following data set is given:
 
 ```
 {
-	"animal": "dog",
+	"animal": "DOG",
 	"color": "brown",
-	"legs": 4
+	"legs": 4,
+	"breed": ""
+}
+```
+
+Now we create four properties which firstly check if the given fields are actually filled and secondly contain its values:
+
+```
+{
+	"DATA_animal": {
+		"mappingExpression": "str(#animal)",
+		"truthExpression": "str(#animal) != \"\""
+	},
+	"DATA_color": {
+		"mappingExpression": "str(#color)",
+		"truthExpression": "str(#color) != \"\""
+	},
+	"DATA_legs": {
+		"mappingExpression": "numeric(#legs)",
+		"truthExpression": "numeric(#legs) != 0"
+	},
+	"DATA_breed": {
+		"mappingExpression": "str(#breed)",
+		"truthExpression": "str(#breed) != \"\""
+	}
 }
 ```
 
