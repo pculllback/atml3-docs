@@ -2,6 +2,7 @@
 
 
 > Let's take an example, assume a JSON data set is given:
+
 ```
 {
 	"animal": "DOG",
@@ -10,7 +11,9 @@
 	"breed": ""
 }
 ```
+
 > Now we create four properties which check if the given fields are actually filled (truthExpression) and contain its values (mappingExpression):
+
 ```
 {
 	"DATA_animal": {
@@ -31,8 +34,10 @@
 	}
 }
 ```
+
 > After that, we add a vocabulary to each property to display the content if a container is called.
 > If you want to use the content of the property itself, just paste [property_name.value()] in the noun field of the vocabulary:
+
 ```
 {
 	"DATA_animal": {
