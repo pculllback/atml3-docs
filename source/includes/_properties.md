@@ -6,7 +6,7 @@ Thus a single property consists of three parts:
 
 * `Truth Expression` - is the property active? Can it be used?
 * `Mapping Expression` - data field storage and its modification
-* `Vocabulary` - consists of three parts and contains the content to be rendered if the property is called in a container
+* `Vocabulary` - contains the content to be rendered if the property is called in a container. It consists of a language node which again consists of three parts: 
  * `noun` - enter here the noun of the property
  * `adjective` - enter here the adjective of the property
  * `headnoun` - enter here a word that should be used as representation for inflections instead of the original noun
@@ -45,7 +45,7 @@ Thus a single property consists of three parts:
 }
 ```
 
-> After that, we add a vocabulary to each property to display the content if a container is called.
+> After that, we add a vocabulary to each property to set the content if a container is called.
 > If you want to use the content of the property itself, just paste [property_name.value()] in the noun field of the vocabulary:
 
 ```
@@ -96,3 +96,56 @@ Thus a single property consists of three parts:
 	}
 }
 ```
+
+> Maybe you have noticed it already, the data set contains a field which can be used as an adjective (color)! So now, we can just paste it as adjective of the DATA_animal property.
+
+```
+{
+	"DATA_animal": {
+		"truthExpression": "str(#animal) != \"\"",
+		"mappingExpression": "str(#animal)",
+		"voc": {
+			"en-US": [{
+				"noun": "[DATA_animal.value()]",
+				"adjective": "[DATA_color.value()]",
+				"headnoun": ""
+			}]
+		}
+	},
+	"DATA_color": {
+		"truthExpression": "str(#color) != \"\"",
+		"mappingExpression": "str(#color)",
+		"voc": {
+			"en-US": [{
+				"noun": "[DATA_color.value()]",
+				"adjective": "",
+				"headnoun": ""
+			}]
+		}
+	},
+	"DATA_legs": {
+		"truthExpression": "numeric(#legs) != 0",
+		"mappingExpression": "numeric(#legs)",
+		"voc": {
+			"en-US": [{
+				"noun": "[DATA_legs.value()]",
+				"adjective": "",
+				"headnoun": ""
+			}]
+		}
+	},
+	"DATA_breed": {
+		"truthExpression": "str(#breed) != \"\"",
+		"mappingExpression": "str(#breed)",
+		"voc": {
+			"en-US": [{
+				"noun": "[DATA_breed.value()]",
+				"adjective": "",
+				"headnoun": ""
+			}]
+		}
+	}
+}
+```
+
+> That's it for now, we have already created four valid properties!
