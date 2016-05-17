@@ -35,6 +35,7 @@ Further, you will need structured data about your topic. If you want to know how
 With properties, you can define truth and mapping conditions and vocabularies which refer to your data.
 
 Thus a single property consists of three parts:
+
 * `Truth Expression` - is the property active? Can it be used?
 * `Mapping Expression` - data field storage and its modification
 * `Vocabulary` - content to be rendered if the property is called in a container
