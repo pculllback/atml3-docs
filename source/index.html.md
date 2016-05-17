@@ -259,42 +259,33 @@ properties that point to the object in order to extract information from it
 ```
 
 # Properties
-In Progress.
-
-# Story Types
-The product_types enable creating one training for different kinds of things. The sentence selector is the component chosing the sentences that are to be rendered. It works as follows:
-
-1. Choose a story type
-2. Choose all sentences that are listed in that story type
-3. Filter those sentences, whose sentence triggers are not true
-
-Deciding on a story type, ATML3 first tries to select an element of product_types that is not named "default" and whose triggers are true. (BEWARE: sentences need only one true trigger, for story types all triggers must be true) If none fits, the story type named "default" will be chosen.
-
-It looks like this in the training:
-
-```atml3
-	product_types: [
-        {
-            "name": "produkt_1",
-            "triggers": ["my_property"],
-            "sentenceOrder": [ "Satz_02" ]
-        },
-        {
-            "name": "default",
-            "sentenceOrder":  [ "satz_01" ]
-        }
-    ],
-```
-
-In this example, story type "produkt_1" would be chosen if and only if the truthExpression of the property "my_property" evalues to true. Otherwise, the "default" story type would be chosen.
-
-# Containers
-
-In this section the different containers and their parameters are described. Preliminary: A property generally consists of three parts:
+Preliminary: A property generally consists of three parts:
 
 * `truth value` - is the property active? Can it be used?
 * `value` - data stored for that property
 * `vocabulary` - stuff to be rendered if the property is called in a container.
+
+# Story Types
+
+Story types determine the order of the sentences you want to set.
+
+ATML3 first tries to select a story type that is not named "default" and whose triggers are true (BEWARE: sentences need only one true trigger, for story types all triggers must be true). If none fits, the story type named "default" will be chosen.
+
+```
+name: "default",
+"triggers": ["my_property_01"],
+"sentenceOrder": [ "sentence_01", "sentence_02", "sentence_03" ]
+
+name: "story_type_01",
+"triggers": ["my_property_02"],
+"sentenceOrder": [ "sentence_03", "sentence_02", "sentence_01" ]
+
+In this example, story type "story_type_01" would be chosen if and only if the truth value of the property "my_property_02" is true. Otherwise, the "default" story type would be chosen.
+```
+
+# Containers
+
+In this section the different containers and their parameters are described.
 
 Some of the containers, for example PhraseContainer and ValueContainer are supposed to render vocabulary (or value, respectively). Containers can react to the truth value of properties.
 
