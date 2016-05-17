@@ -19,18 +19,18 @@ Just feed it structured data and the ATML3 engine will promptly churn it into a 
 But first off, you will need to tell the text-engine how to text for you. And that is what you do in an ATML3 training.
 
 ### Sounds cool, but what can I actually do with it?
-Your training contains reasoning: It will tell the text-engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text (Vertigo Expression Language).
-You can also tell the ATML3 engine in what way to mention the information it has concluded from your data (Sentences).
-Don't forget microplanning and textplanning. That is also an aspect of ATML3. (Story Types)
-Once you have your information planned and pinned down, you can do the fine-tuning and have grammar and apply to it. (Containers)
+Your training contains reasoning: It will tell the text engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text ([Methods](#methods)).
+You can also tell the ATML3 engine in what way to mention the information it has concluded from your data ([Sentences](#sentences)).
+Don't forget microplanning and textplanning. That is also an aspect of ATML3. ([Story Types](#story_types))
+Once you have your information planned and pinned down, you can do the fine-tuning and have grammar and apply to it. ([Containers](#containers))
 
 ### What else do I need to work with ATML3?
-First, you need an account at ax-semantics.com to work with ATML3. Don't worry, it comes for free. Once you have an account, log into my.ax-semantics.com, go to your profile page and retrieve your API token there.
+First, you need an account at https://my.ax-semantics.com/ to work with ATML3. Don't worry, it comes for free. Once you have an account, log into my.ax-semantics.com, go to your profile page and retrieve your API token there.
 You will also need your account unlocked for editing ATML3 and using our wizards. At the moment, you will have to contact us via slack. Just click the speech bubble icon on my.ax-semantics.com and leave us a message.
 Second, you will need one of our editors for ATML3. Choose one among the options at atml3.rocks.
 Further, you will need structured data about your topic. If you want to know how to integrate your data into AX, use the API documentation at apidocs.ax-semantics.com.
 
-# Sentences
+# Sentences<a name="sentences"></a> 
 
 In the ATML3.0 training, sentences are defined. In the JSON tree, the structure is inside the sentences aray.
 
@@ -265,7 +265,7 @@ Preliminary: A property generally consists of three parts:
 * `value` - data stored for that property
 * `vocabulary` - stuff to be rendered if the property is called in a container.
 
-# Story Types
+# Story Types<a name="story_types"></a> 
 
 Story types determine the order of the sentences you want to set.
 
@@ -283,7 +283,7 @@ name: "story_type_01",
 In this example, story type "story_type_01" would be chosen if and only if the truth value of the property "my_property_02" is true. Otherwise, the "default" story type would be chosen.
 ```
 
-# Containers
+# Containers<a name="containers"></a> 
 
 In this section the different containers and their parameters are described.
 
@@ -766,7 +766,7 @@ Source is a container parameter that can be filled with an intended output.
 
 To create a keyword, you need to set the keyword parameter with an ID and an alternative text within a container. The ID is needed for defining multiple keywords. The engine will choose randomly a selection of defined keywords in consideration of the density and deviation. Both can be adjusted in the advanced content project configuration.
 
-# Vertigo Expression Language
+# Methods<a name="methods"></a> 
 The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
 
 Vertigo expressions are used in the mappingExpression and the truthExpression of a property and have values of certain data types.
