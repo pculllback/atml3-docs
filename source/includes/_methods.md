@@ -113,7 +113,7 @@ Optionally, it is possible to set a delimiter.
  ```
 Performs a lookup for fitting entries in a known lookup table.
 
-Beware: This method only return the noun as a string. For getting a whole vocabulary, use split_lookup() (see list methods).
+Note: This method only return the noun as a string. For getting a whole vocabulary, use split_lookup() (see list methods).
 
 ### lower(string)
 ```
@@ -177,7 +177,7 @@ This method returns an existing group match within a string.
 
 Optionally, it is also possible to set an ignoreCase flag ("i").
 
-Beware: With this method, you can only extract _one_ group.
+Note: With this method, you can only extract _one_ group.
 
 ### re_replace(string, old, new)
 ```
@@ -234,7 +234,6 @@ Converts a string to uppercase.
 
 	len(1234567890)
 		returns 10
-
 ```
 Calculates the length of the string representation of a value.
 
@@ -274,36 +273,36 @@ This method returns the difference between two dates as an integer number of day
 
 ### month_no()
 ```
-  month_no("Januar")
-    returns number 0 because january is the first month in a year
+	month_no("Januar")
+		returns 0, because january is the first month in a year
 
-  month_no("February")
-    returns number 1 because february is the second month of a year.
-    NB that german and english month names can be used as parameters
+	month_no("February")
+		returns 1, because february is the second month of a year
 ```
 This method can be used to convert a month into a numerical representation
 
+Note: This method only supports the german and english notation of months.
+
 ### weekday_int(days)
 ```
-  weekday_int(1)
-    - returns the integer 2 (Tuesday), if today is a monday.
+	weekday_int(1)
+		returns the integer 2 (Tuesday), if today is a monday
 
   weekday_int(5)
-    - returns the integer 6 (Saturday), if today is a monday.
+    - returns the integer 6 (Saturday), if today is a monday
 ```
+This method takes a numeric n between 1 and 7. It returns a numeric representation of the weekday of today + n days.
+The returned numeric is to be interpreted as follows:
 
-This method takes an integer n. It returns a numeric representation of the weekday of today+n days.
-The returned integer is to be interpreted as follows:
-
-Weekday|	Integer
------- | --------
-Monday|	1
-Tuesday|	2
-Wednesday|	3
-Thursday|	4
-Friday|	5
-Saturday|	6
-Sunday|	7
+Weekday	|	Numeric
+------	|	--------
+Monday	|	1
+Tuesday	|	2
+Wednesday	|	3
+Thursday	|	4
+Friday	|	5
+Saturday	|	6
+Sunday	|	7
 
 ### weekday_no()
 ```
