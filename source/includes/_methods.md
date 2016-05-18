@@ -12,57 +12,57 @@ Methods are used in mapping or truth expressions of properties and return follow
 ## String methods
 
 ### convert_comma(input, divisor, lowerUnit, upperUnit)
-
-This method takes a numeric value and converts it to a distance or time value.
-
 ```atml3
   convert_comma(5300, 1000, "m", "km")
-    renders string "5,3 km"
+    returns "5,3 km"
 
   convert_comma(900, 1000, "m", "km")
-    renders string "900 m"
+    returns "900 m"
 
   convert_comma(120, 60, "Minuten", "Stunden")
-    renders string "2 Minuten"
+    returns "2 Minuten"
 ```
+This method takes a numeric value and converts it to a distance or time value.
 
 ### convert_count(input, divisor, lowerUnit, upperUnit[, conjunction])
+```atml3
+  convert_count(145, 60, "Minuten", "Stunden")
+    returns "2 Stunden 25 Minuten"
 
+  convert_count(45, 60, "Minuten", "Stunden")
+    returns "45 Minuten"
+
+  convert_count(350, 100, "Cent", "Euro")
+    returns "3 Euro 50 Cent"
+
+  convert_count(350, 100, "Cent", "Euro", "und")
+    returns "3 Euro und 50 Cent"
+```
 This method takes a numeric value and converts it to a currency or date value.
 Optionally, a conjunction can be given.
 
-```atml3
-  convert_count(145, 60, "Minuten", "Stunden")
-    returns string "2 Stunden 25 Minuten"
-
-  convert_count(45, 60, "Minuten", "Stunden")
-    returns string "45 Minuten"
-
-  convert_count(350, 100, "Cent", "Euro")
-    returns string "3 Euro 50 Cent"
-
-  convert_count(350, 100, "Cent", "Euro", "und")
-    returns string "3 Euro und 50 Cent"
-```
-
 ### cur_lang()
-
-This method returns the current language in the current text generation process as an ISO 2-letter code.
-
 ```atml3
   cur_lang()
     returns "de", "es" or "en" or whatever language is currently used.
 ```
+This method returns the current language in the current text generation process as an ISO 2-letter code.
 
 ### date_add(date, number, type)
-
-This method adds a time value to a given date and returns that new date.
-These types of times can be added: years, months, weeks, days, hours, minutes, seconds.
-
 ```atml3
   date_add("16.05.1983", 3, "years")
-    returns string "16.05.1986"
+    returns "16.05.1986"
 ```
+This method adds a time value to a given date and returns that new date.
+These types of times can be added:
+
+* years
+* months
+* weeks
+* days
+* hours
+* minutes
+* seconds
 
 ### date_convert(date, format)
 ```atml3
