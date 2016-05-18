@@ -8,6 +8,7 @@ Methods are used in mapping or truth expressions of properties and return follow
 * `Numerics`
 * `Booleans`
 * `Lists`
+* `JSON objects`
 
 ## String methods
 
@@ -246,36 +247,6 @@ This method returns a random integer number.
 
 It requires a left bound as well as a right bound statement.
 
-### re_match(pattern, string[, i])
-```
-	re_match("String\d", "String1String2")
-		returns true
-
-	re_match("String\d", "STRING1STRING2", "i")
-		returns true
-
-	re_match("String2", "String1String2")
-		returns false
-```
-This method returns true, if a string starts with a defined pattern.
-
-Optionally, it is also possible to set an ignoreCase flag ("i").
-
-### re_search(pattern, string[, i])
-```
-	re_search("String\d", "String1String2")
-		returns true
-
-	re_search("String\d", "STRING1STRING2", "i")
-		returns true
-
-	re_search("String2", "String1String2")
-		returns true
-```
-This method returns true, if a string contains a defined pattern.
-
-Optionally, it is also possible to set an ignoreCase flag ("i").
-
 ### round(double[, decimals])
 ```
 	round(0.6)
@@ -291,38 +262,6 @@ Note: The behavior of round() for doubles can be surprising:
 For example, round(2.675, 2) gives 2.67 instead of the expected 2.68.
 This is not a bug: It’s a result of the fact that most decimal fractions can’t be represented exactly as a doubles.
 
-### split(string[, delimiter])
-```
-	split("string1 string2 string3")
-		returns ["string1", "string2", "string3"]
-
-	split("string1, string2, string3", ", ")
-		returns ["string1", "string2", "string3"]
-
-```
-This method returns a splitted string as a list.
-
-Optionally, it is possible to set a delimiter. The default delimiter is " ".
-
-### contains()
-```
-	contains(2, [1, 2, 3, 4, 5])
-		returns true
-
-	contains("welt", ["hallo", "welt", "!"])
-		returns true
-
-	contains("5555", ["hallo", "welt", "!"])
-		returns false
-
-	contains("hellblau", ["rot", "grün", "Blau"], "substring")
-		returns true
-
-	contains("hellblau", ["rot", "grün", "blau"])
-		returns false because substring search is not active.
-```
-This method can be used to check if an element is inside a list.
-
 ### date_difference(date, date)
 ```
 	date_difference("16.05.1983", "19.05.1983")
@@ -332,45 +271,6 @@ This method can be used to check if an element is inside a list.
 		returns -3
 ```
 This method returns the difference between two dates as an integer number of days. The expected time format is dd.MM.yyyy.
-
-### has_entry(type, entry)
-```
-  has_entry("noun", "tire")
-    returns true
-
-  has_entry("noun", "thisIsNotAWord")
-    returns false
-```
-This method checks if an entry contains as lemma in the lexicon.
-
-
-### in_range()
-```
-  in_range(#value, 5, 10)
-    - returns the truth value "true" if the value lies between 5 and 10.
-      It implements the method 5 ≤ #value ≤ 10
-```
-Checks if a numeric value lies between two other values.
-
-
-
-### intersection()
-```
-  intersection([1, 2, 3], [1, 2, 4])
-    returns list [1, 2]
-```
-Returns elements of two lists that are present in both lists.
-
-
-### is_date(string)
-```
-  is_date("16.05.1983")
-    returns true
-
-  is_date("value")
-    returns false
-```
-This method checks if a string value is in a correct date format.
 
 ### month_no()
 ```
@@ -416,8 +316,6 @@ Sunday|	7
 ```
 This method can be used to convert a weekday into a numerical representation
 
-## List methods
-
 ### count(list)
 
 This method can be used to count the elements in a list. Example:
@@ -426,44 +324,6 @@ This method can be used to count the elements in a list. Example:
                count([1, 2, 10, 12, 14])
                  - returns the number 5
 ```
-
-### filter()
-
-Filters a list of objects for the elements that match a given filter or λ-method. Given an example list:
-
-```json
-    [
-        { "type": "goal", "team": "host", "score": "1-0" },
-        { "type": "yellowcard", "team": "guest" },
-        { "type": "goal", "team": "guest", "score": "1-1" },
-        { "type": "redcard", "team": "host" },
-        { "type": "goal", "team": "host", "score": "2-1" }
-    ]
-```
-
-If one wants a list with all goals by the host team, they could use this method call:
-
-```
-    filter( list($list), { "type": "goal", "team": "host" })
-      - returns a list that includes the objects from the given input list that contain entries having type=goal and team=host, in our case
-        entries with number one and five of the original list.
-
-    filter( list($list), { "type": "yellowcard" })
-      - returns a list with entries that have type=yellowcard, in our example entry 2 of the original list.
-
-    filter( list($list), [entry -> #entry.type == "yellowcard" ])
-      - does the same thing as the last example but uses a λ-method to match the object. in this example the entry variable of the λ-
-        method contains the complete object to be matched.
-
-    filter( list($list), [entry, index, context -> #entry.type == "yellowcard" ], object($context_object))
-      - this is the maximum λ-method, which contains the current
-```
-
-Parameters:
-
-* `list` - a list that should be filtered
-* `filter` - a filter definition, either as a Key / Value object (equal filter only) or a λ-method (complex filters possible)
-* `context` - something given to each call of the λ as a context object
 
 ### list_pos()
 
@@ -504,6 +364,145 @@ This method returns the lowest number of a list.
               min([1,2,3,4,5,6])
                - returns 1
 ```
+
+## Boolean methods
+
+### has_entry(type, entry)
+```
+  has_entry("noun", "tire")
+    returns true
+
+  has_entry("noun", "thisIsNotAWord")
+    returns false
+```
+This method checks if an entry contains as lemma in the lexicon.
+
+### in_range()
+```
+  in_range(#value, 5, 10)
+    - returns the truth value "true" if the value lies between 5 and 10.
+      It implements the method 5 ≤ #value ≤ 10
+```
+Checks if a numeric value lies between two other values.
+
+### re_match(pattern, string[, i])
+```
+	re_match("String\d", "String1String2")
+		returns true
+
+	re_match("String\d", "STRING1STRING2", "i")
+		returns true
+
+	re_match("String2", "String1String2")
+		returns false
+```
+This method returns true, if a string starts with a defined pattern.
+
+Optionally, it is also possible to set an ignoreCase flag ("i").
+
+### re_search(pattern, string[, i])
+```
+	re_search("String\d", "String1String2")
+		returns true
+
+	re_search("String\d", "STRING1STRING2", "i")
+		returns true
+
+	re_search("String2", "String1String2")
+		returns true
+```
+This method returns true, if a string contains a defined pattern.
+
+Optionally, it is also possible to set an ignoreCase flag ("i").
+
+### contains()
+```
+	contains(2, [1, 2, 3, 4, 5])
+		returns true
+
+	contains("welt", ["hallo", "welt", "!"])
+		returns true
+
+	contains("5555", ["hallo", "welt", "!"])
+		returns false
+
+	contains("hellblau", ["rot", "grün", "Blau"], "substring")
+		returns true
+
+	contains("hellblau", ["rot", "grün", "blau"])
+		returns false because substring search is not active.
+```
+This method can be used to check if an element is inside a list.
+
+### is_date(string)
+```
+  is_date("16.05.1983")
+    returns true
+
+  is_date("value")
+    returns false
+```
+This method checks if a string value is in a correct date format.
+
+## List methods
+
+### intersection()
+```
+  intersection([1, 2, 3], [1, 2, 4])
+    returns list [1, 2]
+```
+Returns elements of two lists that are present in both lists.
+
+### split(string[, delimiter])
+```
+	split("string1 string2 string3")
+		returns ["string1", "string2", "string3"]
+
+	split("string1, string2, string3", ", ")
+		returns ["string1", "string2", "string3"]
+
+```
+This method returns a splitted string as a list.
+
+Optionally, it is possible to set a delimiter. The default delimiter is " ".
+
+### filter()
+
+Filters a list of objects for the elements that match a given filter or λ-method. Given an example list:
+
+```json
+    [
+        { "type": "goal", "team": "host", "score": "1-0" },
+        { "type": "yellowcard", "team": "guest" },
+        { "type": "goal", "team": "guest", "score": "1-1" },
+        { "type": "redcard", "team": "host" },
+        { "type": "goal", "team": "host", "score": "2-1" }
+    ]
+```
+
+If one wants a list with all goals by the host team, they could use this method call:
+
+```
+    filter( list($list), { "type": "goal", "team": "host" })
+      - returns a list that includes the objects from the given input list that contain entries having type=goal and team=host, in our case
+        entries with number one and five of the original list.
+
+    filter( list($list), { "type": "yellowcard" })
+      - returns a list with entries that have type=yellowcard, in our example entry 2 of the original list.
+
+    filter( list($list), [entry -> #entry.type == "yellowcard" ])
+      - does the same thing as the last example but uses a λ-method to match the object. in this example the entry variable of the λ-
+        method contains the complete object to be matched.
+
+    filter( list($list), [entry, index, context -> #entry.type == "yellowcard" ], object($context_object))
+      - this is the maximum λ-method, which contains the current
+```
+
+Parameters:
+
+* `list` - a list that should be filtered
+* `filter` - a filter definition, either as a Key / Value object (equal filter only) or a λ-method (complex filters possible)
+* `context` - something given to each call of the λ as a context object
 
 ### random_el()
 
@@ -603,62 +602,6 @@ objects with the result of applying the lambda: map(list, expression) - list ...
 list of things that should be applied - expression ... the expression to be
 applied to the elements
 
-### next_event()
-
-Searches in a list the next element from an index. Assume the following list:
-
-```json
-    [
-        { "id":"1", "type": "goal", "team": "host", "score": "1-0" },
-        { "id":"2", "type": "yellowcard", "team": "guest" },
-        { "id":"3", "type": "goal", "team": "guest", "score": "1-1" },
-        { "id":"4", "type": "redcard", "team": "host" },
-        { "id":"5", "type": "goal", "team": "host", "score": "2-1" }
-    ]
-```
-
-```
-   next_event( list($list), 2, { "type": "goal" } )
-     - searches from index 2 (id = 3) the next event with type = "goal", which in this case is the element with id = 5 (index 4).
-```
-
-Parameters:
-
-* list - List to be filtered
-* startindex - index to start the search from
-* filter - Definition of the filter as key/value pair. Applicable for equal filters only!
-
-
-The method prev_event searches in the other direction. Is no event found, an empty object is returned.
-
-
-### prev_event()
-
-Searches for the last occurrence of an element in a list before a given index. Assume the list:
-
-```json
-    [
-        { "id":"1", "type": "goal", "team": "host", "score": "1-0" },
-        { "id":"2", "type": "yellowcard", "team": "guest" },
-        { "id":"3", "type": "goal", "team": "guest", "score": "1-1" },
-        { "id":"4", "type": "redcard", "team": "host" },
-        { "id":"5", "type": "goal", "team": "host", "score": "2-1" }
-    ]
-```
-
-```
-   prev_event( list($list), 2, { "type": "goal" } )
-     - Searches the next element with type = "goal" starting at index 2. Result would be the element with id = 1 (index 0).
-```
-
-Parameters
-
-* list - List to be filtered
-* startindex - index to start the search from
-* filter - Definition of the filter as key/value pair. Applicable for equal filters only!
-
-The method prev_event searches in the other direction. Is no event found, an empty object is returned.
-
 ### sort()
 
 storts a list numerically, a list of objects by a given field or by a lambda method that compares the objects contained in the list:
@@ -706,6 +649,78 @@ Performs a lookup for fitting properties in a known lookup table. This is define
      - does not split a string but looks up each list element, everything else is as in ex. 1.
        There are only two argument this time, as no split marker is necessary.
 ```
+
+### collect()
+
+Takes a field from all objects in a list and returns those field values as a list.
+
+Input:
+```  
+     "devices": [ { name: "gerät 1" }, { name: "gerät 3" }, { name: "gerät 2" } ]
+```
+
+Operation:
+```
+     collect( list(#devices, "name")
+         - returns list: [ "gerät 1", "gerät 2", "gerät 3" ]
+```
+
+## JSON object methods
+
+### next_event()
+
+Searches in a list the next element from an index. Assume the following list:
+
+```json
+    [
+        { "id":"1", "type": "goal", "team": "host", "score": "1-0" },
+        { "id":"2", "type": "yellowcard", "team": "guest" },
+        { "id":"3", "type": "goal", "team": "guest", "score": "1-1" },
+        { "id":"4", "type": "redcard", "team": "host" },
+        { "id":"5", "type": "goal", "team": "host", "score": "2-1" }
+    ]
+```
+
+```
+   next_event( list($list), 2, { "type": "goal" } )
+     - searches from index 2 (id = 3) the next event with type = "goal", which in this case is the element with id = 5 (index 4).
+```
+
+Parameters:
+
+* list - List to be filtered
+* startindex - index to start the search from
+* filter - Definition of the filter as key/value pair. Applicable for equal filters only!
+
+
+The method prev_event searches in the other direction. Is no event found, an empty object is returned.
+
+### prev_event()
+
+Searches for the last occurrence of an element in a list before a given index. Assume the list:
+
+```json
+    [
+        { "id":"1", "type": "goal", "team": "host", "score": "1-0" },
+        { "id":"2", "type": "yellowcard", "team": "guest" },
+        { "id":"3", "type": "goal", "team": "guest", "score": "1-1" },
+        { "id":"4", "type": "redcard", "team": "host" },
+        { "id":"5", "type": "goal", "team": "host", "score": "2-1" }
+    ]
+```
+
+```
+   prev_event( list($list), 2, { "type": "goal" } )
+     - Searches the next element with type = "goal" starting at index 2. Result would be the element with id = 1 (index 0).
+```
+
+Parameters
+
+* list - List to be filtered
+* startindex - index to start the search from
+* filter - Definition of the filter as key/value pair. Applicable for equal filters only!
+
+The method prev_event searches in the other direction. Is no event found, an empty object is returned.
 
 ### nr5()
 
@@ -758,21 +773,6 @@ Note that ATML assumes that children of nr5 objects come as lists. You will have
 	        "truthExpression" : "true",
 	        "voc": [ {noun: "[nummer5_test_2_key2.value()]" ]
 	    }
-```
-
-### collect()
-
-Takes a field from all objects in a list and returns those field values as a list.
-
-Input:
-```  
-     "devices": [ { name: "gerät 1" }, { name: "gerät 3" }, { name: "gerät 2" } ]
-```
-
-Operation:
-```
-     collect( list(#devices, "name")
-         - returns list: [ "gerät 1", "gerät 2", "gerät 3" ]
 ```
 
 ### pick_object()
