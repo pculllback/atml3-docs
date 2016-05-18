@@ -81,7 +81,7 @@ Returns a format of a date value.
 ### date_now()
 ```
 	date_now()
-		returns 13.06.2015
+		returns "13.06.2015"
 ```
 This method returns the date in the following format: dd.MM.yyyy.
 
@@ -107,7 +107,8 @@ Optionally, it is possible to set a delimiter.
 ### lookup(entry, lookup table name)
 ```
 	lookup("summer", "reifen_art")
-		looks up the entry "summer" in the lookup table (of the current language) "reifen_art" and returns its value as a string. If nothing is found, an empty string is returned.
+		looks up the entry "summer" in the lookup table (of the current language) "reifen_art" and
+		returns its value as a string. If nothing is found, an empty string is returned.
  ```
 Performs a lookup for fitting entries in a known lookup table.
 
@@ -123,7 +124,8 @@ This method converts a string to its lowercase form.
 ### render($property)
 ```
 	render($property)
-		returns the string "kleine Katze" if the property's adjective field contains "klein" and its noun field contains "Katze".
+		returns the string "kleine Katze" if the property's adjective field contains "klein" and
+		its noun field contains "Katze".
 ```
 This method takes a property and returns the content of its vocabulary.
 
@@ -149,16 +151,16 @@ This method replaces the last occurrence of a substring with a new stated substr
 ### re_get(list, pattern, direction, position)
 ```
 	re_get([1, 2, 3], ".*", "l", 0)
-		returns the string "1"
+		returns "1"
 
 	re_get([1, 2, 3], ".*", "r", 0)
-		returns the string "3"
+		returns "3"
 
 	re_get([1, 2, 3], "4", "l", 0)
 		returns an empty string
 
 	re_get([1, 2, 3], ".*", "l", 1)
-		returns the string "2"
+		returns "2"
 ```
 This method searches for a regex pattern in a list of string elements and returns the string if there is a match.
 
@@ -186,36 +188,39 @@ This method searches for a regex pattern and replaces it with a new substring.
 ### substring(string, index, length)
 ```
 	substring("Hello world", 0, 1)
-		returns the substring "H" from the string "Hello world", which is the substring from index 0 with length 1
+		returns the substring "H" from the string "Hello world",
+		which is the substring from index 0 with length 1.
 
 	substring("Hello world", 5, 3)
-		returns the substring wor from the string "Hello world", which is the substring from index 5 (the w) with a length of 3 chars.
+		returns the substring "wor" from the string "Hello world",
+		which is the substring from index 5 (the w) with a length of 3 chars.
 
 	substring("Hello world", 5)
-		returns the substring "world" from the string "Hello world", which is from position 5 to the end (leaving the optional parameter length unset)
+		returns the substring "world" from the string "Hello world",
+		which is from position 5 to the end of the string.
 ```
 This method extracts a substring from a string with a given index and length.
 
 ### trim(string)
 ```
 	trim("hallo welt")
-		returns the string "hallo welt" (unchanged)
+		returns "hallo welt" (unchanged)
 
 	trim("  hallo welt")
-		returns the string "hallo welt" (stripped whitespace from the beginning)
+		returns "hallo welt" (stripped whitespace from the beginning)
 
 	trim("hallo welt   ")
-		returns the string "hallo welt" (stripped whitespace from the end)
+		returns "hallo welt" (stripped whitespace from the end)
 
 	trim("  hallo welt   ")
-		returns the string "hallo welt" (stripped whitespace from the beginning and the end)
+		returns "hallo welt" (stripped whitespace from the beginning and the end)
 ```
 this method cuts away trailing and preceding whitespaces from a string.
 
 ### upper(string)
 ```
 	upper("string")
-		returns the string value "STRING"
+		returns "STRING"
 ```
 Converts a string to uppercase.
 
