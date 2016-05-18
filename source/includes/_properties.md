@@ -1,16 +1,4 @@
 # Properties<a name="properties"></a>
-
-With properties, you can define truth and mapping conditions and vocabularies which refer to your data.
-
-Thus a single property consists of three parts:
-
-* `Truth Expression` - is the property active? Can it be used?
-* `Mapping Expression` - data field storage and its modification.
-* `Vocabulary` - contains the content to be rendered if the property is called in a container. It consists of a language node which again consists of three parts: 
- * `Noun` - enter here the noun of the property.
- * `Adjective` - enter here the adjective of the property.
- * `Head Noun` - enter here a word that should be used as representation for inflections instead of the original noun.
- 
 > Let's take an example, assume following JSON data set is given:
 
 ```
@@ -149,3 +137,13 @@ Thus a single property consists of three parts:
 ```
 
 > That's it for now, we have already created four valid properties with truth/mapping expressions and vocabularies! However, these properties are still pretty basic. If you want to see the true power of properties, just take a look at the next section "Methods".
+With properties, you can define truth and mapping conditions and vocabularies which refer to your data.
+
+Thus a single property consists of three parts:
+
+* `Truth Expression` - is the property active? Can it be used?
+* `Mapping Expression` - data field storage and its modification.
+* `Vocabulary` - contains the content to be rendered if the property is called in a container. It consists of a language node which again consists of three parts: 
+ * `Noun` - enter here the noun of the property.
+ * `Adjective` - enter here the adjective of the property.
+ * `Head Noun` - enter here a word that should be used as representation for inflections instead of the original noun.
