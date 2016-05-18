@@ -123,13 +123,6 @@ Performs a lookup for fitting properties in a known lookup table. This is define
  ```
 Beware: This version can not return adjectives. Use a group and split_lookup() for that purpose.
 
-### render($property)
-```atml3
-  render($property)
-    - returns the string "kleine Katze" if property's adjective field contains "klein" and its noun field contains "Katze"
-```
-This method takes a property and returns the content of its vocabulary.
-
 ### lower(string)
 
 This method converts a string to it's lowercase form.
@@ -139,61 +132,12 @@ This method converts a string to it's lowercase form.
                    - returns the string "string"
 ```
 
-### re_group(pattern, string[, i])
-
-This method returns an existing group match within a string.
-
-Optionally, it is also possible to set an ignoreCase flag ("i").
-
-```
-             Input:
-             re_group("String1(.*)String3", "String1String2String3")
-
-             Output:
-             "String2"
-
-             Input:
-             re_group("^.*(String2).*$", "STRING1STRING2STRING3", "i")
-
-             Output:
-             "STRING2"
-
-```
-
-### re_get(list, pattern, direction, position)
+### render($property)
 ```atml3
-  re_get([1, 2, 3], ".*", "l", 0)
-    - returns the string "1"
-
-  re_get([1, 2, 3], ".*", "r", 0)
-    - returns the string "3"
-
-  re_get([1, 2, 3], "4", "l", 0)
-    - returns an empty string
-
-  re_get([1, 2, 3], ".*", "l", 1)
-    - returns the string "2"
+  render($property)
+    - returns the string "kleine Katze" if property's adjective field contains "klein" and its noun field contains "Katze"
 ```
-
-This method searches for a regex pattern in a list of string elements and returns the string if there is a match.
-
-* `list` - The list to search in``
-* `pattern` - RegEx Pattern
-* `direction` - Direction to search in ("r" or "l")
-* `position` - The position of the list element
-
-### re_replace(string, old, new[, max])
-
-This method replaces a substring with a regex pattern.
-
-```
-            Input:
-            re_replace("old Old old Old", "(o|O)ld", "new")
-
-            Output:
-            "new new new new"
-
-```
+This method takes a property and returns the content of its vocabulary.
 
 ### replace(string, old, new[, max])
 
@@ -225,6 +169,62 @@ This method replaces the last occurrence of a substring with a new stated substr
 
              Output:
              "1, 2, 3 and 4"
+```
+
+### re_get(list, pattern, direction, position)
+```atml3
+  re_get([1, 2, 3], ".*", "l", 0)
+    - returns the string "1"
+
+  re_get([1, 2, 3], ".*", "r", 0)
+    - returns the string "3"
+
+  re_get([1, 2, 3], "4", "l", 0)
+    - returns an empty string
+
+  re_get([1, 2, 3], ".*", "l", 1)
+    - returns the string "2"
+```
+
+This method searches for a regex pattern in a list of string elements and returns the string if there is a match.
+
+* `list` - The list to search in``
+* `pattern` - RegEx Pattern
+* `direction` - Direction to search in ("r" or "l")
+* `position` - The position of the list element
+
+### re_group(pattern, string[, i])
+
+This method returns an existing group match within a string.
+
+Optionally, it is also possible to set an ignoreCase flag ("i").
+
+```
+             Input:
+             re_group("String1(.*)String3", "String1String2String3")
+
+             Output:
+             "String2"
+
+             Input:
+             re_group("^.*(String2).*$", "STRING1STRING2STRING3", "i")
+
+             Output:
+             "STRING2"
+
+```
+
+### re_replace(string, old, new[, max])
+
+This method replaces a substring with a regex pattern.
+
+```
+            Input:
+            re_replace("old Old old Old", "(o|O)ld", "new")
+
+            Output:
+            "new new new new"
+
 ```
 
 ### substring()
