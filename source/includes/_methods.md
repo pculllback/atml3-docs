@@ -1,8 +1,13 @@
 # Methods<a name="methods"></a> 
 
-The vertigo expression language is a collection of operations and functions which calculate logic and linguistic properties in an ATML3 training.
+With 
 
-Vertigo expressions are used in the mappingExpression and the truthExpression of a property and have values of certain data types.
+Methods are used in mapping or truth expressions of properties and return following data types:
+
+* Strings
+* Numerics
+* Booleans
+* Lists
 
 ## Basic Functions
 
