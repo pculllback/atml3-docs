@@ -137,6 +137,7 @@
 ```
 
 > That's it for now, we have already created four valid properties with truth/mapping expressions and vocabularies! However, these properties are still pretty basic. If you want to see the true power of properties, just take a look at the next section "Methods".
+
 With properties, you can define truth and mapping conditions and vocabularies which refer to your data.
 
 Thus a single property consists of three parts:
