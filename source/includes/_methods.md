@@ -271,7 +271,7 @@ This is not a bug: It’s a result of the fact that most decimal fractions can�
 ```
 This method returns the difference between two dates as an integer number of days. The expected time format is dd.MM.yyyy.
 
-### month_no()
+### month_no(month)
 ```
 	month_no("Januar")
 		returns 0, because january is the first month in a year
@@ -304,65 +304,58 @@ Friday	|	5
 Saturday	|	6
 Sunday	|	7
 
-### weekday_no()
+### weekday_no(day)
 ```
-  month_no("Dienstag")
-    returns number 2 because tuesday is the second day in a week (monday = 1)
+	month_no("Dienstag")
+		returns number 2, because tuesday is the second day in a week
 
-  month_no("monday")
-    returns number 1 because monday is the first day of the week (sunday = 7)
-    NB that german and english weekday names can be used as parameters
+	month_no("monday")
+		returns number 1, because monday is the first day of the week
 ```
-This method can be used to convert a weekday into a numerical representation
+This method can be used to convert a weekday into a numerical representation.
+
+Note: This method only supports the german and english notation of weekdays.
 
 ### count(list)
-
-This method can be used to count the elements in a list. Example:
-
 ```
-               count([1, 2, 10, 12, 14])
-                 - returns the number 5
+	count([1, 2, 10, 12, 14])
+		returns 5
 ```
+This method can be used to count the elements in a list.
 
-### list_pos()
-
+### list_pos(list, search string)
 ```
-  list_pos([$property1, $property2, $property3], "$property3")
-    if truth($property3) == true:
-      returns 2, because property3 is the third element in the list.
-    if truth($property3) == false:
-      returns -1
+	list_pos([$property1, $property2, $property3], "$property3")
+		if truth($property3) is true:
+			returns 2, because property3 is the third element in the list
+		if truth($property3) is false:
+			returns -1
 
-  contains([$property1, $property2, $property3], "$property4")
-    returns -1
+	list_pos([$property1, $property2, $property3], "$property4")
+		returns -1
 
-  contains(["hallo", "welt"], "hallo")
-    returns 0, because "hallo" is in the first position of the list
+	list_pos(["hallo", "welt"], "hallo")
+		returns 0, because "hallo" is in the first position of the list
 
-  contains(["hallo", "welt"], "ciaosen")
-    returns -1, because the searched string "ciaosen" was not found in the list
+	list_pos(["hallo", "welt"], "ciaosen")
+		returns -1, because the searched string "ciaosen" was not found in the list
 ```
-
 This method finds the position of a property in a list.
 This one needs context. A list of properties (also called a group) may contain properties that evaluate to false while rendering, thus making the list shorter. To find out, at what position our property of interest is in the list, we can use this method.
 
 ### max(list)
-
+```
+	max([1,2,3,6,4,5])
+		returns 6
+```
 Extracts the maximum number from a list of numerics.
 
-```
-                max([1,2,3,6,4,5])
-                   - returns 6
-```
-
 ### min(list)
-
-This method returns the lowest number of a list.
-
 ```
-              min([1,2,3,4,5,6])
-               - returns 1
+	min([1,2,3,4,5,6])
+		returns 1
 ```
+This method returns the lowest number of a list of numerics.
 
 ## Boolean methods
 
@@ -469,7 +462,7 @@ Optionally, it is possible to set a delimiter. The default delimiter is " ".
 
 Filters a list of objects for the elements that match a given filter or λ-method. Given an example list:
 
-```json
+```
     [
         { "type": "goal", "team": "host", "score": "1-0" },
         { "type": "yellowcard", "team": "guest" },
@@ -670,7 +663,7 @@ Operation:
 
 Searches in a list the next element from an index. Assume the following list:
 
-```json
+```
     [
         { "id":"1", "type": "goal", "team": "host", "score": "1-0" },
         { "id":"2", "type": "yellowcard", "team": "guest" },
@@ -698,7 +691,7 @@ The method prev_event searches in the other direction. Is no event found, an emp
 
 Searches for the last occurrence of an element in a list before a given index. Assume the list:
 
-```json
+```
     [
         { "id":"1", "type": "goal", "team": "host", "score": "1-0" },
         { "id":"2", "type": "yellowcard", "team": "guest" },
