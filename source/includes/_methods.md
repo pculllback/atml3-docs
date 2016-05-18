@@ -227,161 +227,111 @@ Converts a string to uppercase.
 ## Numeric methods
 
 ### len(type)
+```
+	len("string")
+		returns 6
 
-Calculates the length of a string / the length of the string representation of a value.
+	len(1234567890)
+		returns 10
 
 ```
-                len("string")
-                   - returns the numeric value 6
+Calculates the length of the string representation of a value.
 
-                len(1234567890)
-                   - returns the value 10
-
+### rnd_int(left bound, right bound)
 ```
-
-### rnd_int([bndLeft, bndRight])
-
+	rnd_int(0, 10)
+		returns a numeric between 0 and 10
+```
 This method returns a random integer number.
 
 It requires a left bound as well as a right bound statement.
 
-```
-            Input:
-            rnd_int(0, 10)
-
-            Output:
-            4
-```
-
 ### re_match(pattern, string[, i])
+```
+	re_match("String\d", "String1String2")
+		returns true
 
+	re_match("String\d", "STRING1STRING2", "i")
+		returns true
+
+	re_match("String2", "String1String2")
+		returns false
+```
 This method returns true, if a string starts with a defined pattern.
 
 Optionally, it is also possible to set an ignoreCase flag ("i").
 
-```
-             Input:
-             re_match("String\d", "String1String2")
-
-             Output:
-             true
-
-             Input:
-             re_match("String\d", "STRING1STRING2", "i")
-
-             Output:
-             true
-
-             Input:
-             re_match("String2", "String1String2")
-
-             Output:
-             false
-
-```
-
 ### re_search(pattern, string[, i])
+```
+	re_search("String\d", "String1String2")
+		returns true
 
+	re_search("String\d", "STRING1STRING2", "i")
+		returns true
+
+	re_search("String2", "String1String2")
+		returns true
+```
 This method returns true, if a string contains a defined pattern.
 
 Optionally, it is also possible to set an ignoreCase flag ("i").
 
-```
-             Input:
-             re_search("String\d", "String1String2")
-
-             Output:
-             true
-
-             Input:
-             re_search("String\d", "STRING1STRING2", "i")
-
-             Output:
-             true
-
-             Input:
-             re_search("String2", "String1String2")
-
-             Output:
-             true
-
-```
-
 ### round(double[, decimals])
+```
+	round(0.6)
+		returns - 1
 
+	round(0.144743575, 2)
+		returns - 0.14
+```
 This method rounds a numeric value.
 There's an optional parameter to set the decimals to round to.
 
-
 Note: The behavior of round() for doubles can be surprising:
 For example, round(2.675, 2) gives 2.67 instead of the expected 2.68.
-This is not a bug: it’s a result of the fact that most decimal fractions can’t be represented exactly as a doubles.
-
-```
-                    round(0.6)
-                       - 1
-
-                    round(0.144743575, 2)
-                       - 0.14
-
-
-```
+This is not a bug: It’s a result of the fact that most decimal fractions can’t be represented exactly as a doubles.
 
 ### split(string[, delimiter])
+```
+	split("string1 string2 string3")
+		returns ["string1", "string2", "string3"]
 
+	split("string1, string2, string3", ", ")
+		returns ["string1", "string2", "string3"]
+
+```
 This method returns a splitted string as a list.
 
-Optionally, it is possible to set a delimiter.
-The default delimiter is " ".
-
-```
-             Input:
-             split("string1 string2 string3")
-
-             Output:
-             ["string1", "string2", "string3"]
-
-             Input:
-             split("string1, string2, string3", ", ")
-
-             Output:
-             ["string1", "string2", "string3"]
-
-```
+Optionally, it is possible to set a delimiter. The default delimiter is " ".
 
 ### contains()
+```
+	contains(2, [1, 2, 3, 4, 5])
+		returns true
 
+	contains("welt", ["hallo", "welt", "!"])
+		returns true
+
+	contains("5555", ["hallo", "welt", "!"])
+		returns false
+
+	contains("hellblau", ["rot", "grün", "Blau"], "substring")
+		returns true
+
+	contains("hellblau", ["rot", "grün", "blau"])
+		returns false because substring search is not active.
+```
 This method can be used to check if an element is inside a list.
 
-```
-  contains(2, [1, 2, 3, 4, 5])
-    returns true since 2 is an element of the list containing the numbers from 1 to 5
-
-  contains("welt", ["hallo", "welt", "!"])
-    would also return true
-
-  contains("5555", ["hallo", "welt", "!"])
-    returns false
-
-  contains("hellblau", ["rot", "grün", "Blau"], "substring")
-    returns true since "blau" is contained in the word "hellblau"
-
-  contains("hellblau", ["rot", "grün", "blau"])
-    returns false because substring search is not active.
-```
-
 ### date_difference(date, date)
-
 ```
-  date_difference("16.05.1983", "19.05.1983")
-    returns numeric 3
+	date_difference("16.05.1983", "19.05.1983")
+		returns 3
 
-  date_difference("19.05.1983", "16.05.1983")
-    returns numeric -3
+	date_difference("19.05.1983", "16.05.1983")
+		returns -3
 ```
-
-This method returns the difference between two dates as an integer number of days.
-Expected time format is dd.MM.yyyy.
+This method returns the difference between two dates as an integer number of days. The expected time format is dd.MM.yyyy.
 
 ### has_entry(type, entry)
 ```
