@@ -227,39 +227,12 @@ Converts a string to uppercase.
 
 ## Numeric methods
 
-### len(type)
+### count(list)
 ```
-	len("string")
-		returns 6
-
-	len(1234567890)
-		returns 10
+	count([1, 2, 10, 12, 14])
+		returns 5
 ```
-Calculates the length of the string representation of a value.
-
-### rnd_int(left bound, right bound)
-```
-	rnd_int(0, 10)
-		returns a numeric between 0 and 10
-```
-This method returns a random integer number.
-
-It requires a left bound as well as a right bound statement.
-
-### round(double[, decimals])
-```
-	round(0.6)
-		returns - 1
-
-	round(0.144743575, 2)
-		returns - 0.14
-```
-This method rounds a numeric value.
-There's an optional parameter to set the decimals to round to.
-
-Note: The behavior of round() for doubles can be surprising:
-For example, round(2.675, 2) gives 2.67 instead of the expected 2.68.
-This is not a bug: It’s a result of the fact that most decimal fractions can’t be represented exactly as a doubles.
+This method can be used to count the elements in a list.
 
 ### date_difference(date, date)
 ```
@@ -271,57 +244,15 @@ This is not a bug: It’s a result of the fact that most decimal fractions can�
 ```
 This method returns the difference between two dates as an integer number of days. The expected time format is dd.MM.yyyy.
 
-### month_no(month)
+### len(type)
 ```
-	month_no("Januar")
-		returns 0, because january is the first month in a year
+	len("string")
+		returns 6
 
-	month_no("February")
-		returns 1, because february is the second month of a year
+	len(1234567890)
+		returns 10
 ```
-This method can be used to convert a month into a numerical representation
-
-Note: This method only supports the german and english notation of months.
-
-### weekday_int(days)
-```
-	weekday_int(1)
-		returns the integer 2 (Tuesday), if today is a monday
-
-  weekday_int(5)
-    - returns the integer 6 (Saturday), if today is a monday
-```
-This method takes a numeric n between 1 and 7. It returns a numeric representation of the weekday of today + n days.
-The returned numeric is to be interpreted as follows:
-
-Weekday	|	Numeric
-------	|	--------
-Monday	|	1
-Tuesday	|	2
-Wednesday	|	3
-Thursday	|	4
-Friday	|	5
-Saturday	|	6
-Sunday	|	7
-
-### weekday_no(day)
-```
-	month_no("Dienstag")
-		returns number 2, because tuesday is the second day in a week
-
-	month_no("monday")
-		returns number 1, because monday is the first day of the week
-```
-This method can be used to convert a weekday into a numerical representation.
-
-Note: This method only supports the german and english notation of weekdays.
-
-### count(list)
-```
-	count([1, 2, 10, 12, 14])
-		returns 5
-```
-This method can be used to count the elements in a list.
+Calculates the length of the string representation of a value.
 
 ### list_pos(list, search string)
 ```
@@ -356,6 +287,75 @@ Extracts the maximum number from a list of numerics.
 		returns 1
 ```
 This method returns the lowest number of a list of numerics.
+
+### month_no(month)
+```
+	month_no("Januar")
+		returns 0, because january is the first month in a year
+
+	month_no("February")
+		returns 1, because february is the second month of a year
+```
+This method can be used to convert a month into a numerical representation
+
+Note: This method only supports the german and english notation of months.
+
+### rnd_int(left bound, right bound)
+```
+	rnd_int(0, 10)
+		returns a numeric between 0 and 10
+```
+This method returns a random integer number.
+
+It requires a left bound as well as a right bound statement.
+
+### round(double[, decimals])
+```
+	round(0.6)
+		returns - 1
+
+	round(0.144743575, 2)
+		returns - 0.14
+```
+This method rounds a numeric value.
+There's an optional parameter to set the decimals to round to.
+
+Note: The behavior of round() for doubles can be surprising:
+For example, round(2.675, 2) gives 2.67 instead of the expected 2.68.
+This is not a bug: It’s a result of the fact that most decimal fractions can’t be represented exactly as a doubles.
+
+### weekday_int(days)
+```
+	weekday_int(1)
+		returns the integer 2 (Tuesday), if today is a monday
+
+  weekday_int(5)
+    - returns the integer 6 (Saturday), if today is a monday
+```
+This method takes a numeric n between 1 and 7. It returns a numeric representation of the weekday of today + n days.
+The returned numeric is to be interpreted as follows:
+
+Weekday	|	Numeric
+------	|	--------
+Monday	|	1
+Tuesday	|	2
+Wednesday	|	3
+Thursday	|	4
+Friday	|	5
+Saturday	|	6
+Sunday	|	7
+
+### weekday_no(day)
+```
+	month_no("Dienstag")
+		returns number 2, because tuesday is the second day in a week
+
+	month_no("monday")
+		returns number 1, because monday is the first day of the week
+```
+This method can be used to convert a weekday into a numerical representation.
+
+Note: This method only supports the german and english notation of weekdays.
 
 ## Boolean methods
 
