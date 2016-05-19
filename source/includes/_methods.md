@@ -359,6 +359,25 @@ Note: This method only supports the german and english notation of weekdays.
 
 ## Boolean methods
 
+### contains(type, list)
+```
+	contains(2, [1, 2, 3, 4, 5])
+		returns true
+
+	contains("welt", ["hallo", "welt", "!"])
+		returns true
+
+	contains("5555", ["hallo", "welt", "!"])
+		returns false
+
+	contains("hellblau", ["rot", "grün", "Blau"], "substring")
+		returns true
+
+	contains("hellblau", ["rot", "grün", "blau"])
+		returns false because substring search is not active.
+```
+This method can be used to check if an element is inside a list.
+
 ### has_entry(type, entry)
 ```
 	has_entry("noun", "tire")
@@ -378,6 +397,16 @@ This method checks if an entry contains as lemma in the lexicon in the given lan
 		returns false
 ```
 Checks if a numeric value lies between two other values.
+
+### is_date(string)
+```
+	is_date("16.05.1983")
+		returns true
+
+	is_date("string")
+		returns false
+```
+This method checks if a string value is in a correct date format.
 
 ### re_match(pattern, string[, i])
 ```
@@ -408,35 +437,6 @@ Optionally, it is also possible to set an ignoreCase flag ("i").
 This method returns true, if a string contains a defined pattern.
 
 Optionally, it is also possible to set an ignoreCase flag ("i").
-
-### contains(type, list)
-```
-	contains(2, [1, 2, 3, 4, 5])
-		returns true
-
-	contains("welt", ["hallo", "welt", "!"])
-		returns true
-
-	contains("5555", ["hallo", "welt", "!"])
-		returns false
-
-	contains("hellblau", ["rot", "grün", "Blau"], "substring")
-		returns true
-
-	contains("hellblau", ["rot", "grün", "blau"])
-		returns false because substring search is not active.
-```
-This method can be used to check if an element is inside a list.
-
-### is_date(string)
-```
-	is_date("16.05.1983")
-		returns true
-
-	is_date("string")
-		returns false
-```
-This method checks if a string value is in a correct date format.
 
 ## List methods
 
