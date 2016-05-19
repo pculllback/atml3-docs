@@ -11,7 +11,7 @@ Containers are separated from the rest of the sentence by brackets [ and ]. They
 
 Remember:
 
-* `If a parameter accepts any string (free text), you delimit by ":"
+* If a parameter accepts any string (free text), you delimit by ":"
 * If a parameter expects only certain strings (choice), you delimit by "="
 * Parameters are separated by ";"
 * Subparameters are separated by ","
