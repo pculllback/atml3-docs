@@ -497,17 +497,21 @@ Gets n elements from a list, starting left.
 ```
 Returns elements of two lists that are present in both lists.
 
-### split(string[, delimiter])
+### map(list, lambda_expression[, context])
 ```
-	split("string1 string2 string3")
-		returns ["string1", "string2", "string3"]
+	map([1, 2, 3], [entry -> numeric(#entry) * 2])
+		returns [2, 4, 6]
 
-	split("string1, string2, string3", ", ")
-		returns ["string1", "string2", "string3"]
+	map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [entry -> #entry.player])
+		returns ["Dennis", "Baris", "Niki"]
+
+	map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [entry, index, context -> #entry.player + " (" + #index + ") [" + #context + "]"], "context" )
+		returns ["Dennis (0) [context]", "Baris (1) [context]", "Niki (2) [context]"]
+	 
+	map(["Niki", "Sandro"], [entry, index, context -> #entry + \" (\" + #context[#index] + \".)\"], [5, 90])
+		returns ["Niki (5.)", "Sandro (90.)"]
 ```
-This method returns a splitted string as a list.
-
-Optionally, it is possible to set a delimiter. The default delimiter is " ".
+Applies a method to all elements of a list and returns a list of objects with the result of applying the lambda.
 
 ### random_el(list, number)
 ```
@@ -557,22 +561,6 @@ Optionally, a starting postition and a search direction can be given.
 * `direction` - the search direction ("r" or "l")
 * `position` - starting position
 
-### map(list, lambda_expression[, context])
-```
-	map([1, 2, 3], [entry -> numeric(#entry) * 2])
-		returns [2, 4, 6]
-
-	map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [entry -> #entry.player])
-		returns ["Dennis", "Baris", "Niki"]
-
-	map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [entry, index, context -> #entry.player + " (" + #index + ") [" + #context + "]"], "context" )
-		returns ["Dennis (0) [context]", "Baris (1) [context]", "Niki (2) [context]"]
-	 
-	map(["Niki", "Sandro"], [entry, index, context -> #entry + \" (\" + #context[#index] + \".)\"], [5, 90])
-		returns ["Niki (5.)", "Sandro (90.)"]
-```
-Applies a method to all elements of a list and returns a list of objects with the result of applying the lambda.
-
 ### sort(list[, fieldname/lambda_expression])
 ```
 	sort([5, 4, 3, 2, 1])
@@ -586,12 +574,17 @@ Applies a method to all elements of a list and returns a list of objects with th
 ```
 Sorts a list numerically, a list of objects by a given field or by a lambda expression that compares the objects contained in the list.
 
-### unique(list)
+### split(string[, delimiter])
 ```
-	unique([1, 2, 3, 1, 2])
-		returns [1, 2, 3]
+	split("string1 string2 string3")
+		returns ["string1", "string2", "string3"]
+
+	split("string1, string2, string3", ", ")
+		returns ["string1", "string2", "string3"]
 ```
-Returns a list with unique elements.
+This method returns a splitted string as a list.
+
+Optionally, it is possible to set a delimiter. The default delimiter is " ".
 
 ### split_lookup()
 ```
@@ -608,6 +601,13 @@ Returns a list with unique elements.
 		There are only two argument this time, as no split marker is necessary.
 ```
 Performs a lookup for fitting properties in a known lookup table. This is defined in the ATML3 training but is planned to come from Nummer5 later.
+
+### unique(list)
+```
+	unique([1, 2, 3, 1, 2])
+		returns [1, 2, 3]
+```
+Returns a list with unique elements.
 
 ## JSON object methods
 
