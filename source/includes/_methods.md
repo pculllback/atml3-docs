@@ -409,7 +409,7 @@ This method returns true, if a string contains a defined pattern.
 
 Optionally, it is also possible to set an ignoreCase flag ("i").
 
-### contains()
+### contains(type, list)
 ```
 	contains(2, [1, 2, 3, 4, 5])
 		returns true
@@ -440,7 +440,7 @@ This method checks if a string value is in a correct date format.
 
 ## List methods
 
-### intersection()
+### intersection(list, list)
 ```
 	intersection([1, 2, 3], [1, 2, 4])
 		returns [1, 2]
@@ -459,7 +459,7 @@ This method returns a splitted string as a list.
 
 Optionally, it is possible to set a delimiter. The default delimiter is " ".
 
-### filter()
+### filter(list, object/lambda_expression)
 > Example list:
 
 ```
@@ -475,19 +475,17 @@ Optionally, it is possible to set a delimiter. The default delimiter is " ".
 > Example method calls:
 
 ```
-    filter(list($list), { "type": "goal", "team": "host" })
-      - returns a list that includes the objects from the given input list that contain entries having type=goal and team=host, in our case
-        entries with number one and five of the original list.
+	filter(list($list), { "type": "goal", "team": "host" })
+		returns a list that includes the objects from the given input list that contain entries having type=goal and team=host,
+		in our case entries with number one and five of the original list.
 
-    filter(list($list), { "type": "yellowcard" })
-      - returns a list with entries that have type=yellowcard, in our example entry 2 of the original list.
+	filter(list($list), { "type": "yellowcard" })
+		returns a list with entries that have type=yellowcard,
+		in our example entry two of the original list.
 
-    filter(list($list), [entry -> #entry.type == "yellowcard" ])
-      - does the same thing as the last example but uses a λ-method to match the object. in this example the entry variable of the λ-
-        method contains the complete object to be matched.
-
-    filter(list($list), [entry, index, context -> #entry.type == "yellowcard" ], object($context_object))
-      - this is the maximum λ-method, which contains the current
+	filter(list($list), [entry -> #entry.type == "yellowcard" ])
+		returns the same thing as the last example but uses a λ-method to match the object.
+		In this example the entry variable of the λ-method contains the complete object to be matched.
 ```
 Filters a list of objects for the elements that match a given filter or λ-method.
 
@@ -497,83 +495,66 @@ Parameters:
 * `filter` - a filter definition, either as a key/value object (equal filter only) or a λ-method (complex filters possible)
 * `context` - something given to each call of the λ as a context object
 
-### random_el()
-
-
-Gets random elements from a list. $list = [ 1, 2, 3, 4, 5 ]
-
+### random_el(list, number)
 ```
-               random_el(list($list), 3)
-                 - returns for example the elements 4 and 2 as a list, thus [4, 2]
+	random_el([1, 2, 3, 4, 5], 2)
+		returns for example [3, 5, 2]
 
-               random_el(list($list), 5)
-                 - would return all elements from the given list but in a random order, for example [5, 3, 1, 2, 4]
-```    
-
-Parameter:
-
-* list - a list of things
-* count - the number of items in the list to be returned
+	random_el(list($list), 5)
+		returns for example [5, 3, 1, 2, 4]
+```  
+This method gets random elements from a list.  
 
 ### re_keep(list, pattern, direction[, position])
 ```
-  re_keep(["xyz1", "abc", "xyz2"], "xyz.")
-    - returns the list ["xyz1", "xyz2"]
+	re_keep(["xyz1", "abc", "xyz2"], "xyz.")
+		returns ["xyz1", "xyz2"]
 
-  re_keep(["xyz1", "abc", "xyz2"], "xyz.", "l", 1)
-    - returns the list ["xyz2"]
+	re_keep(["xyz1", "abc", "xyz2"], "xyz.", "l", 1)
+		returns ["xyz2"]
 
-  re_keep(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
-    - returns the list ["xyz1"]
+	re_keep(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
+		returns ["xyz1"]
 ```
-
 This method searches for a regex pattern in a list and returns a list of all matched elements.
-Optionally a starting postition and a search direction can be given
+Optionally, a starting postition and a search direction can be given.
 
-* `list` - The list to search in
+* `list` - the list to search in
 * `pattern` - regex pattern
-* `direction` - The direction to search in ("r" or "l")
+* `direction` - the search direction ("r" or "l")
 * `position` - starting position
-
 
 ### re_remove(list, pattern, direction[, position])
 ```
-  re_remove(["xyz1", "abc", "xyz2"], "abc")
-    - returns the list ["xyz1", "xyz2"]
+	re_remove(["xyz1", "abc", "xyz2"], "abc")
+		returns ["xyz1", "xyz2"]
 
-  re_remove(["xyz1", "abc", "xyz2"], "abc", "l", 1)
-    - returns the list ["xyz1", "xyz2"]
+	re_remove(["xyz1", "abc", "xyz2"], "abc", "l", 1)
+		returns ["xyz1", "xyz2"]
 
-  re_remove(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
-    - returns the list ["xyz1", "abc"]
+	re_remove(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
+		returns ["xyz1", "abc"]
 ```
 This method searches for a regex pattern in a list and returns a list of all elements that do not contain matched elements.
-Optionally a starting postition and a search direction can be given
+Optionally, a starting postition and a search direction can be given.
 
-* `list` - The list to search in
+* `list` - the list to search in
 * `pattern` - regex pattern
-* `direction` - The direction to search in ("r" or "l")
+* `direction` - the search direction ("r" or "l")
 * `position` - starting position
 
-### first(n)
+### first(list, number)
+```
+	first([ 1, 2, 3, 4, 5 ], 3)
+		returns [1, 2, 3]
 
+	first([ 1, 2, 3, 4, 5 ], 5)
+		returns [1, 2, 3, 4, 5]
+	 
+	first([ 1, 2, 3, 4, 5 ], 6)
+		returns also [1, 2, 3, 4, 5]
+```
 Gets n elements from a list, starting left.
-
-```
-    $list = [ 1, 2, 3, 4, 5 ]
-
-   first(list($list), 3)
-     - returns for example the elements 1, 2 and 3 as a list, thus [1, 2, 3]
-
-   first(list($list), 5)
-     - would return all elements from the given list in order, for example [1, 2, 3, 4, 5]
-   first(list($list), 6)
-     - would return all elements from the given list. Index overruns are caught, for example [1, 2, 3, 4, 5]
-```
-
-Parameter:
-* list      ... a list of things
-* count     ... the number of items in the list to be returned
 
 ### map()
 ```
