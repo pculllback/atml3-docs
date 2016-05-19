@@ -329,8 +329,8 @@ This is not a bug: Itâ€™s a result of the fact that most decimal fractions canâ€
 	weekday_int(1)
 		returns the integer 2 (Tuesday), if today is a monday
 
-  weekday_int(5)
-    - returns the integer 6 (Saturday), if today is a monday
+	weekday_int(5)
+		returns the integer 6 (Saturday), if today is a monday
 ```
 This method takes a numeric n between 1 and 7. It returns a numeric representation of the weekday of today + n days.
 The returned numeric is to be interpreted as follows:
