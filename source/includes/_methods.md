@@ -566,68 +566,48 @@ Gets n elements from a list, starting left.
 ```
 Applies a method to all elements of a list and returns a list of objects with the result of applying the lambda.
 
-### sort()
-
-storts a list numerically, a list of objects by a given field or by a lambda method that compares the objects contained in the list:
+### sort(list[, fieldname/lambda_expression])
 ```
-  sort(list)
-  sort(list, fieldname)
-  sort(list, expression)
-```  
-* list - list to be sorted
-* fieldname - (optional) If the list to be sorted is a list of objects, sorts the objects using the field names.
-* expression - (optional) If the list to be sorted is a list of objects, sorts the objects applying pairs of objects to a lambda expression
+	sort([5, 4, 3, 2, 1])
+		returns [1, 2, 3, 4, 5]
 
+	sort([ {"type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], "minute")
+		returns a sorted list with original elements sorted by the minute key in them, thus ["gelb", "tor1", "tor3"]
+
+	sort([ "type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], [a, b -> int(#a.minute) - int(#b.minute)])
+		returns the same output but now by a lambda expression
 ```
-   sort([5, 4, 3, 2, 1])
-     - returns the list sorted by the values of the elements it contains: 1, 2, 3, 4, 5
-
-   sort([ {"type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], "minute")
-     - returns a sorted list with original elements sorted by the minute key in them, thus being the types: "gelb", "tor1", "tor3"
-
-   sort([ "type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], [a, b -> int(#a.minute) - int(#b.minute)])
-     - produced the same output as the previous example.
-```
+Sorts a list numerically, a list of objects by a given field or by a lambda expression that compares the objects contained in the list.
 
 ### unique(list)
 ```
-  unique([1, 2, 3, 1, 2])
-    returns the [1, 2, 3]
+	unique([1, 2, 3, 1, 2])
+		returns [1, 2, 3]
 ```
 Returns a list with unique elements.
 
 ### split_lookup()
+```
+	split_lookup(#duftnoten, ", ", "headnotes")
+		- splits the contents of the data set duftnoten at the string ", " and looks up all resulting elements in a lookup table called headnotes.
+		- If duftnoten contains "heiliges holz, fisch, knoblauch" for example and the headnotes lookup table looks like this:
 
+		"heiliges holz" => "Holz, heiliges"
+		"fisch" => "Fisch"
+		"knoblauch is missing and the result of the whole lookup will be a list consisting of "Holz, heiliges" and "Fisch".
+
+	split_lookup( ["heiliges holz", "grün", "fisch"], "headnotes")
+		- does not split a string but looks up each list element, everything else is as in ex. 1.
+		There are only two argument this time, as no split marker is necessary.
+```
 Performs a lookup for fitting properties in a known lookup table. This is defined in the ATML3 training but is planned to come from Nummer5 later.
 
+### collect(list, fieldname)
 ```
-   split_lookup(#duftnoten, ", ", "headnotes")
-     - splits the contents of the data set duftnoten at the string ", " and looks up all resulting elements in a lookup table called headnotes.
-     - If duftnoten contains "heiliges holz, fisch, knoblauch" for example and the headnotes lookup table looks like this:
-
-"heiliges holz" => "Holz, heiliges"
-"fisch" => "Fisch"
-     "knoblauch is missing and the result of the whole lookup will be a list consisting of "Holz, heiliges" and "Fisch".
-
-   split_lookup( ["heiliges holz", "grün", "fisch"], "headnotes")
-     - does not split a string but looks up each list element, everything else is as in ex. 1.
-       There are only two argument this time, as no split marker is necessary.
+	collect([{ name: "gerät 1" }, { name: "gerät 3" }, { name: "gerät 2" }], "name")
+		returns ["gerät 1", "gerät 2", "gerät 3"]
 ```
-
-### collect()
-
 Takes a field from all objects in a list and returns those field values as a list.
-
-Input:
-```  
-     "devices": [ { name: "gerät 1" }, { name: "gerät 3" }, { name: "gerät 2" } ]
-```
-
-Operation:
-```
-     collect( list(#devices, "name")
-         - returns list: [ "gerät 1", "gerät 2", "gerät 3" ]
-```
 
 ## JSON object methods
 
