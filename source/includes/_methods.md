@@ -484,16 +484,10 @@ Optionally, it is possible to set a delimiter. The default delimiter is " ".
 		in our example entry two of the original list.
 
 	filter(list($list), [entry -> #entry.type == "yellowcard" ])
-		returns the same thing as the last example but uses a λ-method to match the object.
-		In this example the entry variable of the λ-method contains the complete object to be matched.
+		returns the same thing as the last example but uses a lambda expression to match the object.
+		In this example the entry variable of the lambda expression contains the complete object to be matched.
 ```
-Filters a list of objects for the elements that match a given filter or λ-method.
-
-Parameters:
-
-* `list` - a list that should be filtered
-* `filter` - a filter definition, either as a key/value object (equal filter only) or a λ-method (complex filters possible)
-* `context` - something given to each call of the λ as a context object
+Filters a list of objects for the elements that match a given filter or lambda expression.
 
 ### random_el(list, number)
 ```
@@ -556,25 +550,21 @@ Optionally, a starting postition and a search direction can be given.
 ```
 Gets n elements from a list, starting left.
 
-### map()
+### map(list, lambda_expression[, context])
 ```
-   map([1, 2, 3], [x -> numeric(#x) ** 2])
-     - returns a list with the squares of the values of the input list
+	map([1, 2, 3], [entry -> numeric(#entry) * 2])
+		returns [2, 4, 6]
 
-   map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [x -> #x.player])
-     - returns a list with the names of the people who scored goals (in this case ["Dennis", "Baris", "Niki"])
+	map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [entry -> #entry.player])
+		returns ["Dennis", "Baris", "Niki"]
 
-   map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [x, y, z -> #x.player + " (" + y + ") [" + z + "]"], "context" )
-     - uses all possible vars in the mapping: current_object, index and context object. supplies a context in form of a string
-     - returns a list [ "Dennis (0) [context]", "Baris (1) [context]", "Niki (2) [context]" ]
-   map([\"Niki\",\"Sandro\"], [entry,index,context -> #entry + \" (\" + #context[#index] + \".)\"], [5,90])
-     - takes two lists and an lambda expression and combines them, resulting in a output list of: Niki (5.), Sandro (90.)
+	map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [entry, index, context -> #entry.player + " (" + #index + ") [" + #context + "]"], "context" )
+		returns ["Dennis (0) [context]", "Baris (1) [context]", "Niki (2) [context]"]
+	 
+	map(["Niki", "Sandro"], [entry, index, context -> #entry + \" (\" + #context[#index] + \".)\"], [5, 90])
+		returns ["Niki (5.)", "Sandro (90.)"]
 ```
-
-Applies a method to all elements of a list and returns a list of
-objects with the result of applying the lambda: map(list, expression) - list ...
-list of things that should be applied - expression ... the expression to be
-applied to the elements
+Applies a method to all elements of a list and returns a list of objects with the result of applying the lambda.
 
 ### sort()
 
