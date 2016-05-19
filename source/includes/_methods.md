@@ -440,24 +440,12 @@ Optionally, it is also possible to set an ignoreCase flag ("i").
 
 ## List methods
 
-### intersection(list, list)
+### collect(list, fieldname)
 ```
-	intersection([1, 2, 3], [1, 2, 4])
-		returns [1, 2]
+	collect([{ name: "gerät 1" }, { name: "gerät 3" }, { name: "gerät 2" }], "name")
+		returns ["gerät 1", "gerät 2", "gerät 3"]
 ```
-Returns elements of two lists that are present in both lists.
-
-### split(string[, delimiter])
-```
-	split("string1 string2 string3")
-		returns ["string1", "string2", "string3"]
-
-	split("string1, string2, string3", ", ")
-		returns ["string1", "string2", "string3"]
-```
-This method returns a splitted string as a list.
-
-Optionally, it is possible to set a delimiter. The default delimiter is " ".
+Takes a field from all objects in a list and returns those field values as a list.
 
 ### filter(list, object/lambda_expression)
 > Example list:
@@ -488,6 +476,38 @@ Optionally, it is possible to set a delimiter. The default delimiter is " ".
 		In this example the entry variable of the lambda expression contains the complete object to be matched.
 ```
 Filters a list of objects for the elements that match a given filter or lambda expression.
+
+### first(list, number)
+```
+	first([ 1, 2, 3, 4, 5 ], 3)
+		returns [1, 2, 3]
+
+	first([ 1, 2, 3, 4, 5 ], 5)
+		returns [1, 2, 3, 4, 5]
+	 
+	first([ 1, 2, 3, 4, 5 ], 6)
+		returns also [1, 2, 3, 4, 5]
+```
+Gets n elements from a list, starting left.
+
+### intersection(list, list)
+```
+	intersection([1, 2, 3], [1, 2, 4])
+		returns [1, 2]
+```
+Returns elements of two lists that are present in both lists.
+
+### split(string[, delimiter])
+```
+	split("string1 string2 string3")
+		returns ["string1", "string2", "string3"]
+
+	split("string1, string2, string3", ", ")
+		returns ["string1", "string2", "string3"]
+```
+This method returns a splitted string as a list.
+
+Optionally, it is possible to set a delimiter. The default delimiter is " ".
 
 ### random_el(list, number)
 ```
@@ -536,19 +556,6 @@ Optionally, a starting postition and a search direction can be given.
 * `pattern` - regex pattern
 * `direction` - the search direction ("r" or "l")
 * `position` - starting position
-
-### first(list, number)
-```
-	first([ 1, 2, 3, 4, 5 ], 3)
-		returns [1, 2, 3]
-
-	first([ 1, 2, 3, 4, 5 ], 5)
-		returns [1, 2, 3, 4, 5]
-	 
-	first([ 1, 2, 3, 4, 5 ], 6)
-		returns also [1, 2, 3, 4, 5]
-```
-Gets n elements from a list, starting left.
 
 ### map(list, lambda_expression[, context])
 ```
@@ -601,13 +608,6 @@ Returns a list with unique elements.
 		There are only two argument this time, as no split marker is necessary.
 ```
 Performs a lookup for fitting properties in a known lookup table. This is defined in the ATML3 training but is planned to come from Nummer5 later.
-
-### collect(list, fieldname)
-```
-	collect([{ name: "gerät 1" }, { name: "gerät 3" }, { name: "gerät 2" }], "name")
-		returns ["gerät 1", "gerät 2", "gerät 3"]
-```
-Takes a field from all objects in a list and returns those field values as a list.
 
 ## JSON object methods
 
