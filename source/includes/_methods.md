@@ -86,7 +86,7 @@ Returns a format of a date value.
 ```
 This method returns the date in the following format: dd.MM.yyyy.
 
-### formatNumber(number, decimal place)
+### formatNumber(number, decimal_place)
 ```
 	format_number(2, 2)
 		returns for example "2.00" (english) or "2,00" (german)
@@ -105,7 +105,7 @@ This method joins all elements of a list into a string.
 
 Optionally, it is possible to set a delimiter.
 
-### lookup(entry, lookup table name)
+### lookup(entry, lookup table_name)
 ```
 	lookup("summer", "reifen_art")
 		looks up the entry "summer" in the lookup table (of the current language) "reifen_art" and
@@ -254,7 +254,7 @@ This method returns the difference between two dates as an integer number of day
 ```
 Calculates the length of the string representation of a value.
 
-### list_pos(list, search string)
+### list_pos(list, search_string)
 ```
 	list_pos([$property1, $property2, $property3], "$property3")
 		if truth($property3) is true:
@@ -300,7 +300,7 @@ This method can be used to convert a month into a numerical representation
 
 Note: This method only supports the german and english notation of months.
 
-### rnd_int(left bound, right bound)
+### rnd_int(left_bound, right_bound)
 ```
 	rnd_int(0, 10)
 		returns a numeric between 0 and 10
@@ -361,19 +361,21 @@ Note: This method only supports the german and english notation of weekdays.
 
 ### has_entry(type, entry)
 ```
-  has_entry("noun", "tire")
-    returns true
+	has_entry("noun", "tire")
+		returns true
 
-  has_entry("noun", "thisIsNotAWord")
-    returns false
+	has_entry("noun", "thisIsNotAWord")
+		returns false
 ```
-This method checks if an entry contains as lemma in the lexicon.
+This method checks if an entry contains as lemma in the lexicon in the given language.
 
-### in_range()
+### in_range(number, left_bound, right_bound)
 ```
-  in_range(#value, 5, 10)
-    - returns the truth value "true" if the value lies between 5 and 10.
-      It implements the method 5 ≤ #value ≤ 10
+	in_range(6, 5, 10)
+		returns true
+		
+	in_range(12, 5, 10)
+		returns false
 ```
 Checks if a numeric value lies between two other values.
 
@@ -428,11 +430,11 @@ This method can be used to check if an element is inside a list.
 
 ### is_date(string)
 ```
-  is_date("16.05.1983")
-    returns true
+	is_date("16.05.1983")
+		returns true
 
-  is_date("value")
-    returns false
+	is_date("string")
+		returns false
 ```
 This method checks if a string value is in a correct date format.
 
@@ -440,8 +442,8 @@ This method checks if a string value is in a correct date format.
 
 ### intersection()
 ```
-  intersection([1, 2, 3], [1, 2, 4])
-    returns list [1, 2]
+	intersection([1, 2, 3], [1, 2, 4])
+		returns [1, 2]
 ```
 Returns elements of two lists that are present in both lists.
 
@@ -452,15 +454,13 @@ Returns elements of two lists that are present in both lists.
 
 	split("string1, string2, string3", ", ")
 		returns ["string1", "string2", "string3"]
-
 ```
 This method returns a splitted string as a list.
 
 Optionally, it is possible to set a delimiter. The default delimiter is " ".
 
 ### filter()
-
-Filters a list of objects for the elements that match a given filter or λ-method. Given an example list:
+> Example list:
 
 ```
     [
@@ -472,28 +472,29 @@ Filters a list of objects for the elements that match a given filter or λ-metho
     ]
 ```
 
-If one wants a list with all goals by the host team, they could use this method call:
+> Example method calls:
 
 ```
-    filter( list($list), { "type": "goal", "team": "host" })
+    filter(list($list), { "type": "goal", "team": "host" })
       - returns a list that includes the objects from the given input list that contain entries having type=goal and team=host, in our case
         entries with number one and five of the original list.
 
-    filter( list($list), { "type": "yellowcard" })
+    filter(list($list), { "type": "yellowcard" })
       - returns a list with entries that have type=yellowcard, in our example entry 2 of the original list.
 
-    filter( list($list), [entry -> #entry.type == "yellowcard" ])
+    filter(list($list), [entry -> #entry.type == "yellowcard" ])
       - does the same thing as the last example but uses a λ-method to match the object. in this example the entry variable of the λ-
         method contains the complete object to be matched.
 
-    filter( list($list), [entry, index, context -> #entry.type == "yellowcard" ], object($context_object))
+    filter(list($list), [entry, index, context -> #entry.type == "yellowcard" ], object($context_object))
       - this is the maximum λ-method, which contains the current
 ```
+Filters a list of objects for the elements that match a given filter or λ-method.
 
 Parameters:
 
 * `list` - a list that should be filtered
-* `filter` - a filter definition, either as a Key / Value object (equal filter only) or a λ-method (complex filters possible)
+* `filter` - a filter definition, either as a key/value object (equal filter only) or a λ-method (complex filters possible)
 * `context` - something given to each call of the λ as a context object
 
 ### random_el()
