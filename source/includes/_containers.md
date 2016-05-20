@@ -4,6 +4,29 @@ In this section the different containers and their parameters are described.
 
 Some of the containers, for example PhraseContainer and ValueContainer are supposed to render vocabulary (or value, respectively). Containers can react to the truth value of properties.
 
+## Container basics
+Containers go into sentences and their purpose is to "summon" atml rules, values and vocabulary into the sentences. They point at a property to be summoned into the text, but also define how the grammar module will inflect and construct the output of the property, so it will fit into the syntax of the sentence.
+
+Containers are separated from the rest of the sentence by brackets [ and ]. They consist of a main expression and parameters. Parameter. The main expression can either be a property, a grouped property, a grammar container or text. All  types except text come with a set of grammar subparameters.
+
+Remember:
+
+* If a parameter accepts any string (free text), you delimit by ":"
+* If a parameter expects only certain strings (choice), you delimit by "="
+* Parameters are separated by ";"
+* Subparameters are separated by ","
+* If you refer to a certain aspect of a container, you delimit by "."
+* If that aspect is a method (draw the best out of a group, retrieve the value, etc.), you will need to add "([the method's argument])"
+
+```atml3
+        [main_expression;trailing:);preceding:(]
+        [main_expression,case=dat,prep=mit,det=definite;on,true=other_expression]
+
+        [LIST_of_expressions.all()]
+        [LIST_of_expressions.random(2)]
+```
+
+
 ## Appeal container
 
 ```atml3
