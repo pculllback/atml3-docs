@@ -105,7 +105,7 @@ This method joins all elements of a list into a string.
 
 Optionally, it is possible to set a delimiter.
 
-### lookup(entry, lookup table_name)
+### lookup(entry, lookup_table_name)
 ```
 	lookup("summer", "reifen_art")
 		looks up the entry "summer" in the lookup table (of the current language) "reifen_art" and
@@ -586,21 +586,18 @@ This method returns a splitted string as a list.
 
 Optionally, it is possible to set a delimiter. The default delimiter is " ".
 
-### split_lookup()
+### split_lookup(entry/entry_list[, delimiter], lookup_table_name)
 ```
-	split_lookup(#duftnoten, ", ", "headnotes")
-		- splits the contents of the data set duftnoten at the string ", " and looks up all resulting elements in a lookup table called headnotes.
-		- If duftnoten contains "heiliges holz, fisch, knoblauch" for example and the headnotes lookup table looks like this:
-
-		"heiliges holz" => "Holz, heiliges"
-		"fisch" => "Fisch"
-		"knoblauch is missing and the result of the whole lookup will be a list consisting of "Holz, heiliges" and "Fisch".
-
-	split_lookup( ["heiliges holz", "grün", "fisch"], "headnotes")
-		- does not split a string but looks up each list element, everything else is as in ex. 1.
-		There are only two argument this time, as no split marker is necessary.
+	split_lookup("summer, winter", ", ", "reifen_art")
+		splits the entry string at ", " and  looks up the entries "summer" and "winter" in the lookup table (of the current language) "reifen_art" and
+		returns its value as a vocabulary list. If nothing is found, an empty list is returned.
+		
+	split_lookup( ["summer", "winter"], "reifen_art")
+		returns the same output, only implemented with a list instead of a string and a delimiter.
 ```
-Performs a lookup for fitting properties in a known lookup table. This is defined in the ATML3 training but is planned to come from Nummer5 later.
+Performs a lookup for fitting entries in a known lookup table.
+
+Note: This method returns the result as a vocabulary list. For getting only the noun as a string, use lookup() (see string methods).
 
 ### unique(list)
 ```
