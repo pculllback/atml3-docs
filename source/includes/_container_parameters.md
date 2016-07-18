@@ -65,6 +65,37 @@ Additionally an ID can be set to the element.
 
 `Capitalize` is a container parameter that forces the first letter of the rendered string to be upper case.
 
+## IMG
+
+The IMG parameter generates an image.
+
+Possible sub-parameters:
+
+* text - alternative text of the image
+* title - title of the image
+* format - format of the image
+ * markdown (default)
+ * html
+ * bb
+
+```
+	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img]
+	  - Generates a markdown link like this:
+	      ![](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
+	      
+	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,text=alt text]
+	  - Generates a markdown link like this:
+	      ![alt text](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
+	      
+	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,title=This is the google logo]
+	  - Generates a markdown link like this:
+	      ![](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png "This is the google logo")
+	      
+	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,text=alt text,title=This is the google logo]
+	  - Generates a markdown link like this:
+	      [alt text](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png "This is the google logo")
+```
+
 ## Keyword
 
 ```atml3
@@ -191,20 +222,20 @@ Possible sub-parameters:
 
 ```
   [Text:https://www.google.de;url]
-    - Generates a markdown link like this:
-        [https://www.google.de](https://www.google.de)
-        
-  [Text:https://www.google.de;url,text=click here]
-    - Generates a markdown link like this:
-        [click here](https://www.google.de)
-        
-  [Text:https://www.google.de;url,title=This is a link to google]
-    - Generates a markdown link like this:
-        [https://www.google.de](https://www.google.de "This is a link to google")
-        
-  [Text:https://www.google.de;url,text=click here,title=This is a link to google]
-    - Generates a markdown link like this:
-        [click here](https://www.google.de "This is a link to google")
+	- Generates a markdown link like this:
+		[https://www.google.de](https://www.google.de)
+
+  [Text:https://www.google.de;url,text=click here]
+	- Generates a markdown link like this:
+		[click here](https://www.google.de)
+
+  [Text:https://www.google.de;url,title=This is a link to google]
+	- Generates a markdown link like this:
+		[https://www.google.de](https://www.google.de "This is a link to google")
+
+[Text:https://www.google.de;url,text=click here,title=This is a link to google]
+	- Generates a markdown link like this:
+		[click here](https://www.google.de "This is a link to google")
 ```
 
 ## Void
