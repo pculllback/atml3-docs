@@ -80,19 +80,19 @@ Possible sub-parameters:
 
 ```
 	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img]
-	  - Generates a markdown link like this:
+	  - Generates a markdown image like this:
 	      ![](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
 	      
 	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,text=alt text]
-	  - Generates a markdown link like this:
+	  - Generates a markdown image like this:
 	      ![alt text](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
 	      
 	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,title=This is the google logo]
-	  - Generates a markdown link like this:
+	  - Generates a markdown image like this:
 	      ![](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png "This is the google logo")
 	      
 	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,text=alt text,title=This is the google logo]
-	  - Generates a markdown link like this:
+	  - Generates a markdown image like this:
 	      [alt text](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png "This is the google logo")
 ```
 
