@@ -569,7 +569,7 @@ Optionally, a starting postition and a search direction can be given.
 	sort([ {"type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], "minute")
 		returns a sorted list with original elements sorted by the minute key in them, thus ["gelb", "tor1", "tor3"]
 
-	sort([ "type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], [a, b -> int(#a.minute) - int(#b.minute)])
+	sort([ {"type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], [a, b -> int(#a.minute) - int(#b.minute)])
 		returns the same output but now by a lambda expression
 ```
 Sorts a list numerically, a list of objects by a given field or by a lambda expression that compares the objects contained in the list.
