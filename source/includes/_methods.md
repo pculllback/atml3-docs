@@ -86,7 +86,7 @@ Returns a format of a date value.
 ```
 This method returns the date in the following format: dd.MM.yyyy.
 
-### formatNumber(number, decimal_place)
+### format_number(number, decimal_place)
 ```
 	format_number(2, 2)
 		returns for example "2.00" (english) or "2,00" (german)
