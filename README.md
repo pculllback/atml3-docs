@@ -4,7 +4,7 @@
 ## How to Contribute to this documentation
 
 * edit documentation in source/index.html.md
-* public docs will be build automatically: [![Build Status](https://travis-ci.org/axsemantics/atml3-docs.svg?branch=master)](https://travis-ci.org/axsemantics/atml3-docs)
+* public docs will be built automatically: [![Build Status](https://travis-ci.org/axsemantics/atml3-docs.svg?branch=master)](https://travis-ci.org/axsemantics/atml3-docs)
 
 
 Dokumentation
