@@ -66,6 +66,9 @@ This container can be used to render words with their grammatical function and p
 
     [G:adjective=niedlich,case=gen,num=s,gender=f,det=def]
         - renders "niedlichen", as in "der niedlichen Katze"
+
+    [G:determiner=def,num=s,gender=f]
+        - renders "die"
  ```        
 
 The grammar container is intended to be used to render words, from which other words can inherit grammatical information. This can be useful if the case of something changes when a word giving grammatical information is replaced by a synonym or adjective groups which change the numerus of their noun shall be rendered.
