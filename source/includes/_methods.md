@@ -234,6 +234,16 @@ Converts a string to uppercase.
 ```
 This method can be used to count the elements in a list.
 
+### date_day_of_year(date)
+```
+	date_day_of_year("31.12.2010")
+		returns 365
+
+	date_day_of_year("this_is_not_a_valid_date")
+		returns 0
+```
+This method returns the day of the year of a given date as a numeric.
+
 ### date_difference(date, date)
 ```
 	date_difference("16.05.1983", "19.05.1983")
