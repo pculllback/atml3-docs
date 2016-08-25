@@ -173,7 +173,7 @@ This method searches for a regex pattern in a list of string elements and return
 	re_find([10, 2, 3], "1.*", "r", 0)
 		returns "10"
 
-	re_get([1, 2, 3], "4", "l", 0)
+	re_find([1, 2, 3], "4", "l", 0)
 		returns an empty string
 ```
 This method searches for a regex pattern in a list of string elements and returns the string if there is a match.
