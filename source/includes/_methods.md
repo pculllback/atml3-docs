@@ -163,8 +163,20 @@ This method replaces the last occurrence of a substring with a new stated substr
 	re_get([1, 2, 3], ".*", "l", 1)
 		returns "2"
 ```
-This method searches for a regex pattern in a list of string elements and returns the string if there is a match.
+This method searches for a regex pattern in a list of string elements and returns the string if there is a match at the specified position.
 
+### re_find(list, pattern, direction, position)
+```
+	re_find([1, 2, 30], "3.*", "l", 0)
+		returns "30"
+
+	re_find([10, 2, 3], "1.*", "r", 0)
+		returns "10"
+
+	re_get([1, 2, 3], "4", "l", 0)
+		returns an empty string
+```
+This method searches for a regex pattern in a list of string elements and returns the string if there is a match.
 ### re_group(pattern, string[, i])
 ```
 	re_group("String1(.*)String3", "String1String2String3")
