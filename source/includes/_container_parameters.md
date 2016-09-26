@@ -177,7 +177,7 @@ OnRandom is a container param that will throw away a container param randomly.
    [Text:welt;Preceding:hallo ]
      - renders "hallo welt"
 
-   [drei.value();Preceding:,text=Stückzahl: ]
+   [drei.value();Preceding:,text=StückzahlDOPPELPUNKT ]
      - renders "Stückzahl: 3", if the property drei renders to 3.
 ```
 
