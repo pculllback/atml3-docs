@@ -68,16 +68,16 @@ These types of times can be added:
 ### date_convert(date, format)
 ```
 	date_convert("16.05.1983", "yyyy-MM-dd")
-		returns string "1983-05-16"
+		returns "1983-05-16"
 ```
-This method converts a date value to a specific format.
+This method converts a date value to a specific format and returns it as a string.
 
 ### date_format(date)
 ```
 	date_format("16.05.1983")
-		returns string "dd.MM.yyyy"
+		returns "dd.MM.yyyy"
 ```
-Returns a format of a date value.
+Returns a format string of a date value.
 
 ### date_now()
 ```
@@ -108,7 +108,7 @@ Optionally, it is possible to set a delimiter.
 ### lookup(entry, lookup_table_name)
 ```
 	lookup("summer", "reifen_art")
-		looks up the entry "summer" in the lookup table (of the current language) "reifen_art" and
+		Looks up the entry "summer" in the lookup table "reifen_art" (of the current language) and
 		returns its value as a string. If nothing is found, an empty string is returned.
  ```
 Performs a lookup for fitting entries in a known lookup table.
@@ -125,7 +125,7 @@ This method converts a string to its lowercase form.
 ### render($property)
 ```
 	render($property)
-		returns the string "kleine Katze" if the property's adjective field contains "klein" and
+		Returns the string "kleine Katze" if the property's adjective field contains "klein" and
 		its noun field contains "Katze".
 ```
 This method takes a property and returns the content of its vocabulary.
@@ -144,7 +144,7 @@ Optionally, it is possible to set the number of times of replacements.
 
 ### replace_last(string, old, new)
 ```
-	replace("1, 2, 3, 4", ",", "and")
+	replace("1, 2, 3, 4", ",", " and")
 		returns "1, 2, 3 and 4"
 ```
 This method replaces the last occurrence of a substring with a new stated substring.
@@ -174,9 +174,10 @@ This method searches for a regex pattern in a list of string elements and return
 		returns "10"
 
 	re_find([1, 2, 3], "4", "l", 0)
-		returns an empty string
+		returns ""
 ```
-This method searches for a regex pattern in a list of string elements and returns the string if there is a match.
+This method searches for a regex pattern in a list of string elements and returns the string if there is a match.  Otherwise an empty string is returned.
+
 ### re_group(pattern, string[, i])
 ```
 	re_group("String1(.*)String3", "String1String2String3")
@@ -201,15 +202,15 @@ This method searches for a regex pattern and replaces it with a new substring.
 ### substring(string, index, length)
 ```
 	substring("Hello world", 0, 1)
-		returns the substring "H" from the string "Hello world",
-		which is the substring from index 0 with length 1.
+		Returns the substring "H" from the string "Hello world",
+		which is the substring from index 0 with a length of 1 character.
 
 	substring("Hello world", 5, 3)
-		returns the substring "wor" from the string "Hello world",
-		which is the substring from index 5 (the w) with a length of 3 chars.
+		Returns the substring "wor" from the string "Hello world",
+		which is the substring from index 5 (the w) with a length of 3 characters.
 
 	substring("Hello world", 5)
-		returns the substring "world" from the string "Hello world",
+		Returns the substring "world" from the string "Hello world",
 		which is from position 5 to the end of the string.
 ```
 This method extracts a substring from a string with a given index and length.
@@ -334,10 +335,10 @@ It requires a left bound as well as a right bound statement.
 ### round(double[, decimals])
 ```
 	round(0.6)
-		returns - 1
+		returns 1
 
 	round(0.144743575, 2)
-		returns - 0.14
+		returns 0.14
 ```
 This method rounds a numeric value.
 There's an optional parameter to set the decimals to round to.
@@ -369,10 +370,10 @@ Sunday	|	7
 
 ### weekday_no(day)
 ```
-	month_no("Dienstag")
+	weekday_no("Dienstag")
 		returns number 2, because tuesday is the second day in a week
 
-	month_no("monday")
+	weekday_no("monday")
 		returns number 1, because monday is the first day of the week
 ```
 This method can be used to convert a weekday into a numerical representation.
