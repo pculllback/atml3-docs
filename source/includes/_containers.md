@@ -171,7 +171,7 @@ Defaults:
 * `prep - preposition; default: keine`
 * `pronoun - pronoun: Nein`
 
-Examples for rendering (assume there is a property named "Hund" with an adjective "braun" and a noun "Hund")
+
 ```atml3
   [wort]
     - renders "Hund"
