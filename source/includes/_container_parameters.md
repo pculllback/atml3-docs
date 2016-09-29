@@ -12,7 +12,7 @@ Container parameters can be attached to a container to add instructions or infor
      - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
 ```
 
-The container parameter `Alternative` is used to render an alternative text, if the container would not render anything otherwise.
+The container parameter `Alt` (for alternative) is used to render an alternative text, if the container would not render anything otherwise.
 
 ## Bullet
 
@@ -67,17 +67,6 @@ Additionally an ID can be set to the element.
 
 ## IMG
 
-The IMG parameter generates an image.
-
-Possible sub-parameters:
-
-* text - alternative text of the image
-* title - title of the image
-* format - format of the image
- * markdown (default)
- * html
- * bb
-
 ```
 	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img]
 	  - Generates a markdown image like this:
@@ -96,6 +85,18 @@ Possible sub-parameters:
 	      [alt text](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png "This is the google logo")
 ```
 
+The `img` parameter generates an image.
+
+Possible sub-parameters are:
+
+* `text` - alternative text of the image
+* `title` - title of the image
+* `format` - format of the image
+ * markdown (default)
+ * html
+ * bb
+
+
 ## Keyword
 
 ```atml3
@@ -109,7 +110,7 @@ With the `Keyword` parameter you can define multiple keywords within your genera
 
 ## Kill
 
-```python
+```atml3
    [Text:hallo] [Text:;Kill] [Text:welt]
      - prevents rendering, because the second container does not render anything and carries the Kill parameter
 ```
@@ -119,13 +120,14 @@ With the `Keyword` parameter you can define multiple keywords within your genera
 
 ## Lower
 
-```shell
+```atml3
     [Text:ICH BIN GROSSGESCHRIEBEN;Lower]
      - renders "ich bin grossgeschrieben"
 
    [hund_wort,prep=mit,case=Dat;Lower]
      - renders "mit dem hund", if the property hund_wort renders "Hund"
 ```
+
 Lower is a parameter that forces the rendered string of a container to be all lower case.
 
 
@@ -142,7 +144,6 @@ Lower is a parameter that forces the rendered string of a container to be all lo
 On is a container parameter that activates or deactivates according to a condition.
 
 
-
 ## Off
 
 ```atml3
@@ -154,7 +155,6 @@ On is a container parameter that activates or deactivates according to a conditi
 ```
 
 Off is a container parameter that activates or deactivates according to a condition.
-
 
 
 ## OnRandom
@@ -170,7 +170,6 @@ Off is a container parameter that activates or deactivates according to a condit
 OnRandom is a container param that will throw away a container param randomly.
 
 
-
 ## Preceding
 
 ```atml3
@@ -183,16 +182,15 @@ OnRandom is a container param that will throw away a container param randomly.
 
 Preceding is a container parameter that is used to insert text in front of a rendered string in a container.
 
+
 ## Raw
 
-Raw is a container parameter that forces ignoring the text modulation part.
-
-```
+```atml3
   [Text:https://www.google.de;raw]
     - renders "https://www.google.de" instead of "https://www.Google.De"
-
 ```
 
+Raw is a container parameter that forces ignoring the text modulation part.
 
 
 ## Trailing
@@ -207,20 +205,21 @@ Raw is a container parameter that forces ignoring the text modulation part.
 
 Trailing is a container parameter that is used to insert text behind a rendered string in a container.
 
+
 ## URL
 
 The URL parameter generates an hyperlink.
 
-Possible sub-parameters:
+Possible sub-parameters are:
 
-* text - clickable text in a link
-* title - title of the link
-* format - format of the link
+* `text` - clickable text in a link
+* `title` - title of the link
+* `format` - format of the link
  * markdown (default)
  * html
  * bb
 
-```
+```atml3
   [Text:https://www.google.de;url]
 	- Generates a markdown link like this:
 		[https://www.google.de](https://www.google.de)
@@ -238,9 +237,10 @@ Possible sub-parameters:
 		[click here](https://www.google.de "This is a link to google")
 ```
 
+
 ## Void
 
-```
+```atml3
    [dog_phrase,id=test123;Void]
      - renders nothin but can be referenced by grammar-from=test123 and will deliver it's grammatical properties
 ```
@@ -252,17 +252,16 @@ Alias: `NoOut`
 
 ## Source
 
-```
+```atml3
 [hund_wort,prep=mit,case=Dat;Source:mit dem Hund]
 ```
 
 Source is a container parameter that can be filled with an intended output.
 
 
-
 ## Keyword
 
-```
+```atml3
    [Text:der goodyear 500;Keyword,id=1,alt=der Reifen]
      - here the engine will either display "der goodyear 500" or the alternative text "der Reifen"
        depending on the random selection.
