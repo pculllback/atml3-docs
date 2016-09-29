@@ -5,6 +5,15 @@ In this section the different containers and their parameters are described.
 Some of the containers, for example PhraseContainer and ValueContainer are supposed to render vocabulary (or value, respectively). Containers can react to the truth value of properties.
 
 ## Container basics
+
+```atml3
+        [main_expression;trailing:);preceding:(]
+        [main_expression,case=dat,prep=mit,det=definite;on,true=other_expression]
+
+        [LIST_of_expressions.all()]
+        [LIST_of_expressions.random(2)]
+```
+
 Containers go into sentences and their purpose is to "summon" atml rules, values and vocabulary into the sentences. They point at a property to be summoned into the text, but also define how the grammar module will inflect and construct the output of the property, so it will fit into the syntax of the sentence.
 
 Containers are separated from the rest of the sentence by brackets [ and ]. They consist of a main expression and parameters. Parameter. The main expression can either be a property, a grouped property, a grammar container or text. All  types except text come with a set of grammar subparameters.
@@ -17,14 +26,6 @@ Remember:
 * Subparameters are separated by ","
 * If you refer to a certain aspect of a container, you delimit by "."
 * If that aspect is a method (draw the best out of a group, retrieve the value, etc.), you will need to add "([the method's argument])"
-
-```atml3
-        [main_expression;trailing:);preceding:(]
-        [main_expression,case=dat,prep=mit,det=definite;on,true=other_expression]
-
-        [LIST_of_expressions.all()]
-        [LIST_of_expressions.random(2)]
-```
 
 
 ## Appeal container
@@ -45,12 +46,13 @@ Parameter:
 * `case`: default: Nom, the grammatical case
 
 ## Fail Container
-If this container is rendered in a sentence, the rendering of the text itself is finished with an error message to the myAX. The error message is then displayed to the user.
 
 ```atml3
     [Fail:Der Wert load_index ist nicht im gültigen Wertebereich;On:fehlerbedingung=true]
-    The error message appears in the myAX if the container is rendered. The rendering can controlled by On and Off container parameters.
+    The error message appears in the myAX if the container is rendered. The rendering can be controlled by On and Off container parameters.
 ```
+
+If this container is rendered in a sentence, the rendering of the text itself is aborted with an error message to the myAX. The error message is then displayed to the user.
 
 The container does not lead to output in the text itself.
 
@@ -121,14 +123,8 @@ If you want to explicitly inherit single properties you can use the following pa
 
 
 ## Group Container
-A group container outputs a part of a list. There are several selectors available, namely:
-* `Best(n)` - the first n valid elements of the list
-* `All()` - all valid elements
-* `AllRandom()` - like All(), but in random order.
-* `Last(n)` - the last n valid elements of the list
-* `Random(n)` - n elements of the list chosen at random
 
-Assume the property "group" has the mappingValue ["rot", "gelb", "grün", "blau"]. The container looks as follows:
+> Assume the property "group" has the mappingValue ["rot", "gelb", "grün", "blau"]. The container looks as follows:
 
 ```atml3
   [group.All()]
@@ -145,10 +141,18 @@ Assume the property "group" has the mappingValue ["rot", "gelb", "grün", "blau"
 
   [group.Range(1, 2)]
     - renders the second and third element of the group (index is 0-based): "gelb, grün"
-    ///
+
   [group.AllRandom(),conj=oder]
     - like .All() but randomizes the order of the elements.
 ```
+
+A group container outputs a part of a list. There are several selectors available, namely:
+* `Best(n)` - the first n valid elements of the list
+* `All()` - all valid elements
+* `AllRandom()` - like All(), but in random order.
+* `Last(n)` - the last n valid elements of the list
+* `Random(n)` - n elements of the list chosen at random
+
 
 The group container also knows grammatical properties:
 
@@ -161,16 +165,6 @@ The group container also knows grammatical properties:
 * `pronoun` - renders only a pronoun of the list. (personal: "er, sie, es" or demonstrative: "dieser, diese, dieses")
 
 ## Phrase Container
-A phrase container renders the vocabulary of a property. The property can itself contain containers. The vocabulary is rendered with grammatic properties.
-
-Defaults:
-
-* `adj - adjective: Nein`
-* `case - Nom`
-* `det - determiner; default: keiner`
-* `prep - preposition; default: keine`
-* `pronoun - pronoun: Nein`
-
 
 ```atml3
   [wort]
@@ -193,7 +187,17 @@ Defaults:
 
   [wort,pronoun=ihrsein,case=Dat,prep=mit,reference=subject]
     - renders "mit seinem" or "mit ihrem", depending on the gender of the container "subject"
-```    
+```
+
+A phrase container renders the vocabulary of a property. The property can itself contain containers. The vocabulary is rendered with grammatic properties.
+
+Defaults:
+
+* `adj - adjective: Nein`
+* `case - Nom`
+* `det - determiner; default: keiner`
+* `prep - preposition; default: keine`
+* `pronoun - pronoun: Nein`
 
 
 Permitted values for the parameters:
@@ -215,26 +219,26 @@ Permitted values for the parameters:
 
 
 ## Text Container
-A text container simply renders a string.
 
 ```
   [Text:hallo, welt!]
     - renders "hallo, welt!"
 ```
 
-Rendering of simple text by a container is useful if container parameters need to be applied to that text.
+A text container simply renders a string.
 
 ```
   [Text:dies ist ein test;Capitalize;On,merkmal=true]
     - renders "Dies ist ein test" if the boolean value of the property "merkmal" is true.
     - renders nothing otherwise
-```    
+```
 
+Rendering of simple text by a container is useful if container parameters need to be applied to that text.
 
 
 ## Value Container
 
-Value Containers just render the value (defined by the mappingExpression) for a property. They ignore the vocabulary. They can add grammatical informations and render with a case and determiner. Default values are case = Nom and determiner = def. In einem Container wären Beispiele
+> Some examples:
 
 ```atml3
               [merkmalsname.value()]
@@ -254,6 +258,8 @@ Value Containers just render the value (defined by the mappingExpression) for a 
               [merkmalsname.value(),use_numerals=true,numeral_type=cardinal]
                 - use cardinal or ordinal to switch what kind of number to render.
 ```
+
+Value Containers just render the value (defined by the mappingExpression) for a property. They ignore the vocabulary. They can add grammatical informations and render with a case and determiner. Default values are case = Nom and determiner = def.
 
 The cases that exist are language dependent, eg Nom, Gen, Dat, Akk in German. Determiners might be
 
