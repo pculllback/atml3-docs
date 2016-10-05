@@ -144,19 +144,6 @@ Lower is a parameter that forces the rendered string of a container to be all lo
 On is a container parameter that activates or deactivates according to a condition.
 
 
-## Off
-
-```atml3
-   [Text:test;Off,true=bool_property]
-     - only renders "test", if the property bool_property is false.
-
-   [Text:test;Off,false=bool_property]
-     - only renders "test", if the property bool_property is true.
-```
-
-Off is a container parameter that activates or deactivates according to a condition.
-
-
 ## OnRandom
 
 ```atml3
