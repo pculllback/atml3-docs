@@ -150,10 +150,10 @@ A group container outputs a part of a list. There are several selectors availabl
 
 * `Best(n)` - the first n valid elements of the list
 * `All()` - all valid elements
-* `AllRandom()` - like All(), but in random order.
+* `AllRandom()` - like All(), but in random order
 * `Last(n)` - the last n valid elements of the list
 * `Random(n)` - n elements of the list chosen at random
-* `Range(m, n)` - all elements in the inclusive range of m and n will be chosen
+* `Range(m, n)` - all elements in the inclusive range of m and n will be chosen (index is 0-based)
 
 The group container also knows grammatical properties:
 
