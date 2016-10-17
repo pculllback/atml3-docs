@@ -147,16 +147,17 @@ If you want to explicitly inherit single properties you can use the following pa
 ```
 
 A group container outputs a part of a list. There are several selectors available, namely:
+
 * `Best(n)` - the first n valid elements of the list
 * `All()` - all valid elements
 * `AllRandom()` - like All(), but in random order.
 * `Last(n)` - the last n valid elements of the list
 * `Random(n)` - n elements of the list chosen at random
-
+* `Range(m, n)` - all elements in the inclusive range of m and n will be chosen
 
 The group container also knows grammatical properties:
 
-* `adj` - are adjectives to be rendered if present? (yes/no; default: no)
+* `adj` - are adjectives to be rendered if present? (true/false/first; default: false)
 * `adjconj` - conjunctions for adjectives in the form und_oder_KOMMA_MODIFIER.
 * `case` - grammatical case for the elements to be rendered in. (language dependent; default: Nom)
 * `det` - determiner to preceed every element (default: kein)
@@ -193,11 +194,10 @@ A phrase container renders the vocabulary of a property. The property can itself
 
 Defaults:
 
-* `adj - adjective: Nein`
-* `case - Nom`
-* `det - determiner; default: keiner`
-* `prep - preposition; default: keine`
-* `pronoun - pronoun: Nein`
+* `adj - adjective: false`
+* `case - nom`
+* `det - determiner; default: none`
+* `prep - preposition; default: none`
 
 
 Permitted values for the parameters:
