@@ -215,7 +215,7 @@ Permitted values for the parameters:
  * `your` - possessive determiner, "Ihr Hund"
  * `sein` - possessive determiner, "sein Hund"
  * `ihrsein` - possesive determiner able to print "sein" and "ihr", chosen by reference=containerID
- * `num-to` - sg (force singular), pl (force plural)
+* `num-to` - sg (force singular), pl (force plural)
 
 
 ## Text Container
