@@ -28,23 +28,6 @@ Remember:
 * If that aspect is a method (draw the best out of a group, retrieve the value, etc.), you will need to add "([the method's argument])"
 
 
-## Appeal container
-
-```atml3
-        [Appeal:reader,id=reader]
-            renders to "Du", "Ihr" or "Sie", depending what formality is set. Formality is a parameter set in the myAX.
-
-        [Appeal:reader,pronoun=reflexive,case=dat]
-            renders to "dir", "ihnen" or "euch", depending what formality is set.
-```
-
-The appeal container can be used to adress the reader.
-
-Parameter:
-
-* `pronoun`: default: personal, pronomensart personal, reflexive or possessive
-* `case`: default: Nom, the grammatical case
-
 ## Fail Container
 
 ```atml3
