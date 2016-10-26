@@ -185,9 +185,6 @@ The group container also knows grammatical properties:
 
   [wort,pronoun=demonstrative,case=Dat,prep=mit]
     - renders "mit diesem"
-
-  [wort,pronoun=ihrsein,case=Dat,prep=mit,reference=subject]
-    - renders "mit seinem" or "mit ihrem", depending on the gender of the container "subject"
 ```
 
 A phrase container renders the vocabulary of a property. The property can itself contain containers. The vocabulary is rendered with grammatic properties.
