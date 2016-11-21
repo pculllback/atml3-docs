@@ -66,10 +66,20 @@ These types of times can be added:
 * `seconds`
 
 ### date_convert(date, format)
+> Date:
+
 ```
 	date_convert("16.05.1983", "yyyy-MM-dd")
 		returns "1983-05-16"
 ```
+
+> Unix Time Stamp:
+
+```
+	date_convert("1478713441480", "yyyy-MM-dd")
+		returns "2016-11-09"
+```
+
 This method converts a date value to a specific format and returns it as a string.
 
 ### date_format(date)
