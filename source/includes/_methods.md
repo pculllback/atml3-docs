@@ -49,6 +49,18 @@ Optionally, a conjunction can be given.
 ```
 This method returns the current language in the current text generation process as an ISO 2-letter code.
 
+### currency(double)
+```
+	currency(2.1)
+		returns the string "2.10"
+		
+	currency(1000000)
+		returns the string "1,000,000.00"
+		
+	(culture: en-US)
+```
+This function converts a double to a currency string, depending on the current culture.
+
 ### date_add(date, number, type)
 ```
 	date_add("16.05.1983", 3, "years")
