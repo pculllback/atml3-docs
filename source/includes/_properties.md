@@ -148,3 +148,7 @@ Thus a single property consists of three parts:
  * `Noun` - enter here the noun of the property.
  * `Adjective` - enter here the adjective of the property.
  * `Head Noun` - enter here a word that should be used as representation for inflections instead of the original noun.
+ 
+ 
+ ## Characters
+Please keep names of objects (like Property names) within valid characters. Allowed characters are "a-z, A-Z, 0-9, ö, ä, ü, Ö, Ä, Ü, ß, &, and _."

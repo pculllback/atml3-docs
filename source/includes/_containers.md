@@ -100,7 +100,6 @@ If you want to explicitly inherit single properties you can use the following pa
 * grammar-from-case
 * grammar-from-num
 * grammar-from-gender
-* grammar-from-det
 * grammar-from-person
 * grammar-from-tense
 
