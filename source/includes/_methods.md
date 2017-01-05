@@ -1,4 +1,4 @@
-# Methods<a name="methods"></a> 
+# Methods<a name="methods"></a>
 
 With methods you can modify and format your own data to implement perfectly good stories.
 
@@ -53,10 +53,10 @@ This method returns the current language in the current text generation process 
 ```
 	currency(2.1)
 		returns the string "2.10"
-		
+
 	currency(1000000)
 		returns the string "1,000,000.00"
-		
+
 	(culture: en-US)
 ```
 This function converts a double to a currency string, depending on the current culture.
@@ -156,7 +156,7 @@ This method takes a property and returns the content of its vocabulary.
 ```
 	replace("old old old old", "old", "new")
 		returns "new new new new"
-		
+
 	replace("old old old old", "old", "new", 2)
 		returns "new new old old"
 ```
@@ -204,7 +204,7 @@ This method searches for a regex pattern in a list of string elements and return
 ```
 	re_group("String1(.*)String3", "String1String2String3")
 		returns "String2"
-		
+
 	re_group("^.*(String2).*$", "STRING1STRING2STRING3", "i")
 		returns "STRING2"
 ```
@@ -437,7 +437,7 @@ This method checks if an entry contains as lemma in the lexicon in the given lan
 ```
 	in_range(6, 5, 10)
 		returns true
-		
+
 	in_range(12, 5, 10)
 		returns false
 ```
@@ -529,7 +529,7 @@ Filters a list of objects for the elements that match a given filter or lambda e
 
 	first([ 1, 2, 3, 4, 5 ], 5)
 		returns [1, 2, 3, 4, 5]
-	 
+
 	first([ 1, 2, 3, 4, 5 ], 6)
 		returns also [1, 2, 3, 4, 5]
 ```
@@ -552,7 +552,7 @@ Returns elements of two lists that are present in both lists.
 
 	map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [entry, index, context -> #entry.player + " (" + #index + ") [" + #context + "]"], "context" )
 		returns ["Dennis (0) [context]", "Baris (1) [context]", "Niki (2) [context]"]
-	 
+
 	map(["Niki", "Sandro"], [entry, index, context -> #entry + \" (\" + #context[#index] + \".)\"], [5, 90])
 		returns ["Niki (5.)", "Sandro (90.)"]
 ```
@@ -565,8 +565,8 @@ Applies a method to all elements of a list and returns a list of objects with th
 
 	random_el(list($list), 5)
 		returns for example [5, 3, 1, 2, 4]
-```  
-This method gets random elements from a list.  
+```
+This method gets random elements from a list.
 
 ### re_keep(list, pattern, direction[, position])
 ```
@@ -636,7 +636,7 @@ Optionally, it is possible to set a delimiter. The default delimiter is " ".
 	split_lookup("summer, winter", ", ", "reifen_art")
 		splits the entry string at ", " and  looks up the entries "summer" and "winter" in the lookup table (of the current language) "reifen_art" and
 		returns its value as a vocabulary list. If nothing is found, an empty list is returned.
-		
+
 	split_lookup( ["summer", "winter"], "reifen_art")
 		returns the same output, only implemented with a list instead of a string and a delimiter.
 ```
@@ -721,7 +721,7 @@ With this instruction a data set of the world knowledge (Project: Nummer5) can b
     nr5("test_aggregator", { "key2": "python" })
       - accesses the object, that is stored in the Nummer5 type "test_aggregator" and carries the value "python" under key2
 ```
- 
+
 Return value is always a complete object from which properties can be selected by the property notation.
 
 ```

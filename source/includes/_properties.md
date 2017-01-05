@@ -144,11 +144,11 @@ Thus a single property consists of three parts:
 
 * `Truth Expression` - is the property active? Can it be used?
 * `Mapping Expression` - data field storage and its modification.
-* `Vocabulary` - contains the content to be rendered if the property is called in a container. It consists of a language node which again consists of three parts: 
+* `Vocabulary` - contains the content to be rendered if the property is called in a container. It consists of a language node which again consists of three parts:
  * `Noun` - enter here the noun of the property.
  * `Adjective` - enter here the adjective of the property.
  * `Head Noun` - enter here a word that should be used as representation for inflections instead of the original noun.
- 
- 
+
+
  ## Characters
 Please keep names of objects (like Property names) within valid characters. Allowed characters are "a-z, A-Z, 0-9, ö, ä, ü, Ö, Ä, Ü, ß, &, and _."

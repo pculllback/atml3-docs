@@ -1,4 +1,4 @@
-# Sentences<a name="sentences"></a> 
+# Sentences<a name="sentences"></a>
 
 In the ATML3.0 training, sentences are defined. In the JSON tree, the structure is inside the sentences aray.
 

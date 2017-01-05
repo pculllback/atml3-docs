@@ -45,7 +45,7 @@ The container parameter `Alt` (for alternative) is used to render an alternative
                  [*]Element_1
                  [*]Element_2
                  [*]Element_3
-             [/list]  
+             [/list]
 ```
 
 The `Bullet` parameter makes a group into a list of elements. By default, a markdown list will be generated, with the optional style-parameter the format can be switched to HTML or BBCode. This is however discouraged because we try to render everything through markdown and process it into other output types later.
@@ -71,15 +71,15 @@ Additionally an ID can be set to the element.
 	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img]
 	  - Generates a markdown image like this:
 	      ![](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
-	      
+
 	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,text=alt text]
 	  - Generates a markdown image like this:
 	      ![alt text](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
-	      
+
 	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,title=This is the google logo]
 	  - Generates a markdown image like this:
 	      ![](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png "This is the google logo")
-	      
+
 	[Text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,text=alt text,title=This is the google logo]
 	  - Generates a markdown image like this:
 	      [alt text](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png "This is the google logo")

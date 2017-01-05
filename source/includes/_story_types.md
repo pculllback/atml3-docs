@@ -1,4 +1,4 @@
-# Story types<a name="story_types"></a> 
+# Story types<a name="story_types"></a>
 
 Story types determine the order of the sentences you want to set.
 
