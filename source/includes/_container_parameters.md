@@ -201,27 +201,33 @@ Possible sub-parameters are:
 
 * `text` - clickable text in a link
 * `title` - title of the link
+* `target` - specifies where to open the linked document
+* `rel` - specifies the relationship between the current document and the linked document
 * `format` - format of the link
  * markdown (default)
  * html
  * bb
 
 ```atml3
-  [Text:https://www.google.de;url]
-	- Generates a markdown link like this:
-		[https://www.google.de](https://www.google.de)
+	[Text:https://www.google.de;url]
+		- Generates a markdown link like this:
+			[https://www.google.de](https://www.google.de)
 
-  [Text:https://www.google.de;url,text=click here]
-	- Generates a markdown link like this:
+	[Text:https://www.google.de;url,text=click here]
+		- Generates a markdown link like this:
 		[click here](https://www.google.de)
 
-  [Text:https://www.google.de;url,title=This is a link to google]
-	- Generates a markdown link like this:
-		[https://www.google.de](https://www.google.de "This is a link to google")
+	[Text:https://www.google.de;url,title=This is a link to google]
+		- Generates a markdown link like this:
+			[https://www.google.de](https://www.google.de "This is a link to google")
+		
+	[Text:https://www.google.de;url,target=_blank,rel=nofollow]
+		- Generates a markdown link like this:
+			[https://www.google.de](https://www.google.de){:target="_blank"}{:rel="nofollow"}
 
-[Text:https://www.google.de;url,text=click here,title=This is a link to google]
-	- Generates a markdown link like this:
-		[click here](https://www.google.de "This is a link to google")
+	[Text:https://www.google.de;url,text=click here,title=This is a link to google]
+		- Generates a markdown link like this:
+			[click here](https://www.google.de "This is a link to google")
 ```
 
 
