@@ -619,6 +619,14 @@ Optionally, a starting postition and a search direction can be given.
 ```
 Sorts a list numerically, a list of objects by a given field or by a lambda expression that compares the objects contained in the list.
 
+### sum(list)
+```
+        sum([1, 2, 3])
+                returns 6
+```
+Sums up all numeric values in a list.
+
+
 ### split(string[, delimiter])
 ```
 	split("string1 string2 string3")
