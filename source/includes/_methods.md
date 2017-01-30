@@ -369,6 +369,13 @@ Note: The behavior of round() for doubles can be surprising:
 For example, round(2.675, 2) gives 2.67 instead of the expected 2.68.
 This is not a bug: It’s a result of the fact that most decimal fractions can’t be represented exactly as a doubles.
 
+### sum(list)
+```
+	sum([1, 2, 3])
+		returns 6
+```
+Sums up all numeric values in a list.
+
 ### weekday_int(days)
 ```
 	weekday_int(1)
