@@ -492,6 +492,24 @@ Optionally, it is also possible to set an ignoreCase flag ("i").
 ```
 Takes a field from all objects in a list and returns those field values as a list.
 
+### count_uniques(list)
+```
+	count_uniques(["cat", "dog", "cat"])
+		returns the [{"value": "cat", "count": 2}, {"value": "dog", "count": 1}]
+```
+Returns a list with objects which contain following fields:
+
+	* `value` - the name of the value
+	* `count` - the occurrences of the value
+
+Supported types:
+
+	* `string`
+	* `int`
+	* `double`
+	
+Values with other types will ne ignored.
+
 ### filter(list, object/lambda_expression)
 > Example list:
 
