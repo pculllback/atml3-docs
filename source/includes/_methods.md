@@ -101,12 +101,19 @@ This method converts a date value to a specific format and returns it as a strin
 ```
 Returns a format string of a date value.
 
-### date_now()
+### date_now([format])
 ```
 	date_now()
 		returns "13.06.2015"
+
+	date_now("yyyy-MM-dd")
+		returns "2015-06-13"
 ```
-This method returns the date in the following format: dd.MM.yyyy.
+This method returns the current date.
+
+Optionally, it is possible to set the format.
+
+Default format: dd.MM.yyyy
 
 ### format_number(number, decimal_place)
 ```
