@@ -557,6 +557,9 @@ Filters a list of objects for the elements that match a given filter or lambda e
 
 	first([ 1, 2, 3, 4, 5 ], 6)
 		returns also [1, 2, 3, 4, 5]
+		
+	first([ 1, 2, 3, 4, 5 ], -3)
+		returns [3, 4, 5]
 ```
 Gets n elements from a list, starting left.
 
