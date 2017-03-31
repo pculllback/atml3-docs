@@ -145,7 +145,7 @@ The group container also knows grammatical properties:
 * `det` - determiner to preceed every element (default: kein)
 * `prep` - preposition to be placed in front of the whole string once ("auf dem Haus und dem Dach"; default: none)
 * `conj` - conjunction before the last list element (eg rot, gelb und grün; default: ,)
-* `pronoun` - renders only a pronoun of the list. (personal: "er, sie, es" or demonstrative: "dieser, diese, dieses")
+* `pronoun` - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)/which(welcher, welche, welches)
 
 ## Phrase Container
 
@@ -185,7 +185,7 @@ Permitted values for the parameters:
 * `adjconj` - und_sowie_KOMMA_oder
 * `case` - language dependent; in german: Nom/Gen/Dat/Akk
 * `prep` - free text
-* `pronoun` - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)
+* `pronoun` - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)/which(welcher, welche, welches)
 * `det` -
  * `none` - no determiner, default
  * `def` - definite article, "der Hund"
