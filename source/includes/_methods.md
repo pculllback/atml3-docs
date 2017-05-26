@@ -596,6 +596,35 @@ Applies a method to all elements of a list and returns a list of objects with th
 ```
 This method gets random elements from a list.
 
+### range(list, index, count)
+```
+	range(["dog", "cat", "fish", "bear", "frog"], 3, 2)
+		returns ["bear", "frog"]
+		
+	range(["dog", "cat", "fish", "bear", "frog"], 5, 2)
+		returns an empty list
+	
+	range(["dog", "cat", "fish", "bear", "frog"], 3, 5)
+		returns ["bear", "frog"]
+	
+	range(["dog", "cat", "fish", "bear", "frog"], 4, 1)
+		returns ["frog"]
+	
+	range(["dog", "cat", "fish", "bear", "frog"], -1, 2)
+		returns ["dog"]
+	
+	range(["dog", "cat", "fish", "bear", "frog"], 3, -2)
+		returns ["fish", "bear"]
+	
+	range(["dog", "cat", "fish", "bear", "frog"], -10, -1)
+		returns an empty list
+```
+This method returns a list with elements in a given range.
+
+* `list` - a list
+* `index` - the zero-based index at which the range starts
+* `count` - the number of elements in the range (for right-to-left range, use negative integers)
+
 ### re_keep(list, pattern, direction[, position])
 ```
 	re_keep(["xyz1", "abc", "xyz2"], "xyz.")
