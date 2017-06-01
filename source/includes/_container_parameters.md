@@ -14,41 +14,71 @@ Container parameters can be attached to a container to add instructions or infor
 
 The container parameter `Alt` (for alternative) is used to render an alternative text, if the container would not render anything otherwise.
 
-## Bullet
+## List
 
 ```atml3
-    [Gruppe.All();Bullet]
-         - Generates a markdown bullet list like this:
+    [Gruppe.All();list]
+         - Generates a markdown list like this:
              * Element_1
              * Element_2
              * Element_3
+			 
+	[Gruppe.All();list,type=ordered]
+         - Generates a markdown list like this:
+             1. Element_1
+             2. Element_2
+             3. Element_3
 
-       [Gruppe.All();Bullet,format=HTML]
-         - Generates a HTML Bullet list like this:
+	[Gruppe.All();list,format=HTML]
+         - Generates a HTML list like this:
              <ul>
                  <li>Element_1</li>
                  <li>Element_2</li>
                  <li>Element_3</li>
              </ul>
+			 
+	[Gruppe.All();list,format=HTML,type=ordered]
+         - Generates a HTML list like this:
+             <ol>
+                 <li>Element_1</li>
+                 <li>Element_2</li>
+                 <li>Element_3</li>
+             </ol>
 
-       [Gruppe.All();Bullet,format=HTML,id=Test]
-         - Generates a HTML Bullet list with an id:
+	[Gruppe.All();list,format=HTML,id=Test]
+         - Generates a HTML list with an id:
              <ul id="Test">
                  <li>Element_1</li>
                  <li>Element_2</li>
                  <li>Element_3</li>
              </ul>
+			 
+	[Gruppe.All();list,format=HTML,id=Test,type=ordered]
+         - Generates a HTML list with an id:
+             <ol id="Test">
+                 <li>Element_1</li>
+                 <li>Element_2</li>
+                 <li>Element_3</li>
+             </ol>
 
-       [Gruppe.All();Bullet,format=BB]
-         - Generates an BBCode Bullet list.
+	[Gruppe.All();list,format=BB]
+         - Generates an BBCode list like this:
              [list]
+                 [*]Element_1
+                 [*]Element_2
+                 [*]Element_3
+             [/list]
+			 
+	[Gruppe.All();list,format=BB,type=ordered]
+         - Generates an BBCode list like this:
+             [list=1]
                  [*]Element_1
                  [*]Element_2
                  [*]Element_3
              [/list]
 ```
 
-The `Bullet` parameter makes a group into a list of elements. By default, a markdown list will be generated, with the optional style-parameter the format can be switched to HTML or BBCode. This is however discouraged because we try to render everything through markdown and process it into other output types later.
+The `List` parameter makes a group into a list of elements. By default, a markdown list will be generated, with the optional style-parameter the format can be switched to HTML or BBCode. This is however discouraged because we try to render everything through markdown and process it into other output types later.
 
 Additionally an ID can be set to the element.
 
