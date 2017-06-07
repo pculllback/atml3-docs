@@ -151,14 +151,6 @@ Note: This method only return the noun as a string. For getting a whole vocabula
 ```
 This method converts a string to its lowercase form.
 
-### render($property)
-```
-	render($property)
-		Returns the string "kleine Katze" if the property's adjective field contains "klein" and
-		its noun field contains "Katze".
-```
-This method takes a property and returns the content of its vocabulary.
-
 ### replace(string, old, new[, max])
 ```
 	replace("old old old old", "old", "new")
