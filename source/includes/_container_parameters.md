@@ -253,7 +253,7 @@ Possible sub-parameters are:
 		
 	[Text:https://www.google.de;url,target=_blank,rel=nofollow]
 		- Generates a markdown link like this:
-			[https://www.google.de](https://www.google.de){:target="_blank"}{:rel="nofollow"}
+			[https://www.google.de](https://www.google.de){:target="_blank" rel="nofollow"}
 
 	[Text:https://www.google.de;url,text=click here,title=This is a link to google]
 		- Generates a markdown link like this:
