@@ -12,6 +12,13 @@ Methods are used in mapping or truth expressions of properties and return follow
 
 ## String methods
 
+### capitalize(string)
+```
+	capitalize("STRING")
+		returns "String"
+```
+This method converts a string to its capitalized form.
+
 ### convert_comma(input, divisor, lowerUnit, upperUnit)
 ```
 	convert_comma(5300, 1000, "m", "km")
