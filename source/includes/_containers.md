@@ -43,16 +43,16 @@ The container does not lead to output in the text itself.
 This container can be used to render words with their grammatical function and preset grammatical information.
 
  ```atml3
-    [G:verb=gehen,num=s,person=1st;preceding:ich ]
+    [g:verb=gehen,num=s,person=1st;preceding:ich ]
         - renders "ich gehe"
 
-    [G:noun=Charakter,num=p]
+    [g:noun=Charakter,num=p]
         - renders "Charaktere" because nominative is the default case and plural was set as numerus.
 
-    [G:adjective=niedlich,case=gen,num=s,gender=f,det=def]
+    [g:adjective=niedlich,case=gen,num=s,gender=f,det=def]
         - renders "niedlichen", as in "der niedlichen Katze"
 
-    [G:determiner=def,num=s,gender=f]
+    [g:determiner=def,num=s,gender=f]
         - renders "die"
  ```
 
@@ -61,15 +61,15 @@ The grammar container is intended to be used to render words, from which other w
 Some defaults are set, all other fields must be filled:
 
 * nouns
- * case = nominative
+ * case = nom
 
 * verbs
  * person = 3rd
  * tense = present (default), past, etc ... depends on the target language
 
 * adjectives
- * case = nominative
- * determiner = kein
+ * case = nom
+ * determiner = none
  * conjunctions: eg. und_sowie_KOMMA_oder for "rotes und blaues sowie grünes Haus":
 
 The first two are for adjectives in the default position (here "und" and "sowie").
@@ -80,16 +80,16 @@ The other two conjunctions are for the non default position (here "KOMMA" and "o
 The grammar container can be used to render verbs, if a "Du/Sie" switch was to be implemented.
 
 ```atml3
-    Den Duft [G:verb=riechen,grammar-from=reader] [appeal:reader,id=reader] direkt nach der Anwendung.
+    Den Duft [g:verb=riechen,grammar-from=reader] [appeal:reader,id=reader] direkt nach der Anwendung.
       - This sentence renders to "Den Duft riechen Sie direkt nach der Anwendung"  if the engine renders in SIE mode
       - This sentence renders to "Den Duft riechst du direkt nach der Anwendung"  if the engine renders in DU mode
       - This sentence renders to "Den Duft riecht Ihr direkt nach der Anwendung"  if the engine renders in IHR mode
 
-    Robben [G:verb=treffen,person=3rd,tense=past] mit dem Ball.
+    Robben [g:verb=treffen,person=3rd,tense=past] mit dem Ball.
       - Robben traf mit dem Ball
 
-    Robben [G:verb=treffen,person=3rd] mit dem Ball.
-    Robben [G:verb=treffen,person=3rd,tense=present] mit dem Ball.
+    Robben [g:verb=treffen,person=3rd] mit dem Ball.
+    Robben [g:verb=treffen,person=3rd,tense=present] mit dem Ball.
       - Robben trifft mit dem Ball
 ```
 
@@ -181,9 +181,9 @@ Defaults:
 
 Permitted values for the parameters:
 
-* `adj` - yes/no
+* `adj` - true/false/first
 * `adjconj` - und_sowie_KOMMA_oder
-* `case` - language dependent; in german: Nom/Gen/Dat/Akk
+* `case` - language dependent; in german: nom/gen/dat/acc
 * `prep` - free text
 * `pronoun` - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)/which(welcher, welche, welches)
 * `det` -
@@ -200,14 +200,14 @@ Permitted values for the parameters:
 ## Text Container
 
 ```
-  [Text:hallo, welt!]
+  [text:hallo, welt!]
     - renders "hallo, welt!"
 ```
 
 A text container simply renders a string.
 
 ```
-  [Text:dies ist ein test;Capitalize;On,merkmal=true]
+  [text:dies ist ein test;capitalize;on,merkmal=true]
     - renders "Dies ist ein test" if the boolean value of the property "merkmal" is true.
     - renders nothing otherwise
 ```
@@ -246,7 +246,6 @@ The cases that exist are language dependent, eg nom, gen, dat, acc in German. De
 * `def` - definite determiner, zB der Hund
 * `indef` - indefinite determiner, zB. ein Hund
 * `demonstrative` - demonstrative determiner, zB. dieser Hund
-* `your` - possesive determiner, zB. Ihr Hund
-* `sein` - possessive determiner, zB. sein Hund
+* `possessive_3rd` - possessive determiner, zB. sein Hund
 
 If a numeric property is rendered, use_numerals=true can be used to render number words in the current language. This is not implemented for all supported languages. If a numeric property is rendered, singular and plural can be inherited from the container using grammar-from or grammar-from-num.
