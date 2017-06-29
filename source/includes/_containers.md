@@ -109,40 +109,40 @@ If you want to explicitly inherit single properties you can use the following pa
 > Assume the property "group" has the mappingValue ["rot", "gelb", "grün", "blau"]. The container looks as follows:
 
 ```atml3
-  [group.All()]
+  [group.all()]
     - renders all members of the group, namely "rot, gelb, grün, blau"
 
-  [group.Best(3)]
+  [group.best(3)]
     - renders the first 3 elements of the group, namely "rot, gelb, grün"
 
-  [group.Last(3)]
+  [group.last(3)]
     - renders the last 3 elements of the group, namely "gelb, grün, blau"
 
-  [group.All(),conj=oder]
+  [group.all(),conj=oder]
     - renders all elements of the list but inserts a conjunction before the last element: "rot, gelb, grün oder blau" . The conjunction is free text.
 
-  [group.Range(1, 2)]
+  [group.range(1, 2)]
     - renders the second and third element of the group (index is 0-based): "gelb, grün"
 
-  [group.AllRandom(),conj=oder]
+  [group.all_random(),conj=oder]
     - like .All() but randomizes the order of the elements.
 ```
 
 A group container outputs a part of a list. There are several selectors available, namely:
 
-* `Best(n)` - the first n valid elements of the list
-* `All()` - all valid elements
-* `AllRandom()` - like All(), but in random order
-* `Last(n)` - the last n valid elements of the list
-* `Random(n)` - n elements of the list chosen at random
-* `Range(m, n)` - all elements in the inclusive range of m and n will be chosen (index is 0-based)
+* `best(n)` - the first n valid elements of the list
+* `all()` - all valid elements
+* `all_random()` - like All(), but in random order
+* `last(n)` - the last n valid elements of the list
+* `random(n)` - n elements of the list chosen at random
+* `range(m, n)` - all elements in the inclusive range of m and n will be chosen (index is 0-based)
 
 The group container also knows grammatical properties:
 
 * `adj` - are adjectives to be rendered if present? (true/false/first; default: false)
 * `adjconj` - conjunctions for adjectives in the form und_oder_KOMMA_MODIFIER.
-* `case` - grammatical case for the elements to be rendered in. (language dependent; default: Nom)
-* `det` - determiner to preceed every element (default: kein)
+* `case` - grammatical case for the elements to be rendered in. (language dependent; default: nom)
+* `det` - determiner to preceed every element (default: none)
 * `prep` - preposition to be placed in front of the whole string once ("auf dem Haus und dem Dach"; default: none)
 * `conj` - conjunction before the last list element (eg rot, gelb und grün; default: ,)
 * `pronoun` - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)/which(welcher, welche, welches)
@@ -153,16 +153,16 @@ The group container also knows grammatical properties:
   [wort]
     - renders "Hund"
 
-  [wort,case=Gen]
+  [wort,case=gen]
     - renders "Hundes"
 
-  [wort,case=Gen,det=indefinite]
+  [wort,case=gen,det=indefinite]
     - renders "eines Hundes"
 
-  [wort,case=Gen,det=definite,prep=mit]
+  [wort,case=gen,det=definite,prep=mit]
     - renders "mit des Hundes"
 
-  [wort,case=Dat,adj=yes,det=definite,prep=mit]
+  [wort,case=dat,adj=yes,det=definite,prep=mit]
     - renders "mit dem braunen Hund"
 
   [wort,pronoun=demonstrative,case=Dat,prep=mit]
@@ -194,7 +194,7 @@ Permitted values for the parameters:
  * `your` - possessive determiner, "Ihr Hund"
  * `sein` - possessive determiner, "sein Hund"
  * `ihrsein` - possesive determiner able to print "sein" and "ihr", chosen by reference=containerID
-* `num-to` - sg (force singular), pl (force plural)
+* `num-to` - s (force singular), p (force plural)
 
 
 ## Text Container
@@ -223,10 +223,10 @@ Rendering of simple text by a container is useful if container parameters need t
               [merkmalsname.value()]
                 - renders the value of a property, case=Nom and det=none
 
-              [merkmalsname.value(),case=Dat]
+              [merkmalsname.value(),case=dat]
                 - renders the value of a property, overrides case with Dativ and does not use a determiner
 
-              [merkmalsname.value(),case=Dat,det=definite]
+              [merkmalsname.value(),case=dat,det=definite]
                 - renders the value of the property with a definitite determiner and in Dativ.
 
               [merkmalsname.value(),use_numerals=true]
@@ -238,9 +238,9 @@ Rendering of simple text by a container is useful if container parameters need t
                 - use cardinal or ordinal to switch what kind of number to render.
 ```
 
-Value Containers just render the value (defined by the mappingExpression) for a property. They ignore the vocabulary. They can add grammatical informations and render with a case and determiner. Default values are case = Nom and determiner = def.
+Value Containers just render the value (defined by the mappingExpression) for a property. They ignore the vocabulary. They can add grammatical informations and render with a case and determiner. Default values are case = nom and determiner = def.
 
-The cases that exist are language dependent, eg Nom, Gen, Dat, Akk in German. Determiners might be
+The cases that exist are language dependent, eg nom, gen, dat, acc in German. Determiners might be
 
 * `none` - default, no determiner
 * `def` - definite determiner, zB der Hund
