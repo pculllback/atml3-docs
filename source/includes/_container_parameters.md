@@ -12,7 +12,7 @@ Container parameters can be attached to a container to add instructions or infor
      - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
 ```
 
-The container parameter `Alt` (for alternative) is used to render an alternative text, if the container would not render anything otherwise.
+The container parameter `alt` (for alternative) is used to render an alternative text, if the container would not render anything otherwise.
 
 ## List
 
@@ -78,7 +78,7 @@ The container parameter `Alt` (for alternative) is used to render an alternative
              [/list]
 ```
 
-The `List` parameter makes a group into a list of elements. By default, a markdown list will be generated, with the optional style-parameter the format can be switched to HTML or BBCode. This is however discouraged because we try to render everything through markdown and process it into other output types later.
+The `list` parameter makes a group into a list of elements. By default, a markdown list will be generated, with the optional style-parameter the format can be switched to HTML or BBCode. This is however discouraged because we try to render everything through markdown and process it into other output types later.
 
 Additionally an ID can be set to the element.
 
@@ -135,7 +135,7 @@ Possible sub-parameters are:
          Depending on the defined keyword density the string `der goodyear 500` will be replaced with `der Reifen`.
 ```
 
-With the `Keyword` parameter you can define multiple keywords within your generated texts. Every defined id is depending on the given keyword density.
+With the `keyword` parameter you can define multiple keywords within your generated texts. Every defined id is depending on the given keyword density.
 
 
 ## Kill
@@ -145,7 +145,7 @@ With the `Keyword` parameter you can define multiple keywords within your genera
      - prevents rendering, because the second container does not render anything and carries the Kill parameter
 ```
 
-`Kill` is a parameter that prevents a sentence from being rendered if the container does not render to a text.
+`kill` is a parameter that prevents a sentence from being rendered if the container does not render to a text.
 
 
 ## Lower
@@ -158,7 +158,7 @@ With the `Keyword` parameter you can define multiple keywords within your genera
      - renders "mit dem hund", if the property hund_wort renders "Hund"
 ```
 
-Lower is a parameter that forces the rendered string of a container to be all lower case.
+`lower` is a parameter that forces the rendered string of a container to be all lower case.
 
 
 ## On
@@ -171,7 +171,7 @@ Lower is a parameter that forces the rendered string of a container to be all lo
      - only renders "test", if the property bool_property is false.
 ```
 
-On is a container parameter that activates or deactivates according to a condition.
+`on` is a container parameter that activates or deactivates according to a condition.
 
 
 ## On_random
@@ -184,7 +184,7 @@ On is a container parameter that activates or deactivates according to a conditi
          - will output "i'm here" with a probability of $LOGIC_percentage percent and interpretes LOGIC_percentage as a numeric
 ```
 
-On_random is a container param that will throw away a container param randomly.
+`on_random` is a container param that will throw away a container param randomly.
 
 
 ## Preceding
@@ -197,7 +197,7 @@ On_random is a container param that will throw away a container param randomly.
      - renders "Stückzahl: 3", if the property drei renders to 3.
 ```
 
-Preceding is a container parameter that is used to insert text in front of a rendered string in a container.
+`preceding` is a container parameter that is used to insert text in front of a rendered string in a container.
 
 
 ## Raw
@@ -207,7 +207,7 @@ Preceding is a container parameter that is used to insert text in front of a ren
 	- renders "https://www.google.de" instead of "https://www.Google.De"
 ```
 
-Raw is a container parameter that forces ignoring the text modulation part.
+`raw` is a container parameter that forces ignoring the text modulation part.
 
 
 ## Trailing
@@ -220,12 +220,12 @@ Raw is a container parameter that forces ignoring the text modulation part.
      - renders "3 Stück", if the property drei renders to 3
 ```
 
-Trailing is a container parameter that is used to insert text behind a rendered string in a container.
+`trailing` is a container parameter that is used to insert text behind a rendered string in a container.
 
 
 ## URL
 
-The URL parameter generates an hyperlink.
+The `url` parameter generates an hyperlink.
 
 Possible sub-parameters are:
 
@@ -268,7 +268,7 @@ Possible sub-parameters are:
      - renders nothin but can be referenced by grammar-from=test123 and will deliver it's grammatical properties
 ```
 
-Void is a container parameter that prevents a container from rendering an actual string but preserves its grammatical properties. It is mostly used as a reference for grammar containers.
+`void` is a container parameter that prevents a container from rendering an actual string but preserves its grammatical properties. It is mostly used as a reference for grammar containers.
 
 
 ## Source
@@ -277,7 +277,7 @@ Void is a container parameter that prevents a container from rendering an actual
 [hund_wort,prep=mit,case=dat;source:mit dem Hund]
 ```
 
-Source is a container parameter that can be filled with an intended output.
+`source` is a container parameter that can be filled with an intended output.
 
 
 ## Keyword
@@ -288,4 +288,4 @@ Source is a container parameter that can be filled with an intended output.
        depending on the random selection.
 ```
 
-To create a keyword, you need to set the keyword parameter with an ID and an alternative text within a container. The ID is needed for defining multiple keywords. The engine will choose randomly a selection of defined keywords in consideration of the density and deviation. Both can be adjusted in the advanced content project configuration.
+To create a keyword, you need to set the `keyword` parameter with an ID and an alternative text within a container. The ID is needed for defining multiple keywords. The engine will choose randomly a selection of defined keywords in consideration of the density and deviation. Both can be adjusted in the advanced content project configuration.
