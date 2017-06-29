@@ -72,7 +72,7 @@ ATML3 tags can be classified into the following:
 ```atml3
    [propertyName]
    [propertyName.value()]
-   [propertyName,case=Dat,adj=yes,det=definite]
+   [propertyName,case=dat,adj=yes,det=definite]
 ```
 
 All ATML-Tags can have parameters. To learn more about those options, go to the section containers.
