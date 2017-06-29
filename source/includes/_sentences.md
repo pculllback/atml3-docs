@@ -39,7 +39,7 @@ and fills propertys with the same names as the dataset keys. The following sente
    Der [tiername] hat [anzahl_beine.value()] Beine.
    - Der Hund hat 4 Beine.
 
-   [Text:Der ][tiername][Text: hat ][anzahl_beine.value()][Text: Beine.]
+   [text:Der ][tiername][text: hat ][anzahl_beine.value()][text: Beine.]
    - Der Hund hat 4 Beine.
 
    [tiername,det=definite] hat [anzahl_beine.value()] Beine.
@@ -63,8 +63,8 @@ ATML3 tags can be classified into the following:
 #### Named Tags
 
 ```atml3
-   [Text:The text that is to be rendered]
-   [Fail:The error message that is to be displayed]
+   [text:The text that is to be rendered]
+   [fail:The error message that is to be displayed]
 ```
 
 #### Normal Tags
