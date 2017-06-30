@@ -82,9 +82,10 @@ The `list` parameter makes a group into a list of elements. By default, a markdo
 
 Additionally an ID can be set to the element.
 
-# Test
 
 ## Capitalize
+
+### Test
 
 ```atml3
    [text:ich bin kleingeschrieben;capitalize]
