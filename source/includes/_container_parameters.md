@@ -85,8 +85,6 @@ Additionally an ID can be set to the element.
 
 ## Capitalize
 
-### Test
-
 ```atml3
    [text:ich bin kleingeschrieben;capitalize]
      - renders "Ich bin kleingeschrieben"
