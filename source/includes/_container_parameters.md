@@ -222,6 +222,14 @@ With the `keyword` parameter you can define multiple keywords within your genera
 
 `trailing` is a container parameter that is used to insert text behind a rendered string in a container.
 
+## Upper
+
+```atml3
+    [text:render me as upper case;upper]
+     - renders "RENDER ME AS UPPER CASE"
+```
+
+`upper` is a parameter that forces the rendered string of a container to be all upper case.
 
 ## URL
 
