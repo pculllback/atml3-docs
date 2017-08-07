@@ -626,6 +626,7 @@ Applies a method to all elements of a list and returns a list of objects with th
         { "type": "redcard", "team": "host" },
         { "type": "goal", "team": "host", "score": "2-1" }
     ]
+```
 
 > Example method calls:
 
