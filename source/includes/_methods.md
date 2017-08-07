@@ -662,6 +662,13 @@ Optionally, a starting postition and a search direction can be given.
 * `direction` - the search direction ("r" or "l")
 * `position` - starting position
 
+### reverse(list])
+```
+	reverse([1, 2, 3, 4, 5])
+		returns [5, 4, 3, 2, 1]
+```
+Inverts a list meaning that it reverses the order of elements in the list
+
 ### sort(list[, fieldname/lambda_expression])
 ```
 	sort([5, 4, 3, 2, 1])
