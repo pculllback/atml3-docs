@@ -615,13 +615,44 @@ Returns elements of two lists that are present in both lists.
 ```
 Applies a method to all elements of a list and returns a list of objects with the result of applying the lambda.
 
+### neg_filter(list, object/lambda_expression)
+> Example list:
+
+```
+    [
+        { "type": "goal", "team": "host", "score": "1-0" },
+        { "type": "yellowcard", "team": "guest" },
+        { "type": "goal", "team": "guest", "score": "1-1" },
+        { "type": "redcard", "team": "host" },
+        { "type": "goal", "team": "host", "score": "2-1" }
+    ]
+
+> Example method calls:
+
+```
+	neg_filter( list($list), { "type": "goal", "team": "guest" })
+		Returns a list that includes the objects from the given input list that contain entries having type=goal and team=host, in our case entries with number 1, 2, 4, 5 of the original list.
+
+	neg_filter( list($list), { "type": "yellowcard" })
+		Returns a list with entries that do not have type=yellowcard, in our example entry 1,3,4, 5 of the original list.
+
+	neg_filter( list($list), [entry -> #entry.type == "yellowcard" ])
+		Does the same thing as the last example but uses a λ-function to match the object. In this example the entry variable of the λ-function contains the complete object to be matched.
+		
+	neg_filter( list($list), [entry -> #entry.type == "yellowcard" or #entry.type == "redcard" ])
+		Returns a list with entries that do not have type=yellowcard or redcard, in our example entry 1,3,5 of the original list.In this example the entry variable of the λ-function contains the complete object to be matched.
+		
+	neg_filter( list($list), [entry, index, context -> #entry.type == "yellowcard" ], object($context_object))
+		This is the maximum λ-function, which contains the current.
+```
+Filters a list of objects for the elements that match a given filter or lambda expression.
 ### random_el(list, number)
 ```
 	random_el([1, 2, 3, 4, 5], 2)
-		returns for example [3, 5, 2]
+		Returns for example [3, 5, 2]
 
 	random_el(list($list), 5)
-		returns for example [5, 3, 1, 2, 4]
+		Returns for example [5, 3, 1, 2, 4]
 ```
 This method gets random elements from a list.
 
