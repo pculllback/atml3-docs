@@ -632,7 +632,7 @@ Applies a method to all elements of a list and returns a list of objects with th
 
 ```
 	neg_filter( list($list), { "type": "goal", "team": "guest" })
-		Returns a list that includes the objects from the given input list that contain entries having type=goal and team=host, in our case entries with number 1, 2, 4, 5 of the original list.
+		Returns a list that includes the objects from the given input list that do not contain entries having type=goal and team=host, in our case entries with number 1, 2, 4, 5 of the original list.
 
 	neg_filter( list($list), { "type": "yellowcard" })
 		Returns a list with entries that do not have type=yellowcard, in our example entry 1,3,4, 5 of the original list.
