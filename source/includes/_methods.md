@@ -268,6 +268,16 @@ Converts a string to uppercase.
 
 ## Numeric methods
 
+### abs(numeric)
+```
+	abs(-1.2)
+		returns the number 1.2
+		
+	abs(5.47)
+		returns the number 5.47
+```
+This function calculates the absolute value (positive number) of a numeric value.
+
 ### count(list)
 ```
 	count([1, 2, 10, 12, 14])
@@ -351,6 +361,19 @@ This method can be used to convert a month into a numerical representation
 
 Note: This method only supports the german and english notation of months.
 
+### rnd_dbl(left_bound, right_bound)
+```
+	rnd_dbl(0.0, 10.0)
+		returns something like 7.73589949018131
+		
+	rnd_dbl()
+		returns something like 7.73589949018131
+```
+This function returns a random double number.
+
+Optionally, it is possible to set left and right bounds.
+(Default left bound: 0.0, Default right bound: 1.0)
+
 ### rnd_int(left_bound, right_bound)
 ```
 	rnd_int(0, 10)
@@ -374,6 +397,13 @@ There's an optional parameter to set the decimals to round to.
 Note: The behavior of round() for doubles can be surprising:
 For example, round(2.675, 2) gives 2.67 instead of the expected 2.68.
 This is not a bug: It’s a result of the fact that most decimal fractions can’t be represented exactly as a doubles.
+
+### sum(list)
+```
+	sum([1, 2, 3])
+		returns 6
+```
+Sums all the elements in a list.
 
 ### weekday_int(days)
 ```
