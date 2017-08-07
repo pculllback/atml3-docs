@@ -645,7 +645,8 @@ Applies a method to all elements of a list and returns a list of objects with th
 	neg_filter( list($list), [entry, index, context -> #entry.type == "yellowcard" ], object($context_object))
 		This is the maximum λ-function, which contains the current.
 ```
-Filters a list of objects for the elements that match a given filter or lambda expression.
+ Negative filters a list of objects for the elements that match a given filter or λ-function.
+
 ### random_el(list, number)
 ```
 	random_el([1, 2, 3, 4, 5], 2)
