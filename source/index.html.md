@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - introduction
+  - glossar
   - properties
   - methods
   - sentences
