@@ -70,7 +70,7 @@ This function converts a double to a currency string, depending on the current c
 
 ### date_add(date, number, type)
 ```
-	date_add("16.05.1983", 3, "years")
+	date_add(date("16.05.1983"), 3, "years")
 		returns "16.05.1986"
 ```
 This method adds a time value to a given date and returns that new date.
@@ -103,7 +103,7 @@ This method converts a date value to a specific format and returns it as a strin
 
 ### date_format(date)
 ```
-	date_format("16.05.1983")
+	date_format(date("16.05.1983"))
 		returns "dd.MM.yyyy"
 ```
 Returns a format string of a date value.
