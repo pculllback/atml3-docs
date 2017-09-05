@@ -144,6 +144,7 @@ The group container also knows grammatical properties:
 * `case` - grammatical case for the elements to be rendered in. (language dependent; default: nom)
 * `det` - determiner to preceed every element (default: none)
 * `prep` - preposition to be placed in front of the whole string once ("auf dem Haus und dem Dach"; default: none)
+* `post` - postposition to be placed behind the whole string once (default: none)
 * `conj` - conjunction before the last list element (eg rot, gelb und grün; default: ,)
 * `pronoun` - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)/which(welcher, welche, welches)
 
@@ -177,6 +178,7 @@ Defaults:
 * `case - nom`
 * `det - determiner; default: none`
 * `prep - preposition; default: none`
+* `post - postposition; default: none`
 
 
 Permitted values for the parameters:
@@ -185,6 +187,7 @@ Permitted values for the parameters:
 * `adjconj` - und_sowie_KOMMA_oder
 * `case` - language dependent; in german: nom/gen/dat/acc
 * `prep` - free text
+* `post` - free text
 * `pronoun` - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)/which(welcher, welche, welches)
 * `det` -
  * `none` - no determiner, default
