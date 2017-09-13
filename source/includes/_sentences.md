@@ -46,7 +46,7 @@ and fills propertys with the same names as the dataset keys. The following sente
    - Der Hund hat 4 Beine.
 ```
 
-Die Container die derzeit in der ATML3.0 Sprache existieren sind (anlehnung bei Namen an ATML2.5)
+Die Container die derzeit in der ATML3.0 Sprache existieren sind 
 
 * `Textcontainer` - render static text
 * `ValueContainer` - render the raw value of aproperty
@@ -56,18 +56,18 @@ Die Container die derzeit in der ATML3.0 Sprache existieren sind (anlehnung bei 
 
 The containers are described in ther respective chapters. The general format is as follows:
 
-### Kinds of tags
+## Kinds of tags
 
 ATML3 tags can be classified into the following:
 
-#### Named Tags
+### Named Tags
 
 ```atml3
    [text:The text that is to be rendered]
    [fail:The error message that is to be displayed]
 ```
 
-#### Normal Tags
+### Normal Tags
 
 ```atml3
    [propertyName]
@@ -77,7 +77,7 @@ ATML3 tags can be classified into the following:
 
 All ATML-Tags can have parameters. To learn more about those options, go to the section containers.
 
-### Sentence Groups
+## Sentence Groups
 Sentence groups can be used to apply selective operations on defined groups of sentences. A sentence group contains up to five different entries:
 
 * `name` (string) - Each sentence group needs a unique identifier. This is also used for identification in "same"-mode.
@@ -115,13 +115,12 @@ Sentence groups can be used to apply selective operations on defined groups of s
 ]
 ```
 
-### Story Mode
+## Story Mode
 ATML3 is capable of rendering a sequence of events in a so called "story mode". This mode behaves somewhat like a for loop does in programming. You will need this if you are looking to render a stream of events (goals in a soccer match or any other sorted event list).
 
-#### prerequisites
+### prerequisites
 
 > a list of objects in your data
-
 ```json
 goal: [
 {
@@ -137,7 +136,6 @@ goal: [
 ```
 
 > a meta sentence that is included in your "default" sentence group
-
 ```
 {
  "name": "goals",
@@ -155,7 +153,6 @@ the meta command contains 4 different parameters (see below)
 * `counter` - internal counter for the story mode
 
 > an event story type
-
 ```
 {
  "name": "Tor",
@@ -167,7 +164,6 @@ the meta command contains 4 different parameters (see below)
 ```
 
 > actual sentences that are rendered in this sentence group (goal_reg, goal_own)
-
 ```
 {
  "name": "goal_reg",
@@ -177,17 +173,19 @@ the meta command contains 4 different parameters (see below)
  { "text": "NEWLINE★ [VOC_MinuteTor;trailing:.] Minute: [VOC_Score_Tor] durch [VOC_SpielerTor]!" } ]
 }
 ```
-##### ATML3 properties (these are a bit different since we are iterating over objects)
+#### ATML3 properties (these are a bit different since we are iterating over objects)
 
 > a list property that contains the list of objects from above
-
 ```
 "goal": {
  "mappingExpression": "list($spieldaten.goal)",
  "truthExpression": "int(count(list($spieldaten.goal))) >= 0",
  "voc": { "*" : [ { "noun": "[goal.value()]" } ] }
  }
-2 meta properties for the story loop
+ ```
+ 
+> 2 meta properties for the story loop
+```
 "CURRENT_INDEX": {
  "mappingExpression" : "-1",
  "truthExpression" : "false"
@@ -200,7 +198,6 @@ the meta command contains 4 different parameters (see below)
 ```
 
 > properties that point to the object in order to extract information from it
-
 ```
 "TRIGGER_current_event_is_goal" : {
  "mappingExpression" : "",
