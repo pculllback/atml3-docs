@@ -1,0 +1,2109 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>ATML3 Syntax Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="images/logo.png" />
+        <div class="lang-selector">
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='http://cloud.ax-semantics.com'>Sign Up for AX NLG Cloud</a></li>
+            <li><a href='https://www.ax-semantics.com'>Powered by AX</a></li>
+            <li><a href='https://github.com/axsemantics/atml3-docs'>Documentation source</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        
+          <h1 id="introduction">Introduction</h1>
+
+<h3 id="welcome-to-the-realms-of-atml3">Welcome to the realms of ATML3</h3>
+
+<p>This site describes the basic functions and commands of the ATML3 programming language. With this handy expression language, you can train an artificial intelligence to write your stuff. All of it.
+Just feed it structured data and the ATML3 engine will promptly churn it into a meaningful text in almost no time.
+But first off, you will need to tell the text-engine how to text for you. And that is what you do in an ATML3 training.</p>
+
+<h3 id="sounds-cool-but-what-can-i-actually-do-with-it">Sounds cool, but what can I actually do with it?</h3>
+
+<p>Your training contains reasoning: It will tell the text engine how to analyze and map your data. Once trained, the engine can draw conclusions from your data and build a text about them. You can define rules to influence wording, word construction and the appearance of many other aspects in the text (<a href="#properties">Properties</a> &amp; <a href="#methods">Methods</a>).
+You can also tell the ATML3 engine in what way to mention the information it has concluded from your data (<a href="#sentences">Sentences</a>).
+Once you have your information planned and pinned down, you can do the fine-tuning and have grammar and apply to it (<a href="#containers">Containers</a> &amp; <a href="#container_parameters">Container Parameters</a>).
+Don&rsquo;t forget microplanning and textplanning. That is also an aspect of ATML3 (<a href="#story_types">Story Types</a>).</p>
+
+<h3 id="what-else-do-i-need-to-work-with-atml3">What else do I need to work with ATML3?</h3>
+
+<p>First, you need an account at <a href="https://my.ax-semantics.com/">my.ax-semantics.com</a> to work with ATML3. Don&rsquo;t worry, it comes for free. Once you have an account, log in, go to your profile page and retrieve your API token there.
+You will also need your account unlocked for editing ATML3 and using our wizards. At the moment, you will have to contact us via Live-Chat: just click the speech bubble icon on my.ax-semantics.com and leave us a message. Alternatively you can send us an account request via <a href="https://aexeagmbh.atlassian.net/servicedesk/customer/portal/7">Service Desk</a>.
+Second, you will need one of our editors for ATML3. Choose one among the options at <a href="http://atml3.rocks/">atml3.rocks</a>.
+Further, you will need structured data about your topic. If you want to know how to integrate your data into AX, use the API documentation at <a href="https://apidocs.ax-semantics.com/">apidocs.ax-semantics.com</a>.</p>
+
+          <h1 id="glossar">Glossar</h1>
+
+<h2 id="api">API</h2>
+
+<p>Access point for data and texts, accessible by third party software (PIMs, CMS’).</p>
+
+<h2 id="atml3-automated-text-markup-language">ATML3 (Automated Text Markup Language)</h2>
+
+<p>A configuration language defined by AX in which rules for automated text generation can be implemented.</p>
+
+<h2 id="cockpit">Cockpit</h2>
+
+<p>Current, integrated entry point to the AX NLG-Cloud-Plattform. Provides access to imported data, the created rule sets and also to the generated texts.
+Reachable via: cockpit.ax-semantics.com</p>
+
+<h2 id="container">Container</h2>
+
+<p>Variable content  in a Sentence that mostly refers to a -&gt; Property. A container is marked by [ ] in the wizard and in the cockpit.</p>
+
+<h2 id="group">Group</h2>
+
+<p>List of more than one -&gt;properties. Used to implement multiple-value operations or enumerations.</p>
+
+<h2 id="lexicon">Lexicon</h2>
+
+<p>Dictionary of the AX NLG-Cloud platform, used by the text engine to look up the number and gender of a word and also the spelling of a word in the desired grammatical case</p>
+
+<h2 id="lookup">Lookup</h2>
+
+<p>They are used to look up strings in a -&gt;Training and translate one string into another.</p>
+
+<h2 id="mappingexpression">mappingExpression</h2>
+
+<p>Part of a -&gt;property. Pulls data from a data set value or another property and can modify it. Used to create -&gt;Groups.</p>
+
+<h2 id="myax">MyAX</h2>
+
+<p>Deprecated entry point to the AX NLG-Cloud-Platform. Provides Access to the uploaded data and the texts created for it.
+Reachable via: my.ax-semantics.com.</p>
+
+<h2 id="property">Property</h2>
+
+<p>Smallest unit of a -&gt;Training. Consists of a -&gt;mappingExpression, a -&gt;truthExpression and a -&gt;Property Output. Used for reading data, changing data and to make logical conclusions.</p>
+
+<h2 id="trigger">Trigger</h2>
+
+<p>-&gt;Property that is used to switch a sentence or -&gt;Story Type on or off. The value of its -&gt;truthExpression controls if the sentence or the Story Type may appear.</p>
+
+<h2 id="text-rule-set">Text Rule Set</h2>
+
+<p>Contains all sentences needed for the automated text generation, including several wording variants.</p>
+
+<h2 id="story-type">Story Type</h2>
+
+<p>Sequence of sentences. Every -&gt;Training can have several but must at least have of them.</p>
+
+<h2 id="training">Training</h2>
+
+<p>Rule set that contains all linguistic content and logical rules necessary for the automated content production.</p>
+
+<h2 id="truthexpression">truthExpression</h2>
+
+<p>Part of a -&gt;Property. It makes logical decisions and switches its -&gt;Property Output on and off. May never be empty.</p>
+
+<h2 id="property-output">Property Output</h2>
+
+<p>Part of a -&gt;Property. Contains the text that a property will output into a sentence. It itself consists of a noun, an adjective and a headnoun.</p>
+
+<h2 id="wizard">Wizard</h2>
+
+<p>Deprecated Web-App to create and modify -&gt;Trainings.
+Reachable via: wizard.ax-semantics.com.</p>
+
+          <h1 id="properties">Properties<a name="properties"></a></h1>
+
+<blockquote>
+<p>Let&rsquo;s take an example, assume following JSON data set is given:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"animal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DOG"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brown"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"legs"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Now we create four properties which check if the given fields are actually filled (truthExpression) and contain its values (mappingExpression):</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"DATA_animal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#animal) != \"\""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#animal)"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"DATA_color"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#color) != \"\""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#color)"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"DATA_legs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric(#legs) != 0"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric(#legs)"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"DATA_breed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#breed) != \"\""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#breed)"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>After that, we add a vocabulary to each property to set the content if a container is called.
+If you want to use the content of the property itself, just paste [property_name.value()] in the noun field of the vocabulary:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"DATA_animal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#animal) != \"\""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#animal)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"voc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"en-US"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="nt">"noun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[DATA_animal.value()]"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"adjective"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"headnoun"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"DATA_color"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#color) != \"\""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#color)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"voc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"en-US"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="nt">"noun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[DATA_color.value()]"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"adjective"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"headnoun"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"DATA_legs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric(#legs) != 0"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric(#legs)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"voc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"en-US"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="nt">"noun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[DATA_legs.value()]"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"adjective"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"headnoun"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"DATA_breed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#breed) != \"\""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#breed)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"voc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"en-US"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="nt">"noun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[DATA_breed.value()]"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"adjective"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"headnoun"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Maybe you have noticed it already, the data set contains a field which can be used as an adjective (color)! So now, we can just paste the DATA_color property as an adjective of the DATA_animal property.</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"DATA_animal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#animal) != \"\""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#animal)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"voc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"en-US"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="nt">"noun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[DATA_animal.value()]"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"adjective"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[DATA_color.value()]"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"headnoun"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"DATA_color"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#color) != \"\""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#color)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"voc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"en-US"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="nt">"noun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[DATA_color.value()]"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"adjective"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"headnoun"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"DATA_legs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric(#legs) != 0"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numeric(#legs)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"voc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"en-US"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="nt">"noun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[DATA_legs.value()]"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"adjective"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"headnoun"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"DATA_breed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"truthExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#breed) != \"\""</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mappingExpression"</span><span class="p">:</span><span class="w"> </span><span class="s2">"str(#breed)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"voc"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"en-US"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                </span><span class="nt">"noun"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[DATA_breed.value()]"</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"adjective"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nt">"headnoun"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+            </span><span class="p">}]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>That&rsquo;s it for now, we have already created four valid properties with truth/mapping expressions and vocabularies! However, these properties are still pretty basic. If you want to see the true power of properties, just take a look at the next section &ldquo;Methods&rdquo;.</p>
+</blockquote>
+
+<p>With properties, you can define truth and mapping conditions and vocabularies which refer to your data.</p>
+
+<p>Thus a single property consists of three parts:</p>
+
+<ul>
+<li><code class="prettyprint">Truth Expression</code> - is the property active? Can it be used?</li>
+<li><code class="prettyprint">Mapping Expression</code> - data field storage and its modification.</li>
+<li><code class="prettyprint">Vocabulary</code> - contains the content to be rendered if the property is called in a container. It consists of a language node which again consists of three parts:
+
+<ul>
+<li><code class="prettyprint">Noun</code> - enter here the noun of the property.</li>
+<li><code class="prettyprint">Adjective</code> - enter here the adjective of the property.</li>
+<li><code class="prettyprint">Head Noun</code> - enter here a word that should be used as representation for inflections instead of the original noun.</li>
+</ul></li>
+</ul>
+
+<p>## Characters
+Please keep names of objects (like Property names) within valid characters. Allowed characters are &ldquo;a-z, A-Z, 0-9, ö, ä, ü, Ö, Ä, Ü, ß, &amp;, and _.&rdquo;</p>
+
+          <h1 id="methods">Methods<a name="methods"></a></h1>
+
+<p>With methods you can modify and format your own data to implement perfectly good stories.</p>
+
+<p>Methods are used in mapping or truth expressions of properties and return following data types:</p>
+
+<ul>
+<li><code class="prettyprint">Strings</code></li>
+<li><code class="prettyprint">Numerics</code></li>
+<li><code class="prettyprint">Booleans</code></li>
+<li><code class="prettyprint">Lists</code></li>
+<li><code class="prettyprint">JSON objects</code></li>
+</ul>
+
+<h2 id="string-methods">String methods</h2>
+
+<h3 id="capitalize-string">capitalize(string)</h3>
+<pre class="highlight plaintext"><code>    capitalize("STRING")
+        returns "String"
+</code></pre>
+
+<p>This method converts a string to its capitalized form.</p>
+
+<h3 id="convert_comma-input-divisor-lowerunit-upperunit">convert_comma(input, divisor, lowerUnit, upperUnit)</h3>
+<pre class="highlight plaintext"><code>    convert_comma(5300, 1000, "m", "km")
+        returns "5,3 km"
+
+    convert_comma(900, 1000, "m", "km")
+        returns "900 m"
+
+    convert_comma(120, 60, "Minuten", "Stunden")
+        returns "2 Minuten"
+</code></pre>
+
+<p>This method takes a numeric value and converts it to a distance or time value.</p>
+
+<h3 id="convert_count-input-divisor-lowerunit-upperunit-conjunction">convert_count(input, divisor, lowerUnit, upperUnit[, conjunction])</h3>
+<pre class="highlight plaintext"><code>    convert_count(145, 60, "Minuten", "Stunden")
+        returns "2 Stunden 25 Minuten"
+
+    convert_count(45, 60, "Minuten", "Stunden")
+        returns "45 Minuten"
+
+    convert_count(350, 100, "Cent", "Euro")
+        returns "3 Euro 50 Cent"
+
+    convert_count(350, 100, "Cent", "Euro", "und")
+        returns "3 Euro und 50 Cent"
+</code></pre>
+
+<p>This method takes a numeric value and converts it to a currency or date value.
+Optionally, a conjunction can be given.</p>
+
+<h3 id="cur_lang">cur_lang()</h3>
+<pre class="highlight plaintext"><code>    cur_lang()
+        returns "de", "es" or "en" or whatever language is currently used.
+</code></pre>
+
+<p>This method returns the current language in the current text generation process as an ISO 2-letter code.</p>
+
+<h3 id="currency-double">currency(double)</h3>
+<pre class="highlight plaintext"><code>    currency(2.1)
+        returns the string "2.10"
+
+    currency(1000000)
+        returns the string "1,000,000.00"
+
+    (culture: en-US)
+</code></pre>
+
+<p>This function converts a double to a currency string, depending on the current culture.</p>
+
+<h3 id="date_add-date-number-type">date_add(date, number, type)</h3>
+<pre class="highlight plaintext"><code>    date_add(date("16.05.1983"), 3, "years")
+        returns "16.05.1986"
+</code></pre>
+
+<p>This method adds a time value to a given date and returns that new date.
+These types of times can be added:</p>
+
+<ul>
+<li><code class="prettyprint">years</code></li>
+<li><code class="prettyprint">months</code></li>
+<li><code class="prettyprint">weeks</code></li>
+<li><code class="prettyprint">days</code></li>
+<li><code class="prettyprint">hours</code></li>
+<li><code class="prettyprint">minutes</code></li>
+<li><code class="prettyprint">seconds</code></li>
+</ul>
+
+<h3 id="date_convert-date-format">date_convert(date, format)</h3>
+
+<blockquote>
+<p>Date:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    date_convert("16.05.1983", "yyyy-MM-dd")
+        returns "1983-05-16"
+</code></pre>
+
+<blockquote>
+<p>Unix Time Stamp:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    date_convert("1478713441480", "yyyy-MM-dd")
+        returns "2016-11-09"
+</code></pre>
+
+<p>This method converts a date value to a specific format and returns it as a string.</p>
+
+<h3 id="date_format-date">date_format(date)</h3>
+<pre class="highlight plaintext"><code>    date_format(date("16.05.1983"))
+        returns "dd.MM.yyyy"
+</code></pre>
+
+<p>Returns a format string of a date value.</p>
+
+<h3 id="date_now-format">date_now([format])</h3>
+<pre class="highlight plaintext"><code>    date_now()
+        returns "13.06.2015"
+
+    date_now("yyyy-MM-dd")
+        returns "2015-06-13"
+</code></pre>
+
+<p>This method returns the current date.</p>
+
+<p>Optionally, it is possible to set the format.</p>
+
+<p>Default format: dd.MM.yyyy</p>
+
+<h3 id="format_number-number-decimal_place">format_number(number, decimal_place)</h3>
+<pre class="highlight plaintext"><code>    format_number(2, 2)
+        returns for example "2.00" (english) or "2,00" (german)
+</code></pre>
+
+<p>This method formats a number to enforce a certain number of decimal digits and converts it to the correct locale.</p>
+
+<h3 id="join-list-delimiter">join(list[, delimiter])</h3>
+<pre class="highlight plaintext"><code>    join([1, 2, 3, 4, 5])
+        returns "12345"
+
+    join([1, 2, 3, 4, 5], ", ")
+        returns "1, 2, 3, 4, 5"
+</code></pre>
+
+<p>This method joins all elements of a list into a string.</p>
+
+<p>Optionally, it is possible to set a delimiter.</p>
+
+<h3 id="lookup-entry-lookup_table_name">lookup(entry, lookup_table_name)</h3>
+<pre class="highlight plaintext"><code>    lookup("summer", "reifen_art")
+        Looks up the entry "summer" in the lookup table "reifen_art" (of the current language) and
+        returns its value as a string. If nothing is found, an empty string is returned.
+</code></pre>
+
+<p>Performs a lookup for fitting entries in a known lookup table.</p>
+
+<p>Note: This method only return the noun as a string. For getting a whole vocabulary, use split_lookup() (see list methods).</p>
+
+<h3 id="lower-string">lower(string)</h3>
+<pre class="highlight plaintext"><code>    lower("STRING")
+        returns "string"
+</code></pre>
+
+<p>This method converts a string to its lowercase form.</p>
+
+<h3 id="replace-string-old-new-max">replace(string, old, new[, max])</h3>
+<pre class="highlight plaintext"><code>    replace("old old old old", "old", "new")
+        returns "new new new new"
+
+    replace("old old old old", "old", "new", 2)
+        returns "new new old old"
+</code></pre>
+
+<p>This method replaces all occurrences of a substring with a new stated substring.</p>
+
+<p>Optionally, it is possible to set the number of times of replacements.</p>
+
+<h3 id="replace_last-string-old-new">replace_last(string, old, new)</h3>
+<pre class="highlight plaintext"><code>    replace("1, 2, 3, 4", ",", " and")
+        returns "1, 2, 3 and 4"
+</code></pre>
+
+<p>This method replaces the last occurrence of a substring with a new stated substring.</p>
+
+<h3 id="re_get-list-pattern-direction-position">re_get(list, pattern, direction, position)</h3>
+<pre class="highlight plaintext"><code>    re_get([1, 2, 3], ".*", "l", 0)
+        returns "1"
+
+    re_get([1, 2, 3], ".*", "r", 0)
+        returns "3"
+
+    re_get([1, 2, 3], "4", "l", 0)
+        returns an empty string
+
+    re_get([1, 2, 3], ".*", "l", 1)
+        returns "2"
+</code></pre>
+
+<p>This method searches for a regex pattern in a list of string elements and returns the string if there is a match at the specified position.</p>
+
+<h3 id="re_find-list-pattern-direction-position">re_find(list, pattern, direction, position)</h3>
+<pre class="highlight plaintext"><code>    re_find([1, 2, 30], "3.*", "l", 0)
+        returns "30"
+
+    re_find([10, 2, 3], "1.*", "r", 0)
+        returns "10"
+
+    re_find([1, 2, 3], "4", "l", 0)
+        returns ""
+</code></pre>
+
+<p>This method searches for a regex pattern in a list of string elements and returns the string if there is a match.  Otherwise an empty string is returned.</p>
+
+<h3 id="re_group-pattern-string-i">re_group(pattern, string[, i])</h3>
+<pre class="highlight plaintext"><code>    re_group("String1(.*)String3", "String1String2String3")
+        returns "String2"
+
+    re_group("^.*(String2).*$", "STRING1STRING2STRING3", "i")
+        returns "STRING2"
+</code></pre>
+
+<p>This method returns an existing group match within a string.</p>
+
+<p>Optionally, it is also possible to set an ignoreCase flag (&ldquo;i&rdquo;).</p>
+
+<p>Note: With this method, you can only extract <em>one</em> group.</p>
+
+<h3 id="re_replace-string-old-new">re_replace(string, old, new)</h3>
+<pre class="highlight plaintext"><code>    re_replace("old Old old Old", "(o|O)ld", "new")
+        returns "new new new new"
+</code></pre>
+
+<p>This method searches for a regex pattern and replaces it with a new substring.</p>
+
+<h3 id="substring-string-index-length">substring(string, index, length)</h3>
+<pre class="highlight plaintext"><code>    substring("Hello world", 0, 1)
+        Returns the substring "H" from the string "Hello world",
+        which is the substring from index 0 with a length of 1 character.
+
+    substring("Hello world", 5, 3)
+        Returns the substring "wor" from the string "Hello world",
+        which is the substring from index 5 (the w) with a length of 3 characters.
+
+    substring("Hello world", 5)
+        Returns the substring "world" from the string "Hello world",
+        which is from position 5 to the end of the string.
+</code></pre>
+
+<p>This method extracts a substring from a string with a given index and length.</p>
+
+<h3 id="trim-string">trim(string)</h3>
+<pre class="highlight plaintext"><code>    trim("hallo welt")
+        returns "hallo welt" (unchanged)
+
+    trim("  hallo welt")
+        returns "hallo welt" (stripped whitespace from the beginning)
+
+    trim("hallo welt   ")
+        returns "hallo welt" (stripped whitespace from the end)
+
+    trim("  hallo welt   ")
+        returns "hallo welt" (stripped whitespace from the beginning and the end)
+</code></pre>
+
+<p>this method cuts away trailing and preceding whitespaces from a string.</p>
+
+<h3 id="upper-string">upper(string)</h3>
+<pre class="highlight plaintext"><code>    upper("string")
+        returns "STRING"
+</code></pre>
+
+<p>Converts a string to uppercase.</p>
+
+<h2 id="numeric-methods">Numeric methods</h2>
+
+<h3 id="abs-numeric">abs(numeric)</h3>
+<pre class="highlight plaintext"><code>    abs(-1.2)
+        returns the number 1.2
+
+    abs(5.47)
+        returns the number 5.47
+</code></pre>
+
+<p>This function calculates the absolute value (positive number) of a numeric value.</p>
+
+<h3 id="count-list">count(list)</h3>
+<pre class="highlight plaintext"><code>    count([1, 2, 10, 12, 14])
+        returns 5
+</code></pre>
+
+<p>This method can be used to count the elements in a list.</p>
+
+<h3 id="date_day_of_year-date">date_day_of_year(date)</h3>
+<pre class="highlight plaintext"><code>    date_day_of_year("31.12.2010")
+        returns 365
+
+    date_day_of_year("this_is_not_a_valid_date")
+        returns 0
+</code></pre>
+
+<p>This method returns the day of the year of a given date as a numeric.</p>
+
+<h3 id="date_difference-date-date">date_difference(date, date)</h3>
+<pre class="highlight plaintext"><code>    date_difference("16.05.1983", "19.05.1983")
+        returns 3
+
+    date_difference("19.05.1983", "16.05.1983")
+        returns -3
+</code></pre>
+
+<p>This method returns the difference between two dates as an integer number of days. The expected time format is dd.MM.yyyy.</p>
+
+<h3 id="len-type">len(type)</h3>
+<pre class="highlight plaintext"><code>    len("string")
+        returns 6
+
+    len(1234567890)
+        returns 10
+</code></pre>
+
+<p>Calculates the length of the string representation of a value.</p>
+
+<h3 id="list_pos-list-search_string">list_pos(list, search_string)</h3>
+<pre class="highlight plaintext"><code>    list_pos([$property1, $property2, $property3], "$property3")
+        if truth($property3) is true:
+            returns 2, because property3 is the third element in the list
+        if truth($property3) is false:
+            returns -1
+
+    list_pos([$property1, $property2, $property3], "$property4")
+        returns -1
+
+    list_pos(["hallo", "welt"], "hallo")
+        returns 0, because "hallo" is in the first position of the list
+
+    list_pos(["hallo", "welt"], "ciaosen")
+        returns -1, because the searched string "ciaosen" was not found in the list
+</code></pre>
+
+<p>This method finds the position of a property in a list.
+This one needs context. A list of properties (also called a group) may contain properties that evaluate to false while rendering, thus making the list shorter. To find out, at what position our property of interest is in the list, we can use this method.</p>
+
+<h3 id="max-list">max(list)</h3>
+<pre class="highlight plaintext"><code>    max([1,2,3,6,4,5])
+        returns 6
+</code></pre>
+
+<p>Extracts the maximum number from a list of numerics.</p>
+
+<h3 id="min-list">min(list)</h3>
+<pre class="highlight plaintext"><code>    min([1,2,3,4,5,6])
+        returns 1
+</code></pre>
+
+<p>This method returns the lowest number of a list of numerics.</p>
+
+<h3 id="month_no-month">month_no(month)</h3>
+<pre class="highlight plaintext"><code>    month_no("Januar")
+        returns 0, because january is the first month in a year
+
+    month_no("February")
+        returns 1, because february is the second month of a year
+</code></pre>
+
+<p>This method can be used to convert a month into a numerical representation</p>
+
+<p>Note: This method only supports the german and english notation of months.</p>
+
+<h3 id="rnd_dbl-left_bound-right_bound">rnd_dbl(left_bound, right_bound)</h3>
+<pre class="highlight plaintext"><code>    rnd_dbl(0.0, 10.0)
+        returns something like 7.73589949018131
+
+    rnd_dbl()
+        returns something like 7.73589949018131
+</code></pre>
+
+<p>This function returns a random double number.</p>
+
+<p>Optionally, it is possible to set left and right bounds.
+(Default left bound: 0.0, Default right bound: 1.0)</p>
+
+<h3 id="rnd_int-left_bound-right_bound">rnd_int(left_bound, right_bound)</h3>
+<pre class="highlight plaintext"><code>    rnd_int(0, 10)
+        returns a numeric between 0 and 10
+</code></pre>
+
+<p>This method returns a random integer number.</p>
+
+<p>It requires a left bound as well as a right bound statement.</p>
+
+<h3 id="round-double-decimals">round(double[, decimals])</h3>
+<pre class="highlight plaintext"><code>    round(0.6)
+        returns 1
+
+    round(0.144743575, 2)
+        returns 0.14
+</code></pre>
+
+<p>This method rounds a numeric value.
+There&rsquo;s an optional parameter to set the decimals to round to.</p>
+
+<p>Note: The behavior of round() for doubles can be surprising:
+For example, round(2.675, 2) gives 2.67 instead of the expected 2.68.
+This is not a bug: It’s a result of the fact that most decimal fractions can’t be represented exactly as a doubles.</p>
+
+<h3 id="sum-list">sum(list)</h3>
+<pre class="highlight plaintext"><code>    sum([1, 2, 3])
+        returns 6
+</code></pre>
+
+<p>Sums all the elements in a list.</p>
+
+<h3 id="weekday_int-days">weekday_int(days)</h3>
+<pre class="highlight plaintext"><code>    weekday_int(1)
+        returns the integer 2 (Tuesday), if today is a monday
+
+    weekday_int(5)
+        returns the integer 6 (Saturday), if today is a monday
+</code></pre>
+
+<p>This method takes a numeric n between 1 and 7. It returns a numeric representation of the weekday of today + n days.
+The returned numeric is to be interpreted as follows:</p>
+
+<table><thead>
+<tr>
+<th>Weekday</th>
+<th>Numeric</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Monday</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Tuesday</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Wednesday</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Thursday</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Friday</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Saturday</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Sunday</td>
+<td>7</td>
+</tr>
+</tbody></table>
+
+<h3 id="weekday_no-day">weekday_no(day)</h3>
+<pre class="highlight plaintext"><code>    weekday_no("Dienstag")
+        returns number 2, because tuesday is the second day in a week
+
+    weekday_no("monday")
+        returns number 1, because monday is the first day of the week
+</code></pre>
+
+<p>This method can be used to convert a weekday into a numerical representation.</p>
+
+<p>Note: This method only supports the german and english notation of weekdays.</p>
+
+<h2 id="boolean-methods">Boolean methods</h2>
+
+<h3 id="contains-type-list">contains(type, list)</h3>
+<pre class="highlight plaintext"><code>    contains(2, [1, 2, 3, 4, 5])
+        returns true
+
+    contains("welt", ["hallo", "welt", "!"])
+        returns true
+
+    contains("5555", ["hallo", "welt", "!"])
+        returns false
+
+    contains("hellblau", ["rot", "grün", "Blau"], "substring")
+        returns true
+
+    contains("hellblau", ["rot", "grün", "blau"])
+        returns false because substring search is not active.
+</code></pre>
+
+<p>This method can be used to check if an element is inside a list.</p>
+
+<h3 id="has_entry-type-entry">has_entry(type, entry)</h3>
+<pre class="highlight plaintext"><code>    has_entry("noun", "tire")
+        returns true
+
+    has_entry("noun", "thisIsNotAWord")
+        returns false
+</code></pre>
+
+<p>This method checks if an entry contains as lemma in the lexicon in the given language.</p>
+
+<h3 id="in_range-number-left_bound-right_bound">in_range(number, left_bound, right_bound)</h3>
+<pre class="highlight plaintext"><code>    in_range(6, 5, 10)
+        returns true
+
+    in_range(12, 5, 10)
+        returns false
+</code></pre>
+
+<p>Checks if a numeric value lies between two other values.</p>
+
+<h3 id="is_date-string">is_date(string)</h3>
+<pre class="highlight plaintext"><code>    is_date("16.05.1983")
+        returns true
+
+    is_date("string")
+        returns false
+</code></pre>
+
+<p>This method checks if a string value is in a correct date format.</p>
+
+<h3 id="re_match-pattern-string-i">re_match(pattern, string[, i])</h3>
+<pre class="highlight plaintext"><code>    re_match("String\d", "String1String2")
+        returns true
+
+    re_match("String\d", "STRING1STRING2", "i")
+        returns true
+
+    re_match("String2", "String1String2")
+        returns false
+</code></pre>
+
+<p>This method returns true, if a string starts with a defined pattern.</p>
+
+<p>Optionally, it is also possible to set an ignoreCase flag (&ldquo;i&rdquo;).</p>
+
+<h3 id="re_search-pattern-string-i">re_search(pattern, string[, i])</h3>
+<pre class="highlight plaintext"><code>    re_search("String\d", "String1String2")
+        returns true
+
+    re_search("String\d", "STRING1STRING2", "i")
+        returns true
+
+    re_search("String2", "String1String2")
+        returns true
+</code></pre>
+
+<p>This method returns true, if a string contains a defined pattern.</p>
+
+<p>Optionally, it is also possible to set an ignoreCase flag (&ldquo;i&rdquo;).</p>
+
+<h2 id="list-methods">List methods</h2>
+
+<h3 id="collect-list-fieldname">collect(list, fieldname)</h3>
+<pre class="highlight plaintext"><code>    collect([{ name: "gerät 1" }, { name: "gerät 3" }, { name: "gerät 2" }], "name")
+        returns ["gerät 1", "gerät 2", "gerät 3"]
+</code></pre>
+
+<p>Takes a field from all objects in a list and returns those field values as a list.</p>
+
+<h3 id="count_uniques-list">count_uniques(list)</h3>
+<pre class="highlight plaintext"><code>    count_uniques(["cat", "dog", "cat"])
+        returns [{"value": "cat", "count": 2}, {"value": "dog", "count": 1}]
+</code></pre>
+
+<p>Returns a list with objects which contain following fields:</p>
+
+<ul>
+<li><code class="prettyprint">value</code> - the name of the value</li>
+<li><code class="prettyprint">count</code> - the occurrences of the value</li>
+</ul>
+
+<p>Supported types:</p>
+
+<ul>
+<li><code class="prettyprint">string</code></li>
+<li><code class="prettyprint">int</code></li>
+<li><code class="prettyprint">double</code></li>
+</ul>
+
+<p>Values with other types will be ignored.</p>
+
+<h3 id="filter-list-object-lambda_expression">filter(list, object/lambda_expression)</h3>
+
+<blockquote>
+<p>Example list:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    [
+        { "type": "goal", "team": "host", "score": "1-0" },
+        { "type": "yellowcard", "team": "guest" },
+        { "type": "goal", "team": "guest", "score": "1-1" },
+        { "type": "redcard", "team": "host" },
+        { "type": "goal", "team": "host", "score": "2-1" }
+    ]
+</code></pre>
+
+<blockquote>
+<p>Example method calls:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    filter(list($list), { "type": "goal", "team": "host" })
+        returns a list that includes the objects from the given input list that contain entries having type=goal and team=host,
+        in our case entries with number one and five of the original list.
+
+    filter(list($list), { "type": "yellowcard" })
+        returns a list with entries that have type=yellowcard,
+        in our example entry two of the original list.
+
+    filter(list($list), [entry -&gt; #entry.type == "yellowcard" ])
+        returns the same thing as the last example but uses a lambda expression to match the object.
+        In this example the entry variable of the lambda expression contains the complete object to be matched.
+</code></pre>
+
+<p>Filters a list of objects for the elements that match a given filter or lambda expression.</p>
+
+<h3 id="first-list-number">first(list, number)</h3>
+<pre class="highlight plaintext"><code>    first([ 1, 2, 3, 4, 5 ], 3)
+        returns [1, 2, 3]
+
+    first([ 1, 2, 3, 4, 5 ], 5)
+        returns [1, 2, 3, 4, 5]
+
+    first([ 1, 2, 3, 4, 5 ], 6)
+        returns also [1, 2, 3, 4, 5]
+
+    first([ 1, 2, 3, 4, 5 ], -3)
+        returns [3, 4, 5]
+</code></pre>
+
+<p>Gets n elements from a list, starting left.</p>
+
+<h3 id="intersection-list-list">intersection(list, list)</h3>
+<pre class="highlight plaintext"><code>    intersection([1, 2, 3], [1, 2, 4])
+        returns [1, 2]
+</code></pre>
+
+<p>Returns elements of two lists that are present in both lists.</p>
+
+<h3 id="map-list-lambda_expression-context">map(list, lambda_expression[, context])</h3>
+<pre class="highlight plaintext"><code>    map([1, 2, 3], [entry -&gt; numeric(#entry) * 2])
+        returns [2, 4, 6]
+
+    map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [entry -&gt; #entry.player])
+        returns ["Dennis", "Baris", "Niki"]
+
+    map([{"score": "1-0", "player": "Dennis"}, {"score": "1-1", "player": "Baris"}, {"score": "2-1", "player": "Niki"}], [entry, index, context -&gt; #entry.player + " (" + #index + ") [" + #context + "]"], "context" )
+        returns ["Dennis (0) [context]", "Baris (1) [context]", "Niki (2) [context]"]
+
+    map(["Niki", "Sandro"], [entry, index, context -&gt; #entry + \" (\" + #context[#index] + \".)\"], [5, 90])
+        returns ["Niki (5.)", "Sandro (90.)"]
+</code></pre>
+
+<p>Applies a method to all elements of a list and returns a list of objects with the result of applying the lambda.</p>
+
+<h3 id="neg_filter-list-object-lambda_expression">neg_filter(list, object/lambda_expression)</h3>
+
+<blockquote>
+<p>Example list:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    [
+        { "type": "goal", "team": "host", "score": "1-0" },
+        { "type": "yellowcard", "team": "guest" },
+        { "type": "goal", "team": "guest", "score": "1-1" },
+        { "type": "redcard", "team": "host" },
+        { "type": "goal", "team": "host", "score": "2-1" }
+    ]
+</code></pre>
+
+<blockquote>
+<p>Example method calls:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>    neg_filter( list($list), { "type": "goal", "team": "guest" })
+        Returns a list that includes the objects from the given input list that do not contain entries having type=goal and team=host, in our case entries with number 1, 2, 4, 5 of the original list.
+
+    neg_filter( list($list), { "type": "yellowcard" })
+        Returns a list with entries that do not have type=yellowcard, in our example entry 1,3,4, 5 of the original list.
+
+    neg_filter( list($list), [entry -&gt; #entry.type == "yellowcard" ])
+        Does the same thing as the last example but uses a λ-function to match the object. In this example the entry variable of the λ-function contains the complete object to be matched.
+
+    neg_filter( list($list), [entry -&gt; #entry.type == "yellowcard" or #entry.type == "redcard" ])
+        Returns a list with entries that do not have type=yellowcard or redcard, in our example entry 1,3,5 of the original list.In this example the entry variable of the λ-function contains the complete object to be matched.
+
+    neg_filter( list($list), [entry, index, context -&gt; #entry.type == "yellowcard" ], object($context_object))
+        This is the maximum λ-function, which contains the current.
+</code></pre>
+
+<p>Negative filters a list of objects for the elements that match a given filter or λ-function.</p>
+
+<h3 id="random_el-list-number">random_el(list, number)</h3>
+<pre class="highlight plaintext"><code>    random_el([1, 2, 3, 4, 5], 2)
+        Returns for example [3, 5, 2]
+
+    random_el(list($list), 5)
+        Returns for example [5, 3, 1, 2, 4]
+</code></pre>
+
+<p>This method gets random elements from a list.</p>
+
+<h3 id="range-list-index-count">range(list, index, count)</h3>
+<pre class="highlight plaintext"><code>    range(["dog", "cat", "fish", "bear", "frog"], 3, 2)
+        returns ["bear", "frog"]
+
+    range(["dog", "cat", "fish", "bear", "frog"], 5, 2)
+        returns an empty list
+
+    range(["dog", "cat", "fish", "bear", "frog"], 3, 5)
+        returns ["bear", "frog"]
+
+    range(["dog", "cat", "fish", "bear", "frog"], 4, 1)
+        returns ["frog"]
+
+    range(["dog", "cat", "fish", "bear", "frog"], -1, 2)
+        returns ["dog"]
+
+    range(["dog", "cat", "fish", "bear", "frog"], 3, -2)
+        returns ["fish", "bear"]
+
+    range(["dog", "cat", "fish", "bear", "frog"], -10, -1)
+        returns an empty list
+</code></pre>
+
+<p>This method returns a list with elements in a given range.</p>
+
+<ul>
+<li><code class="prettyprint">list</code> - a list</li>
+<li><code class="prettyprint">index</code> - the zero-based index at which the range starts</li>
+<li><code class="prettyprint">count</code> - the number of elements in the range (for right-to-left range, use negative integers)</li>
+</ul>
+
+<h3 id="re_keep-list-pattern-direction-position">re_keep(list, pattern, direction[, position])</h3>
+<pre class="highlight plaintext"><code>    re_keep(["xyz1", "abc", "xyz2"], "xyz.")
+        returns ["xyz1", "xyz2"]
+
+    re_keep(["xyz1", "abc", "xyz2"], "xyz.", "l", 1)
+        returns ["xyz2"]
+
+    re_keep(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
+        returns ["xyz1"]
+</code></pre>
+
+<p>This method searches for a regex pattern in a list and returns a list of all matched elements.
+Optionally, a starting postition and a search direction can be given.</p>
+
+<ul>
+<li><code class="prettyprint">list</code> - the list to search in</li>
+<li><code class="prettyprint">pattern</code> - regex pattern</li>
+<li><code class="prettyprint">direction</code> - the search direction (&ldquo;r&rdquo; or &ldquo;l&rdquo;)</li>
+<li><code class="prettyprint">position</code> - starting position</li>
+</ul>
+
+<h3 id="re_remove-list-pattern-direction-position">re_remove(list, pattern, direction[, position])</h3>
+<pre class="highlight plaintext"><code>    re_remove(["xyz1", "abc", "xyz2"], "abc")
+        returns ["xyz1", "xyz2"]
+
+    re_remove(["xyz1", "abc", "xyz2"], "abc", "l", 1)
+        returns ["xyz1", "xyz2"]
+
+    re_remove(["xyz1", "abc", "xyz2"], "xyz.", "r", 1)
+        returns ["xyz1", "abc"]
+</code></pre>
+
+<p>This method searches for a regex pattern in a list and returns a list of all elements that do not contain matched elements.
+Optionally, a starting postition and a search direction can be given.</p>
+
+<ul>
+<li><code class="prettyprint">list</code> - the list to search in</li>
+<li><code class="prettyprint">pattern</code> - regex pattern</li>
+<li><code class="prettyprint">direction</code> - the search direction (&ldquo;r&rdquo; or &ldquo;l&rdquo;)</li>
+<li><code class="prettyprint">position</code> - starting position</li>
+</ul>
+
+<h3 id="reverse-list">reverse(list])</h3>
+<pre class="highlight plaintext"><code>    reverse([1, 2, 3, 4, 5])
+        returns [5, 4, 3, 2, 1]
+</code></pre>
+
+<p>Inverts a list meaning that it reverses the order of elements in the list</p>
+
+<h3 id="sort-list-fieldname-lambda_expression">sort(list[, fieldname/lambda_expression])</h3>
+<pre class="highlight plaintext"><code>    sort([5, 4, 3, 2, 1])
+        returns [1, 2, 3, 4, 5]
+
+    sort([ {"type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], "minute")
+        returns a sorted list with original elements sorted by the minute key in them, thus ["gelb", "tor1", "tor3"]
+
+    sort([ {"type": "tor3", "minute": 80}, {"type": "tor1", "minute": 60}, {"type": "gelb", "minute": 10} ], [a, b -&gt; int(#a.minute) - int(#b.minute)])
+        returns the same output but now by a lambda expression
+</code></pre>
+
+<p>Sorts a list numerically, a list of objects by a given field or by a lambda expression that compares the objects contained in the list.</p>
+
+<h3 id="split-string-delimiter">split(string[, delimiter])</h3>
+<pre class="highlight plaintext"><code>    split("string1 string2 string3")
+        returns ["string1", "string2", "string3"]
+
+    split("string1, string2, string3", ", ")
+        returns ["string1", "string2", "string3"]
+</code></pre>
+
+<p>This method returns a splitted string as a list.</p>
+
+<p>Optionally, it is possible to set a delimiter. The default delimiter is &ldquo; &rdquo;.</p>
+
+<h3 id="split_lookup-entry-entry_list-delimiter-lookup_table_name">split_lookup(entry/entry_list[, delimiter], lookup_table_name)</h3>
+<pre class="highlight plaintext"><code>    split_lookup("summer, winter", ", ", "reifen_art")
+        splits the entry string at ", " and  looks up the entries "summer" and "winter" in the lookup table (of the current language) "reifen_art" and
+        returns its value as a vocabulary list. If nothing is found, an empty list is returned.
+
+    split_lookup( ["summer", "winter"], "reifen_art")
+        returns the same output, only implemented with a list instead of a string and a delimiter.
+</code></pre>
+
+<p>Performs a lookup for fitting entries in a known lookup table.</p>
+
+<p>Note: This method returns the result as a vocabulary list. For getting only the noun as a string, use lookup() (see string methods).</p>
+
+<h3 id="unique-list">unique(list)</h3>
+<pre class="highlight plaintext"><code>    unique([1, 2, 3, 1, 2])
+        returns [1, 2, 3]
+</code></pre>
+
+<p>Returns a list with unique elements.</p>
+
+<h2 id="json-object-methods">JSON object methods</h2>
+
+<h3 id="next_event">next_event()</h3>
+
+<p>Searches in a list the next element from an index. Assume the following list:</p>
+<pre class="highlight plaintext"><code>    [
+        { "id":"1", "type": "goal", "team": "host", "score": "1-0" },
+        { "id":"2", "type": "yellowcard", "team": "guest" },
+        { "id":"3", "type": "goal", "team": "guest", "score": "1-1" },
+        { "id":"4", "type": "redcard", "team": "host" },
+        { "id":"5", "type": "goal", "team": "host", "score": "2-1" }
+    ]
+</code></pre>
+<pre class="highlight plaintext"><code>   next_event( list($list), 2, { "type": "goal" } )
+     - searches from index 2 (id = 3) the next event with type = "goal", which in this case is the element with id = 5 (index 4).
+</code></pre>
+
+<p>Parameters:</p>
+
+<ul>
+<li>list - List to be filtered</li>
+<li>startindex - index to start the search from</li>
+<li>filter - Definition of the filter as key/value pair. Applicable for equal filters only!</li>
+</ul>
+
+<p>The method prev_event searches in the other direction. Is no event found, an empty object is returned.</p>
+
+<h3 id="prev_event">prev_event()</h3>
+
+<p>Searches for the last occurrence of an element in a list before a given index. Assume the list:</p>
+<pre class="highlight plaintext"><code>    [
+        { "id":"1", "type": "goal", "team": "host", "score": "1-0" },
+        { "id":"2", "type": "yellowcard", "team": "guest" },
+        { "id":"3", "type": "goal", "team": "guest", "score": "1-1" },
+        { "id":"4", "type": "redcard", "team": "host" },
+        { "id":"5", "type": "goal", "team": "host", "score": "2-1" }
+    ]
+</code></pre>
+<pre class="highlight plaintext"><code>   prev_event( list($list), 2, { "type": "goal" } )
+     - Searches the next element with type = "goal" starting at index 2. Result would be the element with id = 1 (index 0).
+</code></pre>
+
+<p>Parameters</p>
+
+<ul>
+<li>list - List to be filtered</li>
+<li>startindex - index to start the search from</li>
+<li>filter - Definition of the filter as key/value pair. Applicable for equal filters only!</li>
+</ul>
+
+<p>The method prev_event searches in the other direction. Is no event found, an empty object is returned.</p>
+
+<h3 id="nr5">nr5()</h3>
+
+<p>With this instruction a data set of the world knowledge (Project: Nummer5) can be accessed. Definition: nr5(aggregator, search_criteria)
+* aggregator - a string containing the name of the data aggregator in Nummer5
+* search_criteria - an object that contains the search criteria in key/value form</p>
+<pre class="highlight plaintext"><code>    nr5("test_aggregator", { "key1": "bob", "key2": "alice" })
+      - accesses the object, that is stored in the Nummer5 type "test_aggregator" and carries the value "bob" as key1 and "alice" as key2
+
+    nr5("test_aggregator", { "key2": "python" })
+      - accesses the object, that is stored in the Nummer5 type "test_aggregator" and carries the value "python" under key2
+</code></pre>
+
+<p>Return value is always a complete object from which properties can be selected by the property notation.</p>
+<pre class="highlight plaintext"><code> properties: {
+     "nummer5_test_1": {
+            "mappingExpression": "nr5(\"test_aggregator\", {\"key1\": \"monty\" })",
+            "truthExpression": "true",
+            "voc": []
+        },
+        "nummer5_test_1_key_2": {
+            "mappingExpression": "$nummer5_test_1.key2",
+            "truthExpression" : "true",
+            "voc": [ {noun: "[nummer5_test_1_key1.value()]" ]
+        }
+    }
+</code></pre>
+
+<p>In this example the property nummer5_test_1_key_2 would take the value &ldquo;python&rdquo; and the property nummer5_test_1 the value { key1: &ldquo;monty&rdquo;, key2: &ldquo;python&rdquo;, &hellip; } because that is defined in the test_aggregator.</p>
+
+<p>With the following aggregator notation, the actual data aggregator name will be automatically extracted from the requests:
+nummer5_doc_type</p>
+<pre class="highlight plaintext"><code>    nr5("nummer5_doc_type", {"id":#uuid})
+</code></pre>
+
+<h3 id="navigating-in-nr5-objects">Navigating in nr5 objects</h3>
+
+<p>You can look up any path inside nr5 objects if you use the proper tricks. Look at the mapping expression in the example below. Here, we try to navigate into our number5 object, go into  a child named &ldquo;branch&rdquo; and there go into a child named &ldquo;subbranch&rdquo;, which holds our key.</p>
+
+<p>Note that ATML assumes that children of nr5 objects come as lists. You will have to add a dummy iterator &ldquo;[0]&rdquo; to every tier you want to walk through.</p>
+<pre class="highlight plaintext"><code>    "nummer5_test_2_key_2": {
+            "mappingExpression": "$nummer5_test_2.branch[0].subbranch[0].key2",
+            "truthExpression" : "true",
+            "voc": [ {noun: "[nummer5_test_2_key2.value()]" ]
+        }
+</code></pre>
+
+<h3 id="pick_object">pick_object()</h3>
+
+<p>This method picks an object at the end of a key path out of a data set.</p>
+<pre class="highlight plaintext"><code>pick_object(#object.list, "fieldName", "value 2")
+     In a data structure like this:
+         {
+             "object:" {
+                 "list": [
+                     { "fieldName": "value 1", ... },
+                     { "fieldName": "value 2", ... },
+                     ...
+                 ]
+             }
+         }
+         the object with the fieldName "value 2" will be picked.
+</code></pre>
+
+<p>This is useful to pick elements out of deeply nested data structures.</p>
+
+          <h1 id="sentences">Sentences<a name="sentences"></a></h1>
+
+<p>In the ATML3.0 training, sentences are defined. In the JSON tree, the structure is inside the sentences aray.</p>
+<pre class="highlight plaintext"><code> sentences: [
+    {
+        name: "satz_001",
+        trigger: [ "Auto" ],
+        obligatory: true,
+        variants: [ "Property is true and shows value|[true_property.value()]|2NEWLINE", ]
+    },
+    ...]
+</code></pre>
+
+<p>The sentence has the following fields:</p>
+
+<ul>
+<li><code class="prettyprint">name</code> - used to reference the sentence in the sentence order list inside the product_types and sentence groups.</li>
+<li><code class="prettyprint">trigger</code> - List of property names. One of the properties must be true for the sentence to be available. If the sentence is to be always</li>
+<li><code class="prettyprint">available</code>, the trigger &ldquo;Auto&rdquo; has to be added.</li>
+<li><code class="prettyprint">obligatory</code> - true/false; If true, the sentence may not be discarded on text shortening.</li>
+<li><code class="prettyprint">command</code> - Used to activate the story mode.</li>
+<li><code class="prettyprint">variants</code> - Variants of the sentences as string.</li>
+<li><code class="prettyprint">role</code> - Role of the sentences like heading1 or heading2.</li>
+<li><code class="prettyprint">style</code> - The way the sentence is to be displayed.
+
+<ul>
+<li><code class="prettyprint">heading</code> - heading h1</li>
+<li><code class="prettyprint">subheading</code> - heading h2</li>
+<li><code class="prettyprint">subsubheading</code> - heading h3</li>
+</ul></li>
+</ul>
+
+<p>For every chosen sentence a variant should be chosen and made to a RenderedSentence in the engine. The ATML3 containers in the variant are parsed. A sentence mostly consists of ATML3 containers and free text. The free text implicitly is converted to Text containers. Assume a training that is rendered with the following data set</p>
+<pre class="highlight json"><code><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"tiername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hund"</span><span class="p">,</span><span class="w"> </span><span class="nt">"tierfarbe"</span><span class="p">:</span><span class="w"> </span><span class="s2">"braun"</span><span class="p">,</span><span class="w"> </span><span class="nt">"anzahl_beine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>and fills propertys with the same names as the dataset keys. The following sentences result:</p>
+<pre class="highlight plaintext"><code>   Der [tiername] hat [anzahl_beine.value()] Beine.
+   - Der Hund hat 4 Beine.
+
+   [text:Der ][tiername][text: hat ][anzahl_beine.value()][text: Beine.]
+   - Der Hund hat 4 Beine.
+
+   [tiername,det=definite] hat [anzahl_beine.value()] Beine.
+   - Der Hund hat 4 Beine.
+</code></pre>
+
+<p>Die Container die derzeit in der ATML3.0 Sprache existieren sind </p>
+
+<ul>
+<li><code class="prettyprint">Textcontainer</code> - render static text</li>
+<li><code class="prettyprint">ValueContainer</code> - render the raw value of aproperty</li>
+<li><code class="prettyprint">PhraseContainer</code> - render the value given by a property&rsquo;s vocabulary</li>
+<li><code class="prettyprint">GroupContainer</code> - renders multiple properties</li>
+<li><code class="prettyprint">Failure</code> - raises an expected engine error including an error message</li>
+</ul>
+
+<p>The containers are described in ther respective chapters. The general format is as follows:</p>
+
+<h2 id="kinds-of-tags">Kinds of tags</h2>
+
+<p>ATML3 tags can be classified into the following:</p>
+
+<h3 id="named-tags">Named Tags</h3>
+<pre class="highlight plaintext"><code>   [text:The text that is to be rendered]
+   [fail:The error message that is to be displayed]
+</code></pre>
+
+<h3 id="normal-tags">Normal Tags</h3>
+<pre class="highlight plaintext"><code>   [propertyName]
+   [propertyName.value()]
+   [propertyName,case=dat,adj=yes,det=definite]
+</code></pre>
+
+<p>All ATML-Tags can have parameters. To learn more about those options, go to the section containers.</p>
+
+<h2 id="sentence-groups">Sentence Groups</h2>
+
+<p>Sentence groups can be used to apply selective operations on defined groups of sentences. A sentence group contains up to five different entries:</p>
+
+<ul>
+<li><code class="prettyprint">name</code> (string) - Each sentence group needs a unique identifier. This is also used for identification in &ldquo;same&rdquo;-mode.</li>
+<li><code class="prettyprint">mode</code> (string) - The following modes are available:
+
+<ul>
+<li><code class="prettyprint">best</code> - The first n active sentences are rendered.</li>
+<li><code class="prettyprint">last</code> - The last n active sentences are rendered.</li>
+<li><code class="prettyprint">random</code> - n random sentences are rendered</li>
+<li><code class="prettyprint">same</code> - Same selects the exact same sentences as are selected in another sentence group. That requires the &ldquo;reference&rdquo;-entry, see below.</li>
+</ul></li>
+<li><code class="prettyprint">number</code> (int) - Determines the number of senteces to be rendered (-&gt; n). It is not needed with the &ldquo;same&rdquo;-mode, as it will be inherited from the referenced group.</li>
+<li><code class="prettyprint">reference</code> (string) - Only needed in &ldquo;same&rdquo;-mode. Needs the name of another group as argument.</li>
+<li><code class="prettyprint">sentenceNames</code> (list of strings) - List of sentence names that belong to this sentence group.</li>
+</ul>
+<pre class="highlight plaintext"><code>"sentenceGroups": [
+  {
+    "name": "sg1",
+    "mode": "random",
+    "number": 2,
+    "sentenceNames": [
+      "H1",
+      "H1_2",
+      "H1_3"
+    ]
+  },
+  {
+    "name": "sg2",
+    "mode": "same",
+    "reference": sg1",
+    "sentenceNames": [
+      "passende_Produkte",
+      "passende_Produkte_2"
+      "passende_Produkte_3"
+    ]
+  }
+]
+</code></pre>
+
+<h2 id="story-mode">Story Mode</h2>
+
+<p>ATML3 is capable of rendering a sequence of events in a so called &ldquo;story mode&rdquo;. This mode behaves somewhat like a for loop does in programming. You will need this if you are looking to render a stream of events (goals in a soccer match or any other sorted event list).</p>
+
+<h3 id="prerequisites">prerequisites</h3>
+
+<blockquote>
+<p>a list of objects in your data</p>
+</blockquote>
+<pre class="highlight json"><code><span class="err">goal:</span><span class="w"> </span><span class="p">[</span><span class="w">
+</span><span class="p">{</span><span class="w">
+</span><span class="nt">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Harnik"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"minute"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"own_goal"</span><span class="w">
+</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="nt">"player"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Werner"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"minute"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
+</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"goal"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>a meta sentence that is included in your &ldquo;default&rdquo; sentence group</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"goals"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"triggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"Auto"</span><span class="w"> </span><span class="p">],</span><span class="w">
+ </span><span class="nt">"obligatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[Meta:execute=Tor,items=event_list,iterator=CURRENT_EVENT,counter=CURRENT_INDEX]"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>the meta command contains 4 different parameters</p>
+
+<ul>
+<li><code class="prettyprint">execute</code> - used to point to a sentence group</li>
+<li><code class="prettyprint">items</code> - ATML3 list property which contains the data</li>
+<li><code class="prettyprint">iterator</code> - object to access the inner data from the itemlist</li>
+<li><code class="prettyprint">counter</code> - internal counter for the story mode</li>
+</ul>
+
+<blockquote>
+<p>an event story type</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tor"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"triggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"CURRENT_INDEX"</span><span class="p">],</span><span class="w">
+ </span><span class="nt">"sentenceOrder"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+ </span><span class="s2">"goal_reg"</span><span class="p">,</span><span class="w">
+ </span><span class="s2">"goal_own"</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>actual sentences that are rendered in this sentence group (goal_reg, goal_own)</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+ </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"goal_reg"</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"triggers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"LOG_Tor_not_1_0"</span><span class="w"> </span><span class="p">],</span><span class="w">
+ </span><span class="nt">"obligatory"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+ </span><span class="nt">"variants"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"de-DE"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+ </span><span class="p">{</span><span class="w"> </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEWLINE★ [VOC_MinuteTor;trailing:.] Minute: [VOC_Score_Tor] durch [VOC_SpielerTor]!"</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="atml3-properties-these-are-a-bit-different-since-we-are-iterating-over-objects">ATML3 properties (these are a bit different since we are iterating over objects)</h3>
+
+<blockquote>
+<p>a list property that contains the list of objects from above</p>
+</blockquote>
+<pre class="highlight plaintext"><code>"goal": {
+ "mappingExpression": "list($spieldaten.goal)",
+ "truthExpression": "int(count(list($spieldaten.goal))) &gt;= 0",
+ "voc": { "*" : [ { "noun": "[goal.value()]" } ] }
+ }
+</code></pre>
+
+<blockquote>
+<p>2 meta properties for the story loop</p>
+</blockquote>
+<pre class="highlight plaintext"><code>"CURRENT_INDEX": {
+ "mappingExpression" : "-1",
+ "truthExpression" : "false"
+ },
+"CURRENT_EVENT" : {
+ "mappingExpression" : "{}",
+ "truthExpression" : "false"
+ }
+
+</code></pre>
+
+<blockquote>
+<p>properties that point to the object in order to extract information from it</p>
+</blockquote>
+<pre class="highlight plaintext"><code>"TRIGGER_current_event_is_goal" : {
+ "mappingExpression" : "",
+ "truthExpression" : "$CURRENT_EVENT.event_type == \"goal\""
+ },
+"VOC_SpielerTor": {
+ "mappingExpression": "$CURRENT_EVENT.player",
+ "truthExpression": "true",
+ "voc": { "de-DE" : [ { "noun": "[VOC_SpielerTor.value()]" } ] }
+ },
+"VOC_MinuteTor": {
+ "mappingExpression": "$CURRENT_EVENT.minute",
+ "truthExpression": "true",
+ "voc": { "de-DE" : [ { "noun": "[VOC_MinuteTor.value()]" } ] }
+ },
+"VOC_TeamTor": {
+ "mappingExpression": "$CURRENT_EVENT.team",
+ "truthExpression": "true",
+ "voc": { "de-DE" : [ { "noun": "[VOC_TeamTor.value()]" } ] }
+ },
+"VOC_ScoreTor": {
+ "mappingExpression": "$CURRENT_EVENT.score",
+ "truthExpression": "true",
+ "voc": { "de-DE" : [ { "noun": "[VOC_ScoreTor.value()]" } ] }
+ }
+</code></pre>
+
+          <h1 id="containers">Containers<a name="containers"></a></h1>
+
+<p>In this section the different containers and their parameters are described.</p>
+
+<p>Some of the containers, for example PhraseContainer and ValueContainer are supposed to render vocabulary (or value, respectively). Containers can react to the truth value of properties.</p>
+
+<h2 id="container-basics">Container basics</h2>
+<pre class="highlight plaintext"><code>        [main_expression;trailing:);preceding:(]
+        [main_expression,case=dat,prep=mit,det=definite;on,true=other_expression]
+
+        [LIST_of_expressions.all()]
+        [LIST_of_expressions.random(2)]
+</code></pre>
+
+<p>Containers go into sentences and their purpose is to &ldquo;summon&rdquo; atml rules, values and vocabulary into the sentences. They point at a property to be summoned into the text, but also define how the grammar module will inflect and construct the output of the property, so it will fit into the syntax of the sentence.</p>
+
+<p>Containers are separated from the rest of the sentence by brackets [ and ]. They consist of a main expression and parameters. Parameter. The main expression can either be a property, a grouped property, a grammar container or text. All  types except text come with a set of grammar subparameters.</p>
+
+<p>Remember:</p>
+
+<ul>
+<li>If a parameter accepts any string (free text), you delimit by &ldquo;:&rdquo;</li>
+<li>If a parameter expects only certain strings (choice), you delimit by &ldquo;=&rdquo;</li>
+<li>Parameters are separated by &ldquo;;&rdquo;</li>
+<li>Subparameters are separated by &ldquo;,&rdquo;</li>
+<li>If you refer to a certain aspect of a container, you delimit by &ldquo;.&rdquo;</li>
+<li>If that aspect is a method (draw the best out of a group, retrieve the value, etc.), you will need to add &ldquo;([the method&rsquo;s argument])&rdquo;</li>
+</ul>
+
+<h2 id="fail-container">Fail Container</h2>
+<pre class="highlight plaintext"><code>    [Fail:Der Wert load_index ist nicht im gültigen Wertebereich;On:fehlerbedingung=true]
+    The error message appears in the myAX if the container is rendered. The rendering can be controlled by On and Off container parameters.
+</code></pre>
+
+<p>If this container is rendered in a sentence, the rendering of the text itself is aborted with an error message to the myAX. The error message is then displayed to the user.</p>
+
+<p>The container does not lead to output in the text itself.</p>
+
+<h2 id="grammar-container">Grammar Container</h2>
+
+<p>This container can be used to render words with their grammatical function and preset grammatical information.</p>
+<pre class="highlight plaintext"><code>    [g:verb=gehen,num=s,person=1st;preceding:ich ]
+        - renders "ich gehe"
+
+    [g:noun=Charakter,num=p]
+        - renders "Charaktere" because nominative is the default case and plural was set as numerus.
+
+    [g:adjective=niedlich,case=gen,num=s,gender=f,det=def]
+        - renders "niedlichen", as in "der niedlichen Katze"
+
+    [g:determiner=def,num=s,gender=f]
+        - renders "die"
+</code></pre>
+
+<p>The grammar container is intended to be used to render words, from which other words can inherit grammatical information. This can be useful if the case of something changes when a word giving grammatical information is replaced by a synonym or adjective groups which change the numerus of their noun shall be rendered.</p>
+
+<p>Some defaults are set, all other fields must be filled:</p>
+
+<ul>
+<li><p>nouns</p>
+
+<ul>
+<li>case = nom</li>
+</ul></li>
+<li><p>verbs</p>
+
+<ul>
+<li>person = 3rd</li>
+<li>tense = present (default), past, etc &hellip; depends on the target language</li>
+</ul></li>
+<li><p>adjectives</p>
+
+<ul>
+<li>case = nom</li>
+<li>determiner = none</li>
+<li>conjunctions: eg. und_sowie_KOMMA_oder for &ldquo;rotes und blaues sowie grünes Haus&rdquo;:</li>
+</ul></li>
+</ul>
+
+<p>The first two are for adjectives in the default position (here &ldquo;und&rdquo; and &ldquo;sowie&rdquo;).
+The default position is controlled by the language of the text. For german, the default position is in front of the noun, in spanish it is behind.</p>
+
+<p>The other two conjunctions are for the non default position (here &ldquo;KOMMA&rdquo; and &ldquo;oder&rdquo;). They are necessary for spanish and french, for example.</p>
+
+<p>The grammar container can be used to render verbs, if a &ldquo;Du/Sie&rdquo; switch was to be implemented.</p>
+<pre class="highlight plaintext"><code>    Den Duft [g:verb=riechen,grammar-from=reader] [appeal:reader,id=reader] direkt nach der Anwendung.
+      - This sentence renders to "Den Duft riechen Sie direkt nach der Anwendung"  if the engine renders in SIE mode
+      - This sentence renders to "Den Duft riechst du direkt nach der Anwendung"  if the engine renders in DU mode
+      - This sentence renders to "Den Duft riecht Ihr direkt nach der Anwendung"  if the engine renders in IHR mode
+
+    Robben [g:verb=treffen,person=3rd,tense=past] mit dem Ball.
+      - Robben traf mit dem Ball
+
+    Robben [g:verb=treffen,person=3rd] mit dem Ball.
+    Robben [g:verb=treffen,person=3rd,tense=present] mit dem Ball.
+      - Robben trifft mit dem Ball
+</code></pre>
+
+<p>With grammar-from you can inherit stuff from other containers. Directly defining a parameter overrides the inheritance (for example person=3rd will override the inherited person).</p>
+
+<p>If you want to explicitly inherit single properties you can use the following parameters:</p>
+
+<ul>
+<li>grammar-from-case</li>
+<li>grammar-from-num</li>
+<li>grammar-from-gender</li>
+<li>grammar-from-person</li>
+<li>grammar-from-tense</li>
+</ul>
+
+<h2 id="group-container">Group Container</h2>
+
+<blockquote>
+<p>Assume the property &ldquo;group&rdquo; has the mappingValue [&ldquo;rot&rdquo;, &ldquo;gelb&rdquo;, &ldquo;grün&rdquo;, &ldquo;blau&rdquo;]. The container looks as follows:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>  [group.all()]
+    - renders all members of the group, namely "rot, gelb, grün, blau"
+
+  [group.best(3)]
+    - renders the first 3 elements of the group, namely "rot, gelb, grün"
+
+  [group.last(3)]
+    - renders the last 3 elements of the group, namely "gelb, grün, blau"
+
+  [group.all(),conj=oder]
+    - renders all elements of the list but inserts a conjunction before the last element: "rot, gelb, grün oder blau" . The conjunction is free text.
+
+  [group.range(1, 2)]
+    - renders the second and third element of the group (index is 0-based): "gelb, grün"
+
+  [group.all_random(),conj=oder]
+    - like .All() but randomizes the order of the elements.
+</code></pre>
+
+<p>A group container outputs a part of a list. There are several selectors available, namely:</p>
+
+<ul>
+<li><code class="prettyprint">best(n)</code> - the first n valid elements of the list</li>
+<li><code class="prettyprint">all()</code> - all valid elements</li>
+<li><code class="prettyprint">all_random()</code> - like All(), but in random order</li>
+<li><code class="prettyprint">last(n)</code> - the last n valid elements of the list</li>
+<li><code class="prettyprint">random(n)</code> - n elements of the list chosen at random</li>
+<li><code class="prettyprint">range(m, n)</code> - all elements in the inclusive range of m and n will be chosen (index is 0-based)</li>
+</ul>
+
+<p>The group container also knows grammatical properties:</p>
+
+<ul>
+<li><code class="prettyprint">adj</code> - are adjectives to be rendered if present? (true/false/first; default: false)</li>
+<li><code class="prettyprint">adjconj</code> - conjunctions for adjectives in the form und_oder_KOMMA_MODIFIER.</li>
+<li><code class="prettyprint">case</code> - grammatical case for the elements to be rendered in. (language dependent; default: nom)</li>
+<li><code class="prettyprint">det</code> - determiner to preceed every element (default: none)</li>
+<li><code class="prettyprint">prep</code> - preposition to be placed in front of the whole string once (&ldquo;auf dem Haus und dem Dach&rdquo;; default: none)</li>
+<li><code class="prettyprint">post</code> - postposition to be placed behind the whole string once (default: none)</li>
+<li><code class="prettyprint">conj</code> - conjunction before the last list element (eg rot, gelb und grün; default: ,)</li>
+<li><code class="prettyprint">pronoun</code> - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)/which(welcher, welche, welches)</li>
+</ul>
+
+<h2 id="phrase-container">Phrase Container</h2>
+<pre class="highlight plaintext"><code>  [wort]
+    - renders "Hund"
+
+  [wort,case=gen]
+    - renders "Hundes"
+
+  [wort,case=gen,det=indefinite]
+    - renders "eines Hundes"
+
+  [wort,case=gen,det=definite,prep=mit]
+    - renders "mit des Hundes"
+
+  [wort,case=dat,adj=yes,det=definite,prep=mit]
+    - renders "mit dem braunen Hund"
+
+  [wort,pronoun=demonstrative,case=Dat,prep=mit]
+    - renders "mit diesem"
+</code></pre>
+
+<p>A phrase container renders the vocabulary of a property. The property can itself contain containers. The vocabulary is rendered with grammatic properties.</p>
+
+<p>Defaults:</p>
+
+<ul>
+<li><code class="prettyprint">adj - adjective: false</code></li>
+<li><code class="prettyprint">case - nom</code></li>
+<li><code class="prettyprint">det - determiner; default: none</code></li>
+<li><code class="prettyprint">prep - preposition; default: none</code></li>
+<li><code class="prettyprint">post - postposition; default: none</code></li>
+</ul>
+
+<p>Permitted values for the parameters:</p>
+
+<ul>
+<li><code class="prettyprint">adj</code> - true/false/first</li>
+<li><code class="prettyprint">adjconj</code> - und_sowie_KOMMA_oder</li>
+<li><code class="prettyprint">case</code> - language dependent; in german: nom/gen/dat/acc</li>
+<li><code class="prettyprint">prep</code> - free text</li>
+<li><code class="prettyprint">post</code> - free text</li>
+<li><code class="prettyprint">pronoun</code> - demonstrative(dieser, diese, dieses)/personal(er, sie, es)/demonstrative2(der, die, das)/which(welcher, welche, welches)</li>
+<li><code class="prettyprint">det</code> -
+
+<ul>
+<li><code class="prettyprint">none</code> - no determiner, default</li>
+<li><code class="prettyprint">def</code> - definite article, &ldquo;der Hund&rdquo;</li>
+<li><code class="prettyprint">indef</code> - indefinite article, &ldquo;ein Hund&rdquo;</li>
+<li><code class="prettyprint">demonstrative</code> - demonstrative article, &ldquo;dieser Hund&rdquo;</li>
+<li><code class="prettyprint">your</code> - possessive determiner, &ldquo;Ihr Hund&rdquo;</li>
+<li><code class="prettyprint">sein</code> - possessive determiner, &ldquo;sein Hund&rdquo;</li>
+<li><code class="prettyprint">ihrsein</code> - possesive determiner able to print &ldquo;sein&rdquo; and &ldquo;ihr&rdquo;, chosen by reference=containerID</li>
+</ul></li>
+<li><code class="prettyprint">num-to</code> - s (force singular), p (force plural)</li>
+</ul>
+
+<h2 id="text-container">Text Container</h2>
+<pre class="highlight plaintext"><code>  [text:hallo, welt!]
+    - renders "hallo, welt!"
+</code></pre>
+
+<p>A text container simply renders a string.</p>
+<pre class="highlight plaintext"><code>  [text:dies ist ein test;capitalize;on,merkmal=true]
+    - renders "Dies ist ein test" if the boolean value of the property "merkmal" is true.
+    - renders nothing otherwise
+</code></pre>
+
+<p>Rendering of simple text by a container is useful if container parameters need to be applied to that text.</p>
+
+<h2 id="value-container">Value Container</h2>
+
+<blockquote>
+<p>Some examples:</p>
+</blockquote>
+<pre class="highlight plaintext"><code>              [merkmalsname.value()]
+                - renders the value of a property, case=Nom and det=none
+
+              [merkmalsname.value(),case=dat]
+                - renders the value of a property, overrides case with Dativ and does not use a determiner
+
+              [merkmalsname.value(),case=dat,det=definite]
+                - renders the value of the property with a definitite determiner and in Dativ.
+
+              [merkmalsname.value(),use_numerals=true]
+                - renders the value and if it's a numerical value (eg 4) it will perform a lookup to find out if it's a number with a special word if
+                  special words are used in the current language by convention (eg in German: 0 = null, 1 = ein, 2 = zwei, ... till 12 = zwölf, theese may
+                  differ in other languages).
+
+              [merkmalsname.value(),use_numerals=true,numeral_type=cardinal]
+                - use cardinal or ordinal to switch what kind of number to render.
+</code></pre>
+
+<p>Value Containers just render the value (defined by the mappingExpression) for a property. They ignore the vocabulary. They can add grammatical informations and render with a case and determiner. Default values are case = nom and determiner = def.</p>
+
+<p>The cases that exist are language dependent, eg nom, gen, dat, acc in German. Determiners might be</p>
+
+<ul>
+<li><code class="prettyprint">none</code> - default, no determiner</li>
+<li><code class="prettyprint">def</code> - definite determiner, zB der Hund</li>
+<li><code class="prettyprint">indef</code> - indefinite determiner, zB. ein Hund</li>
+<li><code class="prettyprint">demonstrative</code> - demonstrative determiner, zB. dieser Hund</li>
+<li><code class="prettyprint">possessive_3rd</code> - possessive determiner, zB. sein Hund</li>
+</ul>
+
+<p>If a numeric property is rendered, use_numerals=true can be used to render number words in the current language. This is not implemented for all supported languages. If a numeric property is rendered, singular and plural can be inherited from the container using grammar-from or grammar-from-num.</p>
+
+          <h1 id="container-parameters">Container parameters<a name="container_parameters"></a></h1>
+
+<p>Container parameters can be attached to a container to add instructions or information to the container.</p>
+
+<h2 id="alternative">Alternative</h2>
+<pre class="highlight plaintext"><code>    [text:;alt:Nix gerendert]
+     - renders "Nix gerendert"
+
+   [no_vocabulary_property;alt,text=Nix gerendert]
+     - renders "Nix gerendert" if no_vocabulary_property has no vocabulary or is false. (Use syntax of example 1)
+</code></pre>
+
+<p>The container parameter <code class="prettyprint">alt</code> (for alternative) is used to render an alternative text, if the container would not render anything otherwise.</p>
+
+<h2 id="list">List</h2>
+<pre class="highlight plaintext"><code>    [Gruppe.all();list]
+         - Generates a markdown list like this:
+             * Element_1
+             * Element_2
+             * Element_3
+
+    [Gruppe.all();list,type=ordered]
+         - Generates a markdown list like this:
+             1. Element_1
+             2. Element_2
+             3. Element_3
+
+    [Gruppe.all();list,format=HTML]
+         - Generates a HTML list like this:
+             &lt;ul&gt;
+                 &lt;li&gt;Element_1&lt;/li&gt;
+                 &lt;li&gt;Element_2&lt;/li&gt;
+                 &lt;li&gt;Element_3&lt;/li&gt;
+             &lt;/ul&gt;
+
+    [Gruppe.all();list,format=HTML,type=ordered]
+         - Generates a HTML list like this:
+             &lt;ol&gt;
+                 &lt;li&gt;Element_1&lt;/li&gt;
+                 &lt;li&gt;Element_2&lt;/li&gt;
+                 &lt;li&gt;Element_3&lt;/li&gt;
+             &lt;/ol&gt;
+
+    [Gruppe.all();list,format=HTML,id=Test]
+         - Generates a HTML list with an id:
+             &lt;ul id="Test"&gt;
+                 &lt;li&gt;Element_1&lt;/li&gt;
+                 &lt;li&gt;Element_2&lt;/li&gt;
+                 &lt;li&gt;Element_3&lt;/li&gt;
+             &lt;/ul&gt;
+
+    [Gruppe.all();list,format=HTML,id=Test,type=ordered]
+         - Generates a HTML list with an id:
+             &lt;ol id="Test"&gt;
+                 &lt;li&gt;Element_1&lt;/li&gt;
+                 &lt;li&gt;Element_2&lt;/li&gt;
+                 &lt;li&gt;Element_3&lt;/li&gt;
+             &lt;/ol&gt;
+
+    [Gruppe.all();list,format=BB]
+         - Generates an BBCode list like this:
+             [list]
+                 [*]Element_1
+                 [*]Element_2
+                 [*]Element_3
+             [/list]
+
+    [Gruppe.all();list,format=BB,type=ordered]
+         - Generates an BBCode list like this:
+             [list=1]
+                 [*]Element_1
+                 [*]Element_2
+                 [*]Element_3
+             [/list]
+</code></pre>
+
+<p>The <code class="prettyprint">list</code> parameter makes a group into a list of elements. By default, a markdown list will be generated, with the optional style-parameter the format can be switched to HTML or BBCode. This is however discouraged because we try to render everything through markdown and process it into other output types later.</p>
+
+<p>Additionally an ID can be set to the element.</p>
+
+<h2 id="capitalize">Capitalize</h2>
+<pre class="highlight plaintext"><code>   [text:ich bin kleingeschrieben;capitalize]
+     - renders "Ich bin kleingeschrieben"
+
+   [hund_wort,prep=mit,case=dat;capitalize]
+     - renders "Mit dem Hund", if the property hund_wort renders the vocabulary "Hund"
+</code></pre>
+
+<p><code class="prettyprint">capitalize</code> is a container parameter that forces the first letter of the rendered string to be upper case.</p>
+
+<h2 id="img">IMG</h2>
+<pre class="highlight plaintext"><code>    [text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img]
+      - Generates a markdown image like this:
+          ![](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
+
+    [text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,text=alt text]
+      - Generates a markdown image like this:
+          ![alt text](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png)
+
+    [text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,title=This is the google logo]
+      - Generates a markdown image like this:
+          ![](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png "This is the google logo")
+
+    [text:https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png;img,text=alt text,title=This is the google logo]
+      - Generates a markdown image like this:
+          [alt text](https://www.google.de/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png "This is the google logo")
+</code></pre>
+
+<p>The <code class="prettyprint">img</code> parameter generates an image.</p>
+
+<p>Possible sub-parameters are:</p>
+
+<ul>
+<li><code class="prettyprint">text</code> - alternative text of the image</li>
+<li><code class="prettyprint">title</code> - title of the image</li>
+<li><code class="prettyprint">format</code> - format of the image
+
+<ul>
+<li>markdown (default)</li>
+<li>html</li>
+<li>bb</li>
+</ul></li>
+</ul>
+
+<h2 id="keyword">Keyword</h2>
+<pre class="highlight plaintext"><code>   [text:der goodyear 500;keyword,id=1,alt=der Reifen]
+         - renders [Key,1,der goodyear 500,der Reifen]
+         Depending on the defined keyword density the string `der goodyear 500` will be replaced with `der Reifen`.
+</code></pre>
+
+<p>With the <code class="prettyprint">keyword</code> parameter you can define multiple keywords within your generated texts. Every defined id is depending on the given keyword density.</p>
+
+<h2 id="kill">Kill</h2>
+<pre class="highlight plaintext"><code>   [text:hallo] [text:;kill] [text:welt]
+     - prevents rendering, because the second container does not render anything and carries the Kill parameter
+</code></pre>
+
+<p><code class="prettyprint">kill</code> is a parameter that prevents a sentence from being rendered if the container does not render to a text.</p>
+
+<h2 id="lower">Lower</h2>
+<pre class="highlight plaintext"><code>    [text:ICH BIN GROSSGESCHRIEBEN;lower]
+     - renders "ich bin grossgeschrieben"
+
+   [hund_wort,prep=mit,case=dat;lower]
+     - renders "mit dem hund", if the property hund_wort renders "Hund"
+</code></pre>
+
+<p><code class="prettyprint">lower</code> is a parameter that forces the rendered string of a container to be all lower case.</p>
+
+<h2 id="on">On</h2>
+<pre class="highlight plaintext"><code>   [text:test;on,true=bool_property]
+     - only renders "test", if the property bool_property is true.
+
+   [text:test;on,false=bool_property]
+     - only renders "test", if the property bool_property is false.
+</code></pre>
+
+<p><code class="prettyprint">on</code> is a container parameter that activates or deactivates according to a condition.</p>
+
+<h2 id="on_random">On_random</h2>
+<pre class="highlight plaintext"><code>   [text:i'm here;on_random,percentage=25]
+         - will output "i'm here" with a probability of 25 percent
+
+       [text:i'm here;on_random,percentage=LOGIC_percentage]
+         - will output "i'm here" with a probability of $LOGIC_percentage percent and interpretes LOGIC_percentage as a numeric
+</code></pre>
+
+<p><code class="prettyprint">on_random</code> is a container param that will throw away a container param randomly.</p>
+
+<h2 id="preceding">Preceding</h2>
+<pre class="highlight plaintext"><code>   [text:welt;preceding:hallo ]
+     - renders "hallo welt"
+
+   [drei.value();preceding:,text=StückzahlDOPPELPUNKT ]
+     - renders "Stückzahl: 3", if the property drei renders to 3.
+</code></pre>
+
+<p><code class="prettyprint">preceding</code> is a container parameter that is used to insert text in front of a rendered string in a container.</p>
+
+<h2 id="raw">Raw</h2>
+<pre class="highlight plaintext"><code>  [text:https://www.google.de;raw]
+    - renders "https://www.google.de" instead of "https://www.Google.De"
+</code></pre>
+
+<p><code class="prettyprint">raw</code> is a container parameter that forces ignoring the text modulation part.</p>
+
+<h2 id="trailing">Trailing</h2>
+<pre class="highlight plaintext"><code>   [text:hallo;trailing: welt]
+     - renders "hallo welt"
+
+   [drei.value();trailing,text= Stück]
+     - renders "3 Stück", if the property drei renders to 3
+</code></pre>
+
+<p><code class="prettyprint">trailing</code> is a container parameter that is used to insert text behind a rendered string in a container.</p>
+
+<h2 id="upper">Upper</h2>
+<pre class="highlight plaintext"><code>    [text:render me as upper case;upper]
+     - renders "RENDER ME AS UPPER CASE"
+</code></pre>
+
+<p><code class="prettyprint">upper</code> is a parameter that forces the rendered string of a container to be all upper case.</p>
+
+<h2 id="url">URL</h2>
+
+<p>The <code class="prettyprint">url</code> parameter generates an hyperlink.</p>
+
+<p>Possible sub-parameters are:</p>
+
+<ul>
+<li><code class="prettyprint">text</code> - clickable text in a link</li>
+<li><code class="prettyprint">title</code> - title of the link</li>
+<li><code class="prettyprint">target</code> - specifies where to open the linked document</li>
+<li><code class="prettyprint">rel</code> - specifies the relationship between the current document and the linked document</li>
+<li><code class="prettyprint">format</code> - format of the link
+
+<ul>
+<li>markdown (default)</li>
+<li>html</li>
+<li>bb</li>
+</ul></li>
+</ul>
+<pre class="highlight plaintext"><code>    [text:https://www.google.de;url]
+        - Generates a markdown link like this:
+            [https://www.google.de](https://www.google.de)
+
+    [text:https://www.google.de;url,text=click here]
+        - Generates a markdown link like this:
+        [click here](https://www.google.de)
+
+    [text:https://www.google.de;url,title=This is a link to google]
+        - Generates a markdown link like this:
+            [https://www.google.de](https://www.google.de "This is a link to google")
+
+    [text:https://www.google.de;url,target=_blank,rel=nofollow]
+        - Generates a markdown link like this:
+            [https://www.google.de](https://www.google.de){:target="_blank" rel="nofollow"}
+
+    [text:https://www.google.de;url,text=click here,title=This is a link to google]
+        - Generates a markdown link like this:
+            [click here](https://www.google.de "This is a link to google")
+</code></pre>
+
+<h2 id="void">Void</h2>
+<pre class="highlight plaintext"><code>   [dog_phrase,id=test123;void]
+     - renders nothin but can be referenced by grammar-from=test123 and will deliver it's grammatical properties
+</code></pre>
+
+<p><code class="prettyprint">void</code> is a container parameter that prevents a container from rendering an actual string but preserves its grammatical properties. It is mostly used as a reference for grammar containers.</p>
+
+<h2 id="source">Source</h2>
+<pre class="highlight plaintext"><code>[hund_wort,prep=mit,case=dat;source:mit dem Hund]
+</code></pre>
+
+<p><code class="prettyprint">source</code> is a container parameter that can be filled with an intended output.</p>
+
+<h2 id="keyword">Keyword</h2>
+<pre class="highlight plaintext"><code>   [text:der goodyear 500;keyword,id=1,alt=der Reifen]
+     - here the engine will either display "der goodyear 500" or the alternative text "der Reifen"
+       depending on the random selection.
+</code></pre>
+
+<p>To create a keyword, you need to set the <code class="prettyprint">keyword</code> parameter with an ID and an alternative text within a container. The ID is needed for defining multiple keywords. The engine will choose randomly a selection of defined keywords in consideration of the density and deviation. Both can be adjusted in the advanced content project configuration.</p>
+
+          <h1 id="story-types">Story types<a name="story_types"></a></h1>
+
+<p>Story types determine the order of the sentences you want to set.</p>
+
+<p>ATML3 first tries to select a story type that is not named &ldquo;default&rdquo; and whose triggers are true (BEWARE: sentences need only one true trigger, for story types all triggers must be true). If none fits, the story type named &ldquo;default&rdquo; will be chosen.</p>
+<pre class="highlight plaintext"><code>name: "default",
+"triggers": ["my_property_01"],
+"sentenceOrder": [ "sentence_01", "sentence_02", "sentence_03" ]
+
+name: "story_type_01",
+"triggers": ["my_property_02"],
+"sentenceOrder": [ "sentence_03", "sentence_02", "sentence_01" ]
+
+In this example, story type "story_type_01" would be chosen if and only if the truth value of the property "my_property_02" is true. Otherwise, the "default" story type would be chosen.
+</code></pre>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
