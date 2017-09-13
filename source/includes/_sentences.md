@@ -118,9 +118,10 @@ Sentence groups can be used to apply selective operations on defined groups of s
 ### Story Mode
 ATML3 is capable of rendering a sequence of events in a so called "story mode". This mode behaves somewhat like a for loop does in programming. You will need this if you are looking to render a stream of events (goals in a soccer match or any other sorted event list).
 
-##### prerequisites
+#### prerequisites
 
-a list of objects in your data
+> a list of objects in your data
+
 ```json
 goal: [
 {
@@ -135,9 +136,9 @@ goal: [
 ]
 ```
 
-a meta sentence that is included in your "default" sentence group
+> a meta sentence that is included in your "default" sentence group
 
-```atml3
+```
 {
  "name": "goals",
  "triggers": [ "Auto" ],
@@ -152,9 +153,10 @@ the meta command contains 4 different parameters (see below)
 * `items` - ATML3 list property which contains the data
 * `iterator` - object to access the inner data from the itemlist
 * `counter` - internal counter for the story mode
-* an event story type
 
-```atml3
+> an event story type
+
+```
 {
  "name": "Tor",
  "triggers": ["CURRENT_INDEX"],
@@ -164,9 +166,9 @@ the meta command contains 4 different parameters (see below)
 }
 ```
 
-actual sentences that are rendered in this sentence group (goal_reg, goal_own)
+> actual sentences that are rendered in this sentence group (goal_reg, goal_own)
 
-```atml3
+```
 {
  "name": "goal_reg",
  "triggers": [ "LOG_Tor_not_1_0" ],
@@ -175,11 +177,11 @@ actual sentences that are rendered in this sentence group (goal_reg, goal_own)
  { "text": "NEWLINE★ [VOC_MinuteTor;trailing:.] Minute: [VOC_Score_Tor] durch [VOC_SpielerTor]!" } ]
 }
 ```
-ATML3 properties (these are a bit different since we are iterating over objects)
+##### ATML3 properties (these are a bit different since we are iterating over objects)
 
-a list property that contains the list of objects from above
+> a list property that contains the list of objects from above
 
-```atml3
+```
 "goal": {
  "mappingExpression": "list($spieldaten.goal)",
  "truthExpression": "int(count(list($spieldaten.goal))) >= 0",
@@ -197,9 +199,9 @@ a list property that contains the list of objects from above
 
 ```
 
-properties that point to the object in order to extract information from it
+> properties that point to the object in order to extract information from it
 
-```atml3
+```
 "TRIGGER_current_event_is_goal" : {
  "mappingExpression" : "",
  "truthExpression" : "$CURRENT_EVENT.event_type == \"goal\""
