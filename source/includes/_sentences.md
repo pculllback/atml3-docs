@@ -121,6 +121,7 @@ ATML3 is capable of rendering a sequence of events in a so called "story mode". 
 ### prerequisites
 
 > a list of objects in your data
+
 ```json
 goal: [
 {
@@ -136,6 +137,7 @@ goal: [
 ```
 
 > a meta sentence that is included in your "default" sentence group
+
 ```
 {
  "name": "goals",
@@ -153,6 +155,7 @@ the meta command contains 4 different parameters (see below)
 * `counter` - internal counter for the story mode
 
 > an event story type
+
 ```
 {
  "name": "Tor",
@@ -164,6 +167,7 @@ the meta command contains 4 different parameters (see below)
 ```
 
 > actual sentences that are rendered in this sentence group (goal_reg, goal_own)
+
 ```
 {
  "name": "goal_reg",
@@ -173,9 +177,11 @@ the meta command contains 4 different parameters (see below)
  { "text": "NEWLINE★ [VOC_MinuteTor;trailing:.] Minute: [VOC_Score_Tor] durch [VOC_SpielerTor]!" } ]
 }
 ```
+
 #### ATML3 properties (these are a bit different since we are iterating over objects)
 
 > a list property that contains the list of objects from above
+
 ```
 "goal": {
  "mappingExpression": "list($spieldaten.goal)",
@@ -185,6 +191,7 @@ the meta command contains 4 different parameters (see below)
  ```
  
 > 2 meta properties for the story loop
+
 ```
 "CURRENT_INDEX": {
  "mappingExpression" : "-1",
@@ -198,6 +205,7 @@ the meta command contains 4 different parameters (see below)
 ```
 
 > properties that point to the object in order to extract information from it
+
 ```
 "TRIGGER_current_event_is_goal" : {
  "mappingExpression" : "",
