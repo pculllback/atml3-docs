@@ -148,7 +148,8 @@ goal: [
 
 ```
 
-the meta command contains 4 different parameters (see below)
+the meta command contains 4 different parameters
+
 * `execute` - used to point to a sentence group
 * `items` - ATML3 list property which contains the data
 * `iterator` - object to access the inner data from the itemlist
@@ -178,7 +179,7 @@ the meta command contains 4 different parameters (see below)
 }
 ```
 
-#### ATML3 properties (these are a bit different since we are iterating over objects)
+### ATML3 properties (these are a bit different since we are iterating over objects)
 
 > a list property that contains the list of objects from above
 
